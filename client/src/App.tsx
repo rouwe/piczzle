@@ -1,12 +1,12 @@
-import React from 'react';
-import './scss/App.scss';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { AppRoutes } from "./Routes";
+import "./scss/App.scss";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <h1>Hello Piczzle</h1>
-    </div>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
 }
-
-export default App;

@@ -1,0 +1,6 @@
+@mixin SetMinSize($width, $height) {
+    height: $height;
+    min-width: $width;
+    min-height: $height;
+    width: $width;
+}

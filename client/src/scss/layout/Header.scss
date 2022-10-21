@@ -1,0 +1,171 @@
+@use '../util/mixin' as mix;
+@use '../globals/colors' as c;
+
+.header {
+    align-items: center;
+    box-shadow: 0 0.0625rem 0.375rem var(--header-box-shadow-y);
+    display: grid;
+    flex-wrap: wrap;
+    grid-template: "brand menu" min-content / auto;
+    padding: 0.625rem 1.875rem;
+
+    &__brand,
+    &__menu,
+    &__menu__open {
+        display: flex;
+    }
+    
+    &__action,
+    &__menu__close,
+    &__menu__user {
+        display: none;
+    }
+
+    &__brand {
+        grid-area: brand;
+
+        svg {
+            @include mix.SetMinSize(7.5rem, 3.0625rem);
+        }
+    }
+
+    &__action {
+        &__nav-wrapper {
+            &__item {
+                &__link {
+                    font-size: 1.25rem;
+                }
+            }
+    
+        }
+    }
+
+    &__menu {
+        grid-area: menu;
+        justify-content: flex-end;
+
+        svg {
+            @include mix.SetMinSize(2.0625rem, 2.0625rem);
+        }
+    }
+
+    @media (min-width: 26.5625rem) {
+        &__brand {
+            svg {
+                @include mix.SetMinSize(7.809375rem, 3.206875rem);
+            }
+        }
+
+        &__action {
+            svg {
+                @include mix.SetMinSize(2.206875rem, 2.206875rem);
+            }
+        }
+    }
+
+    @media (min-width: 36rem) {
+        &__brand {
+            svg {
+                @include mix.SetMinSize(8.11875rem, 3.35125rem);
+            }
+        }
+
+        &__action {
+            svg {
+                @include mix.SetMinSize(2.41375rem, 2.41375rem);
+            }
+        }
+    }
+
+    @media (min-width: 46.5rem) {
+        padding: 1.5rem 3.125rem ;
+
+        &__brand {
+            svg {
+                @include mix.SetMinSize(8.4375rem, 3.5rem);
+            }
+        }
+
+        &__menu {
+            svg {
+                @include mix.SetMinSize(2.5rem, 2.5rem);
+            }
+        }
+    }
+
+    @media (min-width: 61.9375rem) {
+        grid-template: "brand nav" min-content / auto 1fr;
+        padding: 2.25rem 6.25rem;
+
+        &__brand {
+            margin-right: 5.625rem;
+
+            svg {
+                @include mix.SetMinSize(9.1875rem, 3.8125rem);
+            }
+        }
+
+        &__action {
+            display: flex;
+            grid-area: nav;
+            justify-content: space-between;
+
+            &__nav-wrapper {
+                align-items: center;
+                display: flex;
+                column-gap: 1.75rem;
+
+                &__item {
+                    &__link {
+                        color: var(--header-nav-link-text);
+                    }
+                }
+            }
+            
+            &__cta {
+                display: flex;
+                column-gap: 2.125rem;
+
+                .cta {
+                    box-shadow: 0 0.25rem 0.625rem var(--header-cta-box-shadow);
+                }
+            }
+        }
+
+        &__menu__open,
+        &__action__nav-divider,        
+        &__action__social-links {
+            display: none;
+        }
+    
+    }
+
+    @media (min-width: 90rem) {
+        &__brand {
+            margin-right: 6.25rem;
+            
+            svg {
+                @include mix.SetMinSize(10.75rem, 4.4375rem);
+            }
+        }
+
+        &__action {
+
+            &__nav-wrapper {
+                column-gap: 2.75rem;
+
+                &__item {
+                    
+                    &__link {
+                        font-size: 1.6875rem;
+                    }
+                }
+
+            }
+
+            &__cta {
+                column-gap: 3.125rem;
+            }
+        }
+    }
+}
