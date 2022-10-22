@@ -1,0 +1,87 @@
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+h1, h2,
+p {
+    margin-top: 0;
+}
+
+
+svg {
+    max-width: 100%;
+}
+
+a {
+    color: var(--dark);
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+[type="button"],
+[type="submit"],
+.cta {
+    font-size: 1.25rem;
+    background-color: var(--accent);
+    border-radius: 0.1rem;
+    color: var(--dark);
+    padding: 0.46875rem 0.9375rem;
+}
+
+@media (min-width: 26.5625rem) {
+    [type="button"],
+    [type="submit"],
+    .cta {
+        padding: 0.4996875rem, 0.999375rem;
+    }
+}
+
+@media (min-width: 36rem) {
+    [type="button"],
+    [type="submit"],
+    .cta {
+        padding: 0.530625rem, 1.06125rem;
+    }
+}
+
+@media (min-width: 46.5rem) {
+    [type="button"],
+    [type="submit"],
+    .cta {
+        padding: 0.5625rem 1.125rem;
+    }
+}
+
+@media (min-width: 61.9375rem) {
+    [type="button"],
+    [type="submit"],
+    .cta {
+        font-size: 1.25rem;
+        padding: 0.5625rem 1.125rem;
+    }
+}
+
+
+@media (min-width: 90rem) {
+    [type="button"],
+    [type="submit"],
+    .cta {
+        padding: 0.875rem 1.6875rem;
+    }
+
+    .cta-route {
+        padding: 0.6875rem 1.6875rem;
+    }
+}
