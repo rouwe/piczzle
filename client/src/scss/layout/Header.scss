@@ -8,6 +8,7 @@
     flex-wrap: wrap;
     grid-template: "brand menu" min-content / auto;
     padding: 0.625rem 1.875rem;
+    position: relative;
 
     &__brand,
     &__menu,
@@ -30,13 +31,76 @@
     }
 
     &__action {
+        display: flex;
+        // Remove after
+
+        align-items: center;
+        background-image: linear-gradient(var(--first-bg-gradient), var(--second-bg-gradient));
+        flex-direction: column;
+        left: 0%;
+        min-height: calc(100vh - 100%);
+        position: absolute;
+        right: 0%;
+        row-gap: 2.5rem;
+        top: 100%;
+        width: 100%;
+
+        &__nav-wrapper,
+        &__nav-divider,
+        &__cta,
+        &__social-links {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__cta,
+        &__social-links {
+            flex-direction: row;
+        }
+
         &__nav-wrapper {
+            width: 100%;
+
             &__item {
+                padding: 1.3125rem 0;
+                width: 100%;
+
                 &__link {
+                    color: var(--header-menu-link);
+                    display: block;
                     font-size: 1.25rem;
+                    text-align: center;
                 }
             }
-    
+        }
+
+        &__nav-divider {
+            border-color: var(--nav-divider);
+            width: 67.05%;
+        }
+
+        &__cta {
+            column-gap: 1.875rem;
+            
+            .cta {
+                box-shadow: 0 0.125rem 0.25rem hsla(0, 0%, 100%, 0.25);
+                color: var(--first-bg-gradient);
+                font-size: 1rem;
+            }
+        }
+
+        &__social-links {
+            column-gap: 1.25rem;
+            margin: auto 0 2.1875rem;
+
+            svg {
+                @include mix.SetMinSize(1.5625rem, 1.5625rem)
+            }
+
+            path {
+                fill: var(--header-social-icons);
+            }
         }
     }
 
@@ -56,7 +120,7 @@
             }
         }
 
-        &__action {
+        &__menu {
             svg {
                 @include mix.SetMinSize(2.206875rem, 2.206875rem);
             }
@@ -70,7 +134,7 @@
             }
         }
 
-        &__action {
+        &__menu {
             svg {
                 @include mix.SetMinSize(2.41375rem, 2.41375rem);
             }
@@ -86,6 +150,24 @@
             }
         }
 
+        &__action {
+            &__nav-wrapper {
+                &__item {
+                    padding: 1.4375rem 0;
+                    
+                    &__link {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+
+            &__cta {
+                .cta {
+                    font-size: 1.1875rem;
+                }
+            }
+        }
+
         &__menu {
             svg {
                 @include mix.SetMinSize(2.5rem, 2.5rem);
@@ -94,8 +176,8 @@
     }
 
     @media (min-width: 61.9375rem) {
+        padding: 1.63rem  4.225rem;
         grid-template: "brand nav" min-content / auto 1fr;
-        padding: 2.25rem 6.25rem;
 
         &__brand {
             margin-right: 5.625rem;
@@ -106,18 +188,28 @@
         }
 
         &__action {
+            background-image: none;
             display: flex;
             grid-area: nav;
             justify-content: space-between;
+            min-height: initial;
+            position: static;
+
+            &,
+            &__nav-wrapper {
+                flex-direction: row;
+            }
 
             &__nav-wrapper {
                 align-items: center;
-                display: flex;
                 column-gap: 1.75rem;
+                display: flex;
+                width: auto;
 
                 &__item {
                     &__link {
-                        color: var(--header-nav-link-text);
+                        color: var(--header-nav-link-text); 
+                        font-size: 1.25rem;
                     }
                 }
             }
@@ -141,6 +233,7 @@
     }
 
     @media (min-width: 90rem) {
+        padding: 2.25rem 6.25rem;
         &__brand {
             margin-right: 6.25rem;
             
@@ -157,7 +250,7 @@
                 &__item {
                     
                     &__link {
-                        font-size: 1.6875rem;
+                        font-size: 1.5rem;
                     }
                 }
 
@@ -165,6 +258,10 @@
 
             &__cta {
                 column-gap: 3.125rem;
+
+                .cta {
+                    font-size: 1.5rem;
+                }
             }
         }
     }

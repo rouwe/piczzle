@@ -25,9 +25,14 @@ function Nav() {
       <hr className="header__action__nav-divider" />
 
       <div className="header__action__cta">
-        <CTA className="cta" type="route" innerText="Log In" linkTo="/login" />
         <CTA
-          className="cta"
+          className="cta cta-route"
+          type="route"
+          innerText="Log In"
+          linkTo="/login"
+        />
+        <CTA
+          className="cta cta-route"
           type="route"
           innerText="Sign Up"
           linkTo="/signup"

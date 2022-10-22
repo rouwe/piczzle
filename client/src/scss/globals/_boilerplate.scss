@@ -40,6 +40,22 @@ ul {
     padding: 0.46875rem 0.9375rem;
 }
 
+@media (min-width: 26.5625rem) {
+    [type="button"],
+    [type="submit"],
+    .cta {
+        padding: 0.4996875rem, 0.999375rem;
+    }
+}
+
+@media (min-width: 36rem) {
+    [type="button"],
+    [type="submit"],
+    .cta {
+        padding: 0.530625rem, 1.06125rem;
+    }
+}
+
 @media (min-width: 46.5rem) {
     [type="button"],
     [type="submit"],
@@ -63,5 +79,9 @@ ul {
     [type="submit"],
     .cta {
         padding: 0.875rem 1.6875rem;
+    }
+
+    .cta-route {
+        padding: 0.6875rem 1.6875rem;
     }
 }
