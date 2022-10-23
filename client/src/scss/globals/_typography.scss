@@ -77,14 +77,30 @@
     font-display: swap;
 }
 
+.footer__nav__section__header {
+    font-family: utl.$font-genos;
+}
+
+body{
+    font-family: utl.$font-roboto-slab;
+}
+
 a,
 button,
-.cta {
+.cta,
+.footer__copyright__text  {
     font-family: utl.$font-inter;
 }
 
-a {
+a,
+body,
+.footer__copyright__text {
     font-weight: 300;
+}
+
+.footer__nav__section__header,
+.header__action__nav-wrapper__item__link {
+    font-weight: 400;
 }
 
 button,

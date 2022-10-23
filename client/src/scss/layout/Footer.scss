@@ -1,0 +1,285 @@
+@use '../util/mixin' as mix;
+@use '../util/functions' as func;
+
+.footer {
+    background-image: linear-gradient(var(--first-bg-gradient) 0%, var(--second-bg-gradient) 100%);
+    display: grid;
+    grid-template: "brand" min-content
+                    "nav" min-content
+                    "copyright" min-content / 1fr;
+    padding: 4.6875rem 1.875rem;
+    row-gap: 3.125rem;
+
+    &__brand,
+    &__copyright {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__brand {
+        grid-area: brand;
+        margin-bottom: 0.625rem;
+        row-gap: 0.9375rem;
+
+        &__logo,
+        &__text {
+            display: flex;
+        }
+
+        &__logo {
+            svg {
+                @include mix.SetMinSize(3.75rem, 3.75rem);
+            }
+        }
+
+        &__text {
+            svg {
+                @include mix.SetMinSize(7.5rem, 3.0625rem);
+            }
+        }
+    }
+
+    &__nav {
+        display: grid;
+        grid-template: "piczzle" min-content
+                        "more" min-content
+                        "social" min-content / 1fr;
+        grid-area: nav;
+        row-gap: 3.125rem;
+        width: 100%;
+
+        &__section__piczzle {
+            grid-area: piczzle;
+        }
+
+        &__section__more {
+            grid-area: more;
+        }
+
+        &__section__social {
+            grid-area: social;
+        }
+
+        &__section {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1.25rem 0 1.875rem;
+            row-gap: 1.25rem;
+            width: 100%;
+            
+            &__header {
+                color: var(--footer-nav-link-header);
+                font-size: 1.75rem;
+            }
+
+            &__wrapper {
+                display: flex;
+                flex-direction: column;
+                row-gap: 0.875rem;
+                
+                &__item {
+                    display: flex;
+                    justify-content: center;
+                                
+                    &__link {
+                        color: var(--footer-nav-link);
+                        letter-spacing: func.PercentToRem(1);
+                    }
+                }
+            }
+
+            &__social-links {
+                column-gap: 1.25rem;
+                display: flex;
+
+                svg {
+                    @include mix.SetMinSize(1.875rem, 1.875rem);
+                    
+                    path {
+                        fill: var(--footer-social-icons);
+                    }
+                }
+            }
+        }
+    }
+
+    &__copyright {
+        grid-area: copyright;
+
+        &__text {
+            color: var(--footer-copyright-text);
+            font-size: 0.75rem;
+        }
+    }
+
+    @media (min-width: 26.5625rem) {
+    }
+
+    @media (min-width: 36rem) {
+    }
+
+    @media (min-width: 46.5rem) {
+        grid-template: ". brand ." min-content
+                        "nav nav nav" min-content
+                        "copyright copyright copyright" min-content / 1fr 1fr 1fr;
+        justify-items: center;
+        padding: 5.625rem 2.5rem;
+
+        &__brand {
+            margin-bottom: 0;
+            padding: 0.625rem 0 0.75rem;
+            
+            &__logo {
+                svg {
+                    @include mix.SetMinSize(4.0625rem, 4.0625rem);
+                }
+            }
+
+            &__text {
+                svg {
+                    @include mix.SetMinSize(6.5625rem, 2.6875rem);
+                }
+            }
+        }
+
+        &__nav {
+            align-items: flex-start;
+            grid-template: "piczzle social more" min-content / 1fr 1fr 1fr;
+
+            &__section {
+                padding-bottom: 3.75rem;
+            }
+        }
+
+        &__copyright {
+            margin-top: 1.25rem;
+        }
+    }
+
+    @media (min-width: 61.9375rem) {
+        grid-template: "brand nav nav nav" min-content
+                        "brand nav nav nav" min-content
+                        "brand copyright copyright copyright" min-content / 1fr 1fr 1fr 1fr;
+        padding: 6.171875rem 3.8125rem;
+        row-gap: initial;
+
+        &__brand {
+            &__logo {
+                svg {
+                    @include mix.SetMinSize(4.609375rem, 4.609375rem);
+                }
+            }
+
+            &__text {
+                svg {
+                    @include mix.SetMinSize(7.21875rem, 2.971875rem);
+                }
+            }
+        }
+        
+        &__nav {
+            grid-template: "piczzle more social" min-content / 1fr 1fr 1fr;
+
+            &__section {
+                padding: 0.625rem 0 3.35625rem;
+                row-gap: 1.359375rem;
+
+                &__header {
+                    font-size: 1.903125rem;
+                }
+
+                &__wrapper {
+                    row-gap: 0.9625rem;
+                    
+                    &__item {
+                        &__link {
+                            font-size: 1.0875rem;
+                        }
+                    }
+                }
+
+                &__social-links {
+                    column-gap: 1.359375rem;
+                    
+                    svg {
+                        @include mix.SetMinSize(2.05rem, 2.05rem);
+                    }
+                }
+            }
+        }
+
+        &__copyright {
+            @include mix.SetMinSize(100%, 0);
+            display: grid;
+            grid-template: ". . copyright-txt" min-content / 1fr 1fr 1fr;
+            margin: 0;
+
+            &__text {
+                font-size: 0.878125rem;
+                grid-area: copyright-txt;
+                position: relative;
+                text-align: center;
+                top: -150%;
+            }
+        }
+    }
+
+    @media (min-width: 90rem) {
+        padding: 7.1875rem 6.25rem;
+
+        &__brand {
+            padding: 0.875rem 0 0.625rem;
+
+            &__logo {
+                svg {
+                    @include mix.SetMinSize(5.625rem, 5.625rem);
+                }
+            }
+
+            &__text {
+                svg {
+                    @include mix.SetMinSize(8.4375rem, 3.5rem);
+                }
+            }
+        }
+
+        &__nav {
+            &__section {
+                padding: 0.3125rem 0 2.625rem;
+                row-gap: 1.5625rem;
+
+                &__header {
+                    font-size: 2.1875rem;
+                }
+
+                &__wrapper {
+                    row-gap: 1.125rem;
+                    
+                    &__item {
+                        &__link {
+                            font-size: 1.25rem;
+                        }
+                    }
+                }
+
+                &__social-links {
+                    column-gap: 1.5625rem;
+                    
+                    svg {
+                        @include mix.SetMinSize(2.375rem, 2.375rem);
+                    }
+                }
+            }
+        }
+
+        &__copyright {
+            &__text {
+                font-size: 1rem;
+            }
+        }
+    }
+}

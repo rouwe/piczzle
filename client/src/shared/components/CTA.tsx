@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, To } from "react-router-dom";
 
-interface ButtonType {
+type ButtonType = {
   innerText: string;
   type: "route" | "button";
   className?: string;
   isSubmit?: boolean;
   linkTo?: To;
-}
+};
 
 function CTA({
   type,

@@ -1,0 +1,12 @@
+@function PercentToPx($percentage, $defaultFontSize) {
+    $PixelPerPercentage: calc($defaultFontSize / 100);
+    $rootFontSize: $PixelPerPercentage * $percentage;
+    
+    @return $rootFontSize;
+}
+
+@function PercentToRem($percentage) {
+    $defaultFontSize: 1rem;
+    
+    @return PercentToPx($percentage, $defaultFontSize)
+}
