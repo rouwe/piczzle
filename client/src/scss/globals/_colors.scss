@@ -6,7 +6,7 @@
 
     // Background gradient
     --first-bg-gradient: #404040;
-    --second-bg-gradient: #1c1c1c;
+    --second-bg-gradient: #1b1b1bf5;
 
     // States
     --active: #4f4f4f;
@@ -35,6 +35,8 @@
     --s-upload-add-text: #0a0900;
 
     // Footer
-    --f-nav-link-header: #4f4f4fd9;
-    --f-nav-link: #4f4f4f99;
+    --footer-nav-link-header: #ffffffd9;
+    --footer-nav-link: #ffffff99;
+    --footer-social-icons: var(--header-social-icons);
+    --footer-copyright-text: #ffffff80; 
 }

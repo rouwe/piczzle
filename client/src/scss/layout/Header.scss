@@ -16,9 +16,7 @@
         display: flex;
     }
     
-    &__action,
-    &__menu__close,
-    &__menu__user {
+    &__action {
         display: none;
     }
 
@@ -31,11 +29,8 @@
     }
 
     &__action {
-        display: flex;
-        // Remove after
-
         align-items: center;
-        background-image: linear-gradient(var(--first-bg-gradient), var(--second-bg-gradient));
+        background-image: linear-gradient(var(--first-bg-gradient) 0%, var(--second-bg-gradient) 100%);
         flex-direction: column;
         left: 0%;
         min-height: calc(100vh - 100%);
@@ -95,11 +90,11 @@
             margin: auto 0 2.1875rem;
 
             svg {
-                @include mix.SetMinSize(1.5625rem, 1.5625rem)
-            }
+                @include mix.SetMinSize(1.5625rem, 1.5625rem);
 
-            path {
-                fill: var(--header-social-icons);
+                path {
+                    fill: var(--header-social-icons);
+                }
             }
         }
     }
@@ -107,6 +102,11 @@
     &__menu {
         grid-area: menu;
         justify-content: flex-end;
+
+        &__close,
+        &__user {
+            display: none;
+        }
 
         svg {
             @include mix.SetMinSize(2.0625rem, 2.0625rem);

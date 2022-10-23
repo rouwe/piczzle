@@ -1,26 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import CTA from "../../shared/components/CTA";
+import RouteList from "../../shared/components/RouteList";
 import SocialLinks from "../../shared/components/SocialLinks";
 
 function Nav() {
-  const links = [
+  const routes = [
     { id: "navLink", page: "Home", path: "/" },
     { id: "navLink", page: "Contact", path: "/contact" },
     { id: "navLink", page: "About", path: "/about" },
   ];
+  const structureClass = {
+    ulClassName: "header__action__nav-wrapper",
+    liClassName: "header__action__nav-wrapper__item",
+    linkClassName: "header__action__nav-wrapper__item__link",
+  };
 
   return (
     <>
-      <ul className="header__action__nav-wrapper">
-        {links.map(({ id, page, path }, idx) => (
-          <li className="header__action__nav-wrapper__item" key={`${id}${idx}`}>
-            <Link className="header__action__nav-wrapper__item__link" to={path}>
-              {page}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <RouteList routesArr={routes} structureClassNames={structureClass} />
 
       <hr className="header__action__nav-divider" />
 
