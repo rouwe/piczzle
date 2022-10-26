@@ -50,6 +50,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /***/ }),
 
+/***/ "./src/scss/pages/HomeGuest.scss":
+/*!***************************************!*\
+  !*** ./src/scss/pages/HomeGuest.scss ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://piczzle-client/./src/scss/pages/HomeGuest.scss?");
+
+/***/ }),
+
+/***/ "./src/scss/pages/Pages.scss":
+/*!***********************************!*\
+  !*** ./src/scss/pages/Pages.scss ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://piczzle-client/./src/scss/pages/Pages.scss?");
+
+/***/ }),
+
 /***/ "./node_modules/react-router-dom/dist/index.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react-router-dom/dist/index.js ***!
@@ -206,7 +226,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
   \****************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\r\nfunction Home() {\r\n    return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h6\", null, \"Home\");\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (Home);\r\n\n\n//# sourceURL=webpack://piczzle-client/./src/pages/Home.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _guest_HomeGuest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./guest/HomeGuest */ \"./src/pages/guest/HomeGuest.tsx\");\n/* harmony import */ var _scss_pages_Pages_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../scss/pages/Pages.scss */ \"./src/scss/pages/Pages.scss\");\n\r\n\r\n\r\nfunction Home() {\r\n    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"main\", { className: \"home\" },\r\n        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_guest_HomeGuest__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null)));\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (Home);\r\n\n\n//# sourceURL=webpack://piczzle-client/./src/pages/Home.tsx?");
 
 /***/ }),
 
@@ -230,6 +250,36 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
+/***/ "./src/pages/guest/GuestHero.tsx":
+/*!***************************************!*\
+  !*** ./src/pages/guest/GuestHero.tsx ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _shared_components_CTA__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/components/CTA */ \"./src/shared/components/CTA.tsx\");\n\r\n\r\nfunction GuestHero() {\r\n    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,\r\n        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", { className: \"guest__hero__heading\" },\r\n            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", { className: \"guest__hero__heading__text\" }, \"Puzzle in every snap\")),\r\n        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", { className: \"guest__hero__cta\" },\r\n            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_shared_components_CTA__WEBPACK_IMPORTED_MODULE_1__[\"default\"], { className: \"cta cta-hero\", type: \"button\", innerText: \"Play now\" }))));\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (GuestHero);\r\n\n\n//# sourceURL=webpack://piczzle-client/./src/pages/guest/GuestHero.tsx?");
+
+/***/ }),
+
+/***/ "./src/pages/guest/GuestHowTo.tsx":
+/*!****************************************!*\
+  !*** ./src/pages/guest/GuestHowTo.tsx ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\r\nfunction GuestHowTo() {\r\n    return react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null);\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (GuestHowTo);\r\n\n\n//# sourceURL=webpack://piczzle-client/./src/pages/guest/GuestHowTo.tsx?");
+
+/***/ }),
+
+/***/ "./src/pages/guest/HomeGuest.tsx":
+/*!***************************************!*\
+  !*** ./src/pages/guest/HomeGuest.tsx ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _GuestHero__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GuestHero */ \"./src/pages/guest/GuestHero.tsx\");\n/* harmony import */ var _GuestHowTo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GuestHowTo */ \"./src/pages/guest/GuestHowTo.tsx\");\n/* harmony import */ var _scss_pages_HomeGuest_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../scss/pages/HomeGuest.scss */ \"./src/scss/pages/HomeGuest.scss\");\n\r\n\r\n\r\n\r\nfunction HomeGuest() {\r\n    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", { className: \"guest\" },\r\n        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", { className: \"guest__hero\" },\r\n            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_GuestHero__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null)),\r\n        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", { className: \"guest__howto\" },\r\n            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_GuestHowTo__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null))));\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (HomeGuest);\r\n\n\n//# sourceURL=webpack://piczzle-client/./src/pages/guest/HomeGuest.tsx?");
+
+/***/ }),
+
 /***/ "./src/shared/components/Brand.tsx":
 /*!*****************************************!*\
   !*** ./src/shared/components/Brand.tsx ***!
@@ -246,7 +296,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
   \***************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/dist/index.js\");\n\r\n\r\nfunction CTA({ type, innerText, className, isSubmit = false, linkTo, }) {\r\n    const styleVariation = {\r\n        route: (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, { className: className, to: linkTo !== undefined ? linkTo : \"/\" }, innerText)),\r\n        button: (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", { className: `button ${className}`, type: type !== \"route\" && isSubmit ? \"submit\" : \"button\" }, innerText)),\r\n    };\r\n    return styleVariation[type];\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (CTA);\r\n\n\n//# sourceURL=webpack://piczzle-client/./src/shared/components/CTA.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/dist/index.js\");\n\r\n\r\nfunction CTA({ type, innerText, className, isSubmit = false, linkTo, }) {\r\n    const styleVariation = {\r\n        route: (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, { className: className, to: linkTo !== undefined ? linkTo : \"/\" }, innerText)),\r\n        button: (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", { className: `${className}`, type: type !== \"route\" && isSubmit ? \"submit\" : \"button\" }, innerText)),\r\n    };\r\n    return styleVariation[type];\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (CTA);\r\n\n\n//# sourceURL=webpack://piczzle-client/./src/shared/components/CTA.tsx?");
 
 /***/ }),
 

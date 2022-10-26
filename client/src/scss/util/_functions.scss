@@ -1,12 +1,45 @@
+@use 'sass:string' as string;
+
 @function PercentToPx($percentage, $defaultFontSize) {
+    // Converts percentage to px based on root font size
     $PixelPerPercentage: calc($defaultFontSize / 100);
     $rootFontSize: $PixelPerPercentage * $percentage;
     
     @return $rootFontSize;
 }
 
+@function GetBgOffSetPositionInPercent($imageLength, $containerLength, $toOffSetInPx)
+    {
+    // Converts and return the @$ToOffSetInPx to percentage relative to container
+    @if $toOffSetInPx {
+        $imageAvailableOffset: $containerLength - $imageLength;
+        $offSetPositionInPercent:  calc($toOffSetInPx / $imageAvailableOffset) * 100;
+        @if $imageAvailableOffset <= 0 {
+            $offSetPositionInPercent: $toOffSetInPx;
+            @return $offSetPositionInPercent + string.unquote('px');
+        }
+
+        @return  $offSetPositionInPercent + string.unquote('%');
+    }
+}
+
+@function GetUpdatedMediaValue($minValue, $maxValue, $updatePercentage) {
+    // Returns the updated min value from the difference between min and max
+    // using update percentage
+    $minMaxDifference: $maxValue - $minValue;
+
+    @return ($minMaxDifference * $updatePercentage) + $minValue;
+}
+
 @function PercentToRem($percentage) {
+    // Converts percentage to rem based on root font size
     $defaultFontSize: 1rem;
     
-    @return PercentToPx($percentage, $defaultFontSize)
+    @return PercentToPx($percentage, $defaultFontSize);
+}
+
+@function PxToRem($pxValue) {
+    $defaultFontSize: calc(16rem / 1rem);
+
+    @return calc($pxValue / $defaultFontSize) + string.unquote('rem'); 
 }

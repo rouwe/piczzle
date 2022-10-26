@@ -1,3 +1,6 @@
+@use '../util/functions' as func;
+@use '../globals/media' as media;
+
 html {
     box-sizing: border-box;
     font-size: 100%;
@@ -9,7 +12,10 @@ html {
     box-sizing: inherit;
 }
 
-h1, h2,
+h1,
+h2,
+h3,
+h4,
 p {
     margin-top: 0;
 }
@@ -34,18 +40,22 @@ ul {
 [type="button"],
 [type="submit"],
 .cta {
-    font-size: 1.25rem;
     background-color: var(--accent);
+    border: 0.03125rem solid var(--border-color);
     border-radius: 0.1rem;
     color: var(--dark);
-    padding: 0.46875rem 0.9375rem;
+    font-size: 1.25rem;
+    letter-spacing: func.PercentToRem(0.5);
+    padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, 0)
+            func.GetUpdatedMediaValue(0.9375rem, 1.125rem, 0);
 }
 
 @media (min-width: 26.5625rem) {
     [type="button"],
     [type="submit"],
     .cta {
-        padding: 0.4996875rem, 0.999375rem;
+        padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-425)
+                func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-425);
     }
 }
 
@@ -53,7 +63,8 @@ ul {
     [type="button"],
     [type="submit"],
     .cta {
-        padding: 0.530625rem, 1.06125rem;
+        padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-576)
+                func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-576);
     }
 }
 
@@ -61,7 +72,13 @@ ul {
     [type="button"],
     [type="submit"],
     .cta {
-        padding: 0.5625rem 1.125rem;
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, 0)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, 0);
+    }
+
+    .cta-route {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, 0)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, 0);
     }
 }
 
@@ -69,8 +86,13 @@ ul {
     [type="button"],
     [type="submit"],
     .cta {
-        font-size: 1.25rem;
-        padding: 0.5625rem 1.125rem;
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-991)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-991);
+    }
+
+    .cta-route {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-991)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-991);
     }
 }
 
@@ -79,10 +101,12 @@ ul {
     [type="button"],
     [type="submit"],
     .cta {
-        padding: 0.875rem 1.6875rem;
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-1440)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1440);
     }
 
     .cta-route {
-        padding: 0.6875rem 1.6875rem;
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-1440)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1440);
     }
 }
