@@ -1,5 +1,6 @@
 import React from "react";
 import CTA from "../../shared/components/CTA";
+import "../../scss/pages/guest/GuestHero.scss";
 
 function GuestHero() {
   return (
