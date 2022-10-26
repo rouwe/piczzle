@@ -3,9 +3,6 @@
 @use '../../globals/media' as media;
 
 .guest {
-    display: flex;
-    flex-direction: column;
-    
     &__hero {
         align-items: center;
         display: grid;

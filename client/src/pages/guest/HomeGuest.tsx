@@ -1,6 +1,7 @@
 import React from "react";
 import GuestHero from "./GuestHero";
 import GuestHowTo from "./GuestHowTo";
+import "../../scss/pages/guest/HomeGuest.scss";
 
 function HomeGuest() {
   return (

@@ -13,19 +13,23 @@
 
     // Neutral
     --dark: #0a0900;
+    --dark-75: #0a0900bf;
     --light: #ffffff;
+    --light-75: #ffffffbf;
 
-    --border-color: rgba(0, 0, 0, 0.25);
+    --border-color: #00000040;
 
     // Header
     --header-box-shadow-y: #0a090033;
     --header-cta-box-shadow: #0a090040;
-    --header-menu-link: #ffffffbf;
+    --header-menu-link: var(--light-75);
     --header-nav-link-text: #0a0900a6;
     --header-social-icons: #ffffffb3;
 
+    // Body
+
     // Mobile Menu
-    --m-menu-text: #ffffffbf;
+    --m-menu-text: var(--light-75);
     --nav-divider: #ffffff40;
 
     // Home - How to
