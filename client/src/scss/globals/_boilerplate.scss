@@ -39,7 +39,8 @@ ul {
 
 [type="button"],
 [type="submit"],
-.cta {
+.cta,
+.form-layout__form__submit {
     background-color: var(--accent);
     border: 0.03125rem solid var(--border-color);
     border-radius: 0.1rem;
@@ -50,10 +51,17 @@ ul {
             func.GetUpdatedMediaValue(0.9375rem, 1.125rem, 0);
 }
 
+input::placeholder,
+textarea::placeholder {
+    color: var(--black-33);
+    opacity: 1;
+}
+
 @media (min-width: 26.5625rem) {
     [type="button"],
     [type="submit"],
-    .cta {
+    .cta,
+    .form-layout__form__submit {
         padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-425)
                 func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-425);
     }
@@ -62,7 +70,8 @@ ul {
 @media (min-width: 36rem) {
     [type="button"],
     [type="submit"],
-    .cta {
+    .cta,
+    .form-layout__form__submit {
         padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-576)
                 func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-576);
     }
@@ -71,7 +80,8 @@ ul {
 @media (min-width: 46.5rem) {
     [type="button"],
     [type="submit"],
-    .cta {
+    .cta,
+    .form-layout__form__submit {
         padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, 0)
                 func.GetUpdatedMediaValue(1.125rem, 1.6875rem, 0);
     }
@@ -85,7 +95,8 @@ ul {
 @media (min-width: 61.9375rem) {
     [type="button"],
     [type="submit"],
-    .cta {
+    .cta,
+    .form-layout__form__submit {
         padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-991)
                 func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-991);
     }
@@ -100,7 +111,8 @@ ul {
 @media (min-width: 90rem) {
     [type="button"],
     [type="submit"],
-    .cta {
+    .cta,
+    .form-layout__form__submit {
         padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-1440)
                 func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1440);
     }

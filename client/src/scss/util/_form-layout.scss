@@ -1,0 +1,249 @@
+@use './mixin' as mix;
+@use './functions' as func;
+@use '../globals/media' as media;
+
+.form-layout {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 3.125rem 1.875rem;
+    row-gap: 2.5rem;
+
+    &__form {
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.4375rem;
+        width: 100%;
+
+        &__input-box {
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.4375rem;
+
+            &__label,
+            &__input {
+                font-size: 0.875rem;
+            }
+
+            &__label {
+                color: var(--dark-75);
+                letter-spacing: func.PercentToRem(2.5);
+            }
+
+            &__input {
+                background-color: var(--input-bg);
+                border: 0.0625rem solid var(--black-33);
+                border-radius: 0.125rem;
+                color: var(--dark);
+                padding: 0.6875rem;
+            }
+
+            textarea {
+                @include mix.SetMinSize(100%, 8.9375rem);
+            }
+        }
+
+        &__submit {
+            @include mix.SetMinSize(fit-content, auto);
+            align-items: center;
+            align-self: center;
+            display: flex;
+            column-gap: 0.46875rem;
+            justify-content: center;
+            margin-top: 0.125rem;
+
+            &__icon {
+                display: flex;
+                
+                svg {
+                    @include mix.SetMinSize(1.5rem, 1.5rem);
+                }
+            }
+
+            &__button {
+                background-color: transparent;
+                border: 0;
+                font-size: 1rem;
+                padding: 0;
+            }
+        }
+    }
+
+    @media (min-width: 26.5625rem) {
+        padding:  func.GetUpdatedMediaValue(3.125rem , 3.75rem, media.$media-425)
+                func.GetUpdatedMediaValue(1.875rem, 13.4375rem, media.$media-425);
+        row-gap: func.GetUpdatedMediaValue(2.5rem, 3rem, media.$media-425);
+    
+        &__form {
+            row-gap: func.GetUpdatedMediaValue(1.4375rem, 1.6875rem, media.$media-425);
+    
+            &__input-box {
+                row-gap: func.GetUpdatedMediaValue(0.4375rem, 0.5rem, media.$media-425);
+    
+                &__label,
+                &__input {
+                    font-size: func.GetUpdatedMediaValue(0.875rem, 1rem, media.$media-425);
+                }
+    
+                &__input {
+                    padding: func.GetUpdatedMediaValue(0.6875rem, 0.8125rem, media.$media-425);
+                }
+            }
+    
+            &__submit {
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.75rem, media.$media-425),
+                                func.GetUpdatedMediaValue(1.5rem, 1.75rem, media.$media-425));
+                    }
+                }
+    
+                &__button {
+                    font-size: func.GetUpdatedMediaValue(1, 1.125rem, media.$media-425);
+                }
+            }
+        }
+    }
+
+    @media (min-width: 36rem) {
+        padding:  func.GetUpdatedMediaValue(3.125rem , 3.75rem, media.$media-576)
+                func.GetUpdatedMediaValue(1.875rem, 13.4375rem, media.$media-576);
+        row-gap: func.GetUpdatedMediaValue(2.5rem, 3rem, media.$media-576);
+    
+        &__form {
+            row-gap: func.GetUpdatedMediaValue(1.4375rem, 1.6875rem, media.$media-576);
+    
+            &__input-box {
+                row-gap: func.GetUpdatedMediaValue(0.4375rem, 0.5rem, media.$media-576);
+    
+                &__label,
+                &__input {
+                    font-size: func.GetUpdatedMediaValue(0.875rem, 1rem, media.$media-576);
+                }
+    
+                &__input {
+                    padding: func.GetUpdatedMediaValue(0.6875rem, 0.8125rem, media.$media-576);
+                }
+            }
+    
+            &__submit {
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.75rem, media.$media-576),
+                                func.GetUpdatedMediaValue(1.5rem, 1.75rem, media.$media-576));
+                    }
+                }
+    
+                &__button {
+                    font-size: func.GetUpdatedMediaValue(1, 1.125rem, media.$media-576);
+                }
+            }
+        }
+    }
+
+    @media (min-width: 46.5rem) {
+        padding: 3.75rem 13.4375rem;
+        row-gap: 3rem;
+    
+        &__form {
+            row-gap: 1.6875rem;
+    
+            &__input-box {
+                row-gap: 0.5rem;
+    
+                &__label,
+                &__input {
+                    font-size: 1rem;
+                }
+    
+                &__input {
+                    padding: 0.8125rem;
+                }
+            }
+    
+            &__submit {
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(1.75rem, 1.75rem);
+                    }
+                }
+    
+                &__button {
+                    font-size: 1.125rem;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 61.9375rem) {
+        padding:  func.GetUpdatedMediaValue(3.75rem, 4.875rem, media.$media-991)
+                func.GetUpdatedMediaValue(13.4375rem, 26.9375rem, media.$media-991);
+        row-gap: func.GetUpdatedMediaValue(3rem, 3.75rem, media.$media-991);
+    
+        &__form {
+            row-gap: func.GetUpdatedMediaValue(1.6875rem, 2.125rem, media.$media-991);
+    
+            &__input-box {
+                row-gap: func.GetUpdatedMediaValue(0.5rem, 0.625rem, media.$media-991);
+    
+                &__label,
+                &__input {
+                    font-size: func.GetUpdatedMediaValue(1rem, 1.25rem, media.$media-991);
+                }
+    
+                &__input {
+                    padding: func.GetUpdatedMediaValue(0.8125rem, 1.0625rem, media.$media-991)
+                            func.GetUpdatedMediaValue(0.8125rem, 1.375rem, media.$media-991);
+                }
+            }
+    
+            &__submit {
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(1.75rem, 2.1875rem, media.$media-991),
+                                func.GetUpdatedMediaValue(1.75rem, 2.1875rem, media.$media-991));
+                    }
+                }
+    
+                &__button {
+                    font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-991);
+                }
+            }
+        }
+    }
+
+    @media (min-width: 90rem) {
+        padding: 4.875rem 26.9375rem;
+        row-gap: 3.75rem;
+    
+        &__form {
+            row-gap: 2.125rem;
+    
+            &__input-box {
+                row-gap: 0.625rem;
+    
+                &__label,
+                &__input {
+                    font-size: 1.25rem;
+                }
+    
+                &__input {
+                    padding: 1.0625rem 1.375rem;
+                }
+            }
+    
+            &__submit {
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(2.1875rem, 2.1875rem);
+                    }
+                }
+    
+                &__button {
+                    font-size: 1.4375rem;
+                }
+            }
+        }
+    }
+}
