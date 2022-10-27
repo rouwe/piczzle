@@ -247,3 +247,216 @@
         }
     }
 }
+
+.auth-form {
+    row-gap: 2.5rem;
+
+    &__auth-options {
+        display: flex;
+        flex-direction: column;
+
+        &__option {
+            align-items: center;
+            border: 0.5px solid var(--border-color); 
+            border-radius: 0.0625rem;
+            box-shadow: 0 0.1875rem 0.5rem #00000040;
+            column-gap: 0.625rem;
+            display: flex;
+            justify-content: center;
+            padding: 0.46875rem 1.25rem;
+
+            &__icon {
+                display: flex;
+
+                svg {
+                    @include mix.SetMinSize(1.5rem, 1.5rem);
+                }
+            }
+
+            &__button {
+                background-color: transparent;
+                border: 0;
+                font-size: 0.875rem;
+                letter-spacing: func.PercentToRem(2.5);
+                padding: 0;
+            }
+        }
+    }
+
+    &__option-divider {
+        @include mix.SetMinSize(100%, auto);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top: -1.25rem;
+
+        &__rule {
+            border: none;
+            background-color: var(--dark);
+            height: 0.0625rem;
+            width: 50%;
+        }
+        
+        &__text {
+            display: block;
+            font-size: 0.875rem;
+            line-height: 100%;
+            padding: 0 0.3125rem;
+            position: relative;
+        }
+    }
+
+    @media (min-width: 26.5625rem) {
+        row-gap: func.GetUpdatedMediaValue(2.5rem, 3rem, media.$media-425);
+
+        &__auth-options {
+            &__option {
+                column-gap: func.GetUpdatedMediaValue(0.625rem, 0.75rem, media.$media-425);
+
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-425),
+                                func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-425));
+                    }
+                }
+
+                &__button {
+                    font-size: func.GetUpdatedMediaValue(0.875rem, 1rem, media.$media-425);
+                }
+            }
+        }
+
+        &__option-divider {
+            margin-top: func.GetUpdatedMediaValue(-1.25rem, -1.5rem, media.$media-425);
+            
+            &__text {
+                font-size: func.GetUpdatedMediaValue(0.875rem, 1rem, media.$media-425);
+                padding: 0 func.GetUpdatedMediaValue(0.3125rem, 0.375rem , media.$media-425);
+            }
+        }
+    }
+
+    @media (min-width: 36rem) {
+        row-gap: func.GetUpdatedMediaValue(2.5rem, 3rem, media.$media-576);
+
+        &__auth-options {
+            &__option {
+                column-gap: func.GetUpdatedMediaValue(0.625rem, 0.75rem, media.$media-576);
+
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-576),
+                                func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-576));
+                    }
+                }
+
+                &__button {
+                    font-size: func.GetUpdatedMediaValue(0.875rem, 1rem, media.$media-576);
+                }
+            }
+        }
+
+        &__option-divider {
+            margin-top: func.GetUpdatedMediaValue(-1.25rem, -1.5rem, media.$media-576);
+            
+            &__text {
+                font-size: func.GetUpdatedMediaValue(0.875rem, 1rem, media.$media-576);
+                padding: 0 func.GetUpdatedMediaValue(0.3125rem, 0.375rem , media.$media-576);
+            }
+        }
+    }
+
+    @media (min-width: 46.5rem) {
+        row-gap: 3rem;
+
+        &__auth-options {
+            &__option {
+                column-gap: 0.75rem;
+
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(1.9375rem, 1.9375rem);
+                    }
+                }
+
+                &__button {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        &__option-divider {
+            align-items: flex-start;
+            margin-top: -1.5rem;
+            
+            &__text {
+                font-size: 1rem;
+                padding: 0 0.375rem;
+            }
+        }
+    }
+
+    @media (min-width: 61.9375rem) {
+        row-gap: func.GetUpdatedMediaValue(3rem, 3.75rem, media.$media-991);
+
+        &__auth-options {
+            &__option {
+                column-gap: func.GetUpdatedMediaValue(0.75rem, 0.9375rem, media.$media-991);
+                margin-bottom: func.GetUpdatedMediaValue(0, 0.25rem, media.$media-991);
+                padding: func.GetUpdatedMediaValue(0.46875rem, 0.59375rem, media.$media-991)
+                        func.GetUpdatedMediaValue(1.25rem, 1.5625rem, media.$media-991);
+
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(.9375rem, 2.4375rem, media.$media-991),
+                                func.GetUpdatedMediaValue(1.9375rem, 2.4375rem, media.$media-991));
+                    }
+                }
+
+                &__button {
+                    font-size: func.GetUpdatedMediaValue(1rem, 1.25rem, media.$media-991);
+                }
+            }
+        }
+
+        &__option-divider {
+            align-items: flex-end;
+            margin-top: func.GetUpdatedMediaValue(-1.5rem, -1.875rem, media.$media-991);
+            
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.25rem, media.$media-991);
+            }
+        }
+    }
+
+    @media (min-width: 90rem) {
+        row-gap: 3.75rem;
+
+        &__auth-options {
+            margin-bottom: 0.25rem;
+            
+            &__option {
+                column-gap: 0.9375rem;
+                padding:  0.59375rem 1.5625rem;
+
+                &__icon {
+                    svg {
+                        @include mix.SetMinSize(2.4375rem, 2.4375rem);
+                    }
+                }
+
+                &__button {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        &__option-divider {
+            margin-top: -1.875rem;
+            
+            &__text {
+                font-size: 1.25rem;
+            }
+        }
+    }
+}

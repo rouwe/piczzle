@@ -86,10 +86,12 @@
     font-display: swap;
 }
 
+
 h1,
 h2,
 h3,
 h4,
+.auth-form__option-divider__text,
 .home__hero__heading__text,
 .footer__nav__section__header {
     font-family: utl.$font-genos;
@@ -107,11 +109,11 @@ button,
 }
 
 a,
-.about__text-content__text,
 body,
 input,
-.footer__copyright__text,
-textarea {
+textarea,
+.about__text-content__text,
+.footer__copyright__text {
     font-weight: 300;
 }
 
