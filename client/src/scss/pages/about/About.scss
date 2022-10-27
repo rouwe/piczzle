@@ -9,11 +9,6 @@
     padding: 3.125rem 1.875rem 3.75rem;
     row-gap: 2.5rem;
 
-    &__heading {
-        font-size: 2rem;
-        margin: 0;
-    }
-
     &__text-content {
         &__text {
             font-size: 1rem;
@@ -36,10 +31,6 @@
                 func.GetUpdatedMediaValue(1.875rem, 13.5rem, media.$media-425)
                 func.GetUpdatedMediaValue(3.75rem, 4.375rem, media.$media-425);
         row-gap: func.GetUpdatedMediaValue(2.5rem, 2.875rem, media.$media-425);
-                
-        &__heading {
-            font-size: func.GetUpdatedMediaValue(2rem, 2.625rem, media.$media-425);
-        }
     
         &__text-content {
             &__text {
@@ -60,10 +51,6 @@
                 func.GetUpdatedMediaValue(1.875rem, 13.5rem, media.$media-576)
                 func.GetUpdatedMediaValue(3.75rem, 4.375rem, media.$media-576);
         row-gap: func.GetUpdatedMediaValue(2.5rem, 2.875rem, media.$media-576);
-                
-        &__heading {
-            font-size: func.GetUpdatedMediaValue(2rem, 2.625rem, media.$media-576);
-        }
     
         &__text-content {
             &__text {
@@ -82,10 +69,6 @@
     @media (min-width: 46.5rem) {
         padding: 7.1875rem 13.5rem 4.375rem;
         row-gap: 2.875rem;
-    
-        &__heading {
-            font-size: 2.625rem;
-        }
     
         &__text-content {
             &__text {
@@ -108,10 +91,6 @@
                 func.GetUpdatedMediaValue(13.5rem, 20.3125rem, media.$media-991)
                 func.GetUpdatedMediaValue(4.375rem, 5.625rem, media.$media-991);
         row-gap: func.GetUpdatedMediaValue(2.875rem, 2.3125rem, media.$media-991);
-                
-        &__heading {
-            font-size: func.GetUpdatedMediaValue(2.625rem, 3.1875rem, media.$media-991);
-        }
     
         &__text-content {
             &__text {
@@ -133,10 +112,6 @@
     @media (min-width: 90rem) {
         padding: 4.875rem 20.3125rem 5.625rem;
         row-gap: 2.3125rem;
-                
-        &__heading {
-            font-size: 3.1875rem;
-        }
     
         &__text-content {
             &__text {

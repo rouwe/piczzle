@@ -19,7 +19,7 @@ const SolvePuzzleIcon = () => (
 function About() {
   return (
     <main className="about">
-      <h1 className="about__heading">About</h1>
+      <h1 className="pages-heading">About</h1>
       <div className="about__text-content">
         <p className="about__text-content__text">
           <strong className="about__text-content__text__piczzle">

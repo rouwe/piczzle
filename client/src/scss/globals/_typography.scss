@@ -115,7 +115,8 @@ body,
 
 .footer__nav__section__header,
 .guest__howto__steps__section__text,
-.header__action__nav-wrapper__item__link {
+.header__action__nav-wrapper__item__link,
+.pages-heading {
     font-weight: 400;
 }
 
@@ -127,7 +128,6 @@ h4 {
 }
 
 button,
-.cta,
-.home__hero__heading__text {
+.cta {
     font-weight: 600;
 }

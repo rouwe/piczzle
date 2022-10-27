@@ -1,12 +1,41 @@
 @use './util/functions' as func;
+@use './globals/media' as media;
 
 html {
     color: var(--dark);
 
-    main {
+    .pages-heading {
+        font-size: 2rem;
+        margin: 0;
+    }
 
-        h1 {
-            font-weight: 400;
+    @media (min-width: 26.5625rem) {
+        .pages-heading {
+            font-size: func.GetUpdatedMediaValue(2rem, 2.625rem, media.$media-425);
+        }
+    }
+
+    @media (min-width: 36rem) {
+        .pages-heading {
+            font-size: func.GetUpdatedMediaValue(2rem, 2.625rem, media.$media-576);
+        }
+    }
+
+    @media (min-width: 46.5rem) {
+        .pages-heading {
+            font-size: 2.625rem;
+        }
+    }
+
+    @media (min-width: 61.9375rem) {
+        .pages-heading {
+            font-size: func.GetUpdatedMediaValue(2.625rem, 3.1875rem, media.$media-991);
+        }
+    }
+
+    @media (min-width: 90rem) {
+        .pages-heading {
+            font-size: 3.1875rem;
         }
     }
 }
