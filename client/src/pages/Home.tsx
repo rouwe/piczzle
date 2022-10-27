@@ -1,6 +1,5 @@
 import React from "react";
 import HomeGuest from "./guest/HomeGuest";
-import "../scss/pages/Pages.scss";
 
 function Home() {
   return (

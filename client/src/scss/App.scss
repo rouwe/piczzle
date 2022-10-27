@@ -1,0 +1,12 @@
+@use './util/functions' as func;
+
+html {
+    color: var(--dark);
+
+    main {
+
+        h1 {
+            font-weight: 400;
+        }
+    }
+}
