@@ -1,8 +1,22 @@
 @use './util/functions' as func;
+@use './util/mixin' as mix;
 @use './globals/media' as media;
 
 html {
     color: var(--dark);
+
+    .pages-header {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.3125rem;
+        text-align: center;
+
+        &__sub-heading {
+            @include mix.SetMinSize(11.125rem, auto);
+            font-size: 0.875rem;
+            line-height: 130%;
+        }
+    }
 
     .pages-heading {
         font-size: 2rem;
@@ -10,30 +24,72 @@ html {
     }
 
     @media (min-width: 26.5625rem) {
+        .pages-header {
+            row-gap: func.GetUpdatedMediaValue(0.3125rem, 0.375rem, media.$media-425);
+
+            &__sub-heading {
+                font-size: func.GetUpdatedMediaValue(0.875rem, 1rem, media.$media-425);
+            }
+        }
+        
         .pages-heading {
             font-size: func.GetUpdatedMediaValue(2rem, 2.625rem, media.$media-425);
         }
     }
 
     @media (min-width: 36rem) {
+        .pages-header {
+            row-gap: func.GetUpdatedMediaValue(0.3125rem, 0.375rem, media.$media-576);
+
+            &__sub-heading {
+                font-size: func.GetUpdatedMediaValue(0.875rem, 1rem, media.$media-576);
+            }
+        }
+        
         .pages-heading {
             font-size: func.GetUpdatedMediaValue(2rem, 2.625rem, media.$media-576);
         }
     }
 
     @media (min-width: 46.5rem) {
+        .pages-header {
+            row-gap: 0.375rem;
+    
+            &__sub-heading {
+                font-size: 1rem;
+            }
+        }
+        
         .pages-heading {
             font-size: 2.625rem;
         }
     }
 
     @media (min-width: 61.9375rem) {
+        .pages-header {
+            row-gap: func.GetUpdatedMediaValue(0.375rem, 0.4375rem, media.$media-991);
+
+            &__sub-heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(11.125rem, 16.5625rem, media.$media-991), auto);
+                font-size: func.GetUpdatedMediaValue(1rem, 1.25rem, media.$media-991);
+            }
+        }
+        
         .pages-heading {
             font-size: func.GetUpdatedMediaValue(2.625rem, 3.1875rem, media.$media-991);
         }
     }
 
     @media (min-width: 90rem) {
+        .pages-header {
+            row-gap: 0.4375rem;
+
+            &__sub-heading {
+                @include mix.SetMinSize(16.5625rem, auto);
+                font-size: 1.25rem;
+            }
+        }
+        
         .pages-heading {
             font-size: 3.1875rem;
         }
