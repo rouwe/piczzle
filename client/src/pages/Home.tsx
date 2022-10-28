@@ -1,7 +1,12 @@
 import React from "react";
+import HomeGuest from "./guest/HomeGuest";
 
 function Home() {
-  return <h6>Home</h6>;
+  return (
+    <main className="home">
+      <HomeGuest />
+    </main>
+  );
 }
 
 export default Home;

@@ -12,6 +12,15 @@
 
 @font-face {
     font-family: "Genos";
+    src: local("Genos-Medium"),
+    url("../../assets/fonts/genos/static/Genos-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Genos";
     src: local("Genos-SemiBold"),
     url("../../assets/fonts/genos/static/Genos-SemiBold.ttf") format("truetype");
     font-weight: 600;
@@ -77,6 +86,13 @@
     font-display: swap;
 }
 
+
+h1,
+h2,
+h3,
+h4,
+.auth-form__option-divider__text,
+.home__hero__heading__text,
 .footer__nav__section__header {
     font-family: utl.$font-genos;
 }
@@ -94,13 +110,26 @@ button,
 
 a,
 body,
+input,
+textarea,
+.about__text-content__text,
 .footer__copyright__text {
     font-weight: 300;
 }
 
 .footer__nav__section__header,
-.header__action__nav-wrapper__item__link {
+.guest__howto__steps__section__text,
+.header__action__nav-wrapper__item__link,
+.pages-heading {
     font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+label {
+    font-weight: 500;
 }
 
 button,

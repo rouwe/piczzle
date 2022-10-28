@@ -1,0 +1,132 @@
+@use '../../util/mixin' as mix;
+@use '../../util/functions' as func;
+@use '../../globals/media' as media;
+
+.about {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 3.125rem 1.875rem 3.75rem;
+    row-gap: 2.5rem;
+
+    &__text-content {
+        &__text {
+            font-size: 1rem;
+            line-height: 130%;
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    &__solve-puzzle {
+        display: flex;
+
+        svg {
+            @include mix.SetMinSize(13.4375rem, auto);
+            filter: drop-shadow(0 0.125rem 0.1875rem #00000033);
+        }
+    }
+
+    @media (min-width: 26.5625rem) {
+        padding: func.GetUpdatedMediaValue(3.125rem, 7.1875rem, media.$media-425)
+                func.GetUpdatedMediaValue(1.875rem, 13.5rem, media.$media-425)
+                func.GetUpdatedMediaValue(3.75rem, 4.375rem, media.$media-425);
+        row-gap: func.GetUpdatedMediaValue(2.5rem, 2.875rem, media.$media-425);
+    
+        &__text-content {
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-425);
+                margin-bottom: func.GetUpdatedMediaValue(1.25rem, 2.8125rem, media.$media-425);
+            }
+        }
+    
+        &__solve-puzzle {
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(13.4375rem, 15.5rem, media.$media-425), auto);
+            }
+        }
+    }
+
+    @media (min-width: 36rem) {
+        padding: func.GetUpdatedMediaValue(3.125rem, 7.1875rem, media.$media-576)
+                func.GetUpdatedMediaValue(1.875rem, 13.5rem, media.$media-576)
+                func.GetUpdatedMediaValue(3.75rem, 4.375rem, media.$media-576);
+        row-gap: func.GetUpdatedMediaValue(2.5rem, 2.875rem, media.$media-576);
+    
+        &__text-content {
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-576);
+                margin-bottom: func.GetUpdatedMediaValue(1.25rem, 2.8125rem, media.$media-576);
+            }
+        }
+    
+        &__solve-puzzle {
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(13.4375rem, 15.5rem, media.$media-576), auto);
+            }
+        }
+    }
+
+    @media (min-width: 46.5rem) {
+        padding: 7.1875rem 13.5rem 4.375rem;
+        row-gap: 2.875rem;
+    
+        &__text-content {
+            &__text {
+                font-size: 1.125rem;
+                margin-bottom: 2.8125rem;
+            }
+        }
+    
+        &__solve-puzzle {
+            margin-top: 1.8125rem;
+    
+            svg {
+                @include mix.SetMinSize(15.5rem, auto);
+            }
+        }
+    }
+
+    @media (min-width: 61.9375rem) {
+        padding: func.GetUpdatedMediaValue(7.1875rem, 4.875rem, media.$media-991)
+                func.GetUpdatedMediaValue(13.5rem, 20.3125rem, media.$media-991)
+                func.GetUpdatedMediaValue(4.375rem, 5.625rem, media.$media-991);
+        row-gap: func.GetUpdatedMediaValue(2.875rem, 2.3125rem, media.$media-991);
+    
+        &__text-content {
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-991);
+                line-height: func.GetUpdatedMediaValue(130%, 150%, media.$media-991);
+                margin-bottom: func.GetUpdatedMediaValue(2.8125rem, 2.3125rem, media.$media-991);
+            }
+        }
+    
+        &__solve-puzzle {
+            margin-top: func.GetUpdatedMediaValue(1.8125rem, 5.6875rem, media.$media-991);
+    
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(15.5rem, 19.5rem, media.$media-991), auto);
+            }
+        }
+    }
+
+    @media (min-width: 90rem) {
+        padding: 4.875rem 20.3125rem 5.625rem;
+        row-gap: 2.3125rem;
+    
+        &__text-content {
+            &__text {
+                font-size: 1.4375rem;
+                line-height: 150%;
+                margin-bottom: 2.3125rem;
+            }
+        }
+    
+        &__solve-puzzle {
+            margin-top: 5.6875rem;
+    
+            svg {
+                @include mix.SetMinSize(19.5rem, auto);
+            }
+        }
+    }
+}

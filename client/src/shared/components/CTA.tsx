@@ -28,7 +28,7 @@ function CTA({
     ),
     button: (
       <button
-        className={`button ${className}`}
+        className={`${className}`}
         type={type !== "route" && isSubmit ? "submit" : "button"}
       >
         {innerText}
