@@ -1,0 +1,231 @@
+@use '../../util/mixin' as mix;
+@use '../../util/functions' as func;
+@use '../../globals/media' as media;
+
+.user__settings {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__tab,
+    &__body,
+    &__difficulty {
+        @include mix.SetMinSize(16.25rem, auto);
+    }
+    
+    &__body,
+    &__difficulty {
+        box-shadow: 0 0.125rem 0.25rem var(--dark-15);
+    }
+
+    &__tab {
+        background-color: var(--first-bg-gradient);
+        border-radius: 0.125rem;
+        box-shadow: 0 0.25rem 0.25rem var(--dark-20);
+        display: flex;
+        margin-bottom: 0.25rem;
+        overflow: hidden;
+
+        &__item {
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            
+            .active-tab {
+                background-color: #4f4f4f;
+                padding: 0.375rem calc(2rem + 0.75rem) 0.375rem 0.75rem;
+            }
+            
+            &__text {
+                border-radius: 0.125rem;
+                color: var(--light);
+                display: flex;
+                font-size: 1.125rem;
+                padding: 0.375rem 0.75rem; 
+            }
+
+            .active-tab::before {
+                background-color: var(--first-bg-gradient);
+                content: "";
+                height: 99%;
+                position: absolute;
+                left: 50%;
+                transform: rotate(45deg);
+                top: 0;
+                width: 100%;
+            }
+        }
+    }
+
+    &__body {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+
+        .settings__upload,
+        .settings__saved {
+            width: 100%;
+        }
+        
+        .settings__upload {
+            padding: 5.125rem 0 3rem;
+        }
+    }
+
+    @media (min-width: 26.5625rem) {    
+        &__tab,
+        &__body,
+        &__difficulty {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(16.25rem, 30rem, media.$media-425), auto);
+        }
+    
+        &__tab {
+            &__item {                
+                .active-tab {
+                    padding: func.GetUpdatedMediaValue(0.375rem, 0.46875rem, media.$media-425)
+                            func.GetUpdatedMediaValue(calc(2rem + 0.75rem), calc(2.5rem + 0.875rem), media.$media-425)
+                            func.GetUpdatedMediaValue(0.375rem, 0.46875rem, media.$media-425)
+                            func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-425);
+                }
+                
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-425);
+                    padding: func.GetUpdatedMediaValue(0.375rem, 0.46875rem, media.$media-425) 
+                            func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-425); 
+                }
+            }
+        }
+        
+        &__body {
+            .settings__upload {
+                padding: func.GetUpdatedMediaValue(5.125rem, 6.5625rem, media.$media-425)
+                    0 func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-425);
+            }
+        } 
+    }
+
+    @media (min-width: 36rem) {    
+        &__tab,
+        &__body,
+        &__difficulty {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(16.25rem, 30rem, media.$media-576), auto);
+        }
+
+        &__tab {
+            &__item {                
+                .active-tab {
+                    padding: func.GetUpdatedMediaValue(0.375rem, 0.46875rem, media.$media-576)
+                            func.GetUpdatedMediaValue(calc(2rem + 0.75rem), calc(2.5rem + 0.875rem), media.$media-576)
+                            func.GetUpdatedMediaValue(0.375rem, 0.46875rem, media.$media-576)
+                            func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-576);
+                }
+                
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-576);
+                    padding: func.GetUpdatedMediaValue(0.375rem, 0.46875rem, media.$media-576) 
+                            func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-576); 
+                }
+            }
+        }
+    
+        &__body {
+            .settings__upload {
+                padding: func.GetUpdatedMediaValue(5.125rem, 6.5625rem, media.$media-576)
+                    0 func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-576);
+            }
+        } 
+    }
+
+    @media (min-width: 46.5rem) {        
+        &__tab,
+        &__body,
+        &__difficulty {
+            @include mix.SetMinSize(30rem, auto);
+        }
+        
+        &__tab {    
+            &__item {                
+                .active-tab {
+                    padding: 0.46875rem calc(2.4375rem + 0.875rem) 0.46875rem 0.875rem;
+                }
+                
+                &__text {
+                    font-size: 1.3125rem;
+                    padding: 0.46875rem 0.875rem; 
+                }
+            }
+        }
+        
+        &__body {
+            .settings__upload {
+                padding: 6.5625rem 0 4.1875rem;
+            }
+        } 
+    }
+
+    @media (min-width: 61.9375rem) {
+        align-items: flex-end;
+        
+        &__tab,
+        &__body,
+        &__difficulty {
+            @include mix.SetMinSize(100%, auto);
+        }
+
+        &__tab {
+            margin: 0 0 func.GetUpdatedMediaValue(0.25rem, 0.3125rem, media.$media-991);
+            
+            &__item {                
+                .active-tab {
+                    padding: func.GetUpdatedMediaValue(0.46875rem, 0.625rem, media.$media-991)
+                            func.GetUpdatedMediaValue(calc(2.4375rem + 0.875rem), calc(3.0625rem + 1.3125rem), media.$media-991)
+                            func.GetUpdatedMediaValue(0.46875rem, 0.625rem, media.$media-991)
+                            func.GetUpdatedMediaValue(0.875rem, 1.3125rem, media.$media-991);
+                }
+                
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-991);
+                    padding: func.GetUpdatedMediaValue(0.46875rem, 0.625rem, media.$media-991) 
+                            func.GetUpdatedMediaValue(0.875rem, 1.3125rem, media.$media-991); 
+                }
+            }
+        }
+    
+        &__body {
+            .settings__upload {
+                padding: func.GetUpdatedMediaValue(6.5625rem, 7.3125rem, media.$media-991)
+                    0 func.GetUpdatedMediaValue(4.1875rem, 5.3125rem, media.$media-991);
+            }
+        } 
+    }
+
+    @media (min-width: 90rem) {
+        &__tab,
+        &__body,
+        &__difficulty {
+            @include mix.SetMinSize(23.8125rem, auto);
+        }
+    
+        &__tab {
+            margin: 0 0 0.3125rem;
+            
+            &__item {                
+                .active-tab {
+                    padding: 0.625rem calc(3.0625rem + 1.3125rem) 0.625rem 1.3125rem;
+                }
+                
+                &__text {
+                    font-size: 1.625rem;
+                    padding: 0.625rem 1.3125rem; 
+                }
+            }
+        }
+        
+        &__body {
+            .settings__upload {
+                padding: 7.3125rem 0 5.3125rem;
+            }
+        } 
+    }
+}

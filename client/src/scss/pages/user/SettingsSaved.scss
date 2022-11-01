@@ -1,0 +1,179 @@
+@use '../../util/mixin' as mix;
+@use '../../util/functions' as func;
+@use '../../globals/media' as media;
+
+.settings__saved {
+    display: flex;
+    flex-direction: column;
+    max-height: 50vmax;
+    overflow: hidden;
+    padding: 0.625rem;
+    row-gap: 1.875rem;
+    
+    &__gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 6.625rem;
+        gap: 0.625rem;
+        overflow: auto;
+        box-shadow: 0 0 6px var(--dark-15);
+
+        &__item {
+            background-color: var(--dark-15);
+            border-radius: 0.125rem;
+        }
+    }
+
+    .no-recent-pizzle-warning {
+        display: none;
+        justify-content: center;
+        padding: 5.125rem 0 3rem;
+
+        &__message {
+            color: var(--dark-50);
+            font-size: 1.125rem;
+            text-align: center;
+        }
+    }
+
+    &__load-more {
+        align-self: center;
+        display: flex;
+
+        svg {
+            @include mix.SetMinSize(1.25rem, 1.25rem);
+
+            path {
+                fill: var(--accent);
+            }
+        }
+    }
+
+    @media (min-width: 26.5625rem) {
+        max-height: func.GetUpdatedMediaValue(50vmax, 55vmax, media.$media-425);
+        row-gap: func.GetUpdatedMediaValue(1.875rem, 2.25rem, media.$media-425);
+        
+        &__gallery {
+            grid-auto-rows: func.GetUpdatedMediaValue(6.625rem, 11.25rem, media.$media-425);
+            gap: 0.8125rem func.GetUpdatedMediaValue(0.625rem, 0.8125rem, media.$media-425);
+        }
+
+        .no-recent-pizzle-warning {
+            padding: func.GetUpdatedMediaValue(5.125rem, 6rem, media.$media-425)
+                    0 func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-425);
+
+            &__message {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-425);
+            }
+        }
+
+        &__load-more {    
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(1.25rem, 1.875rem, media.$media-425),
+                        func.GetUpdatedMediaValue(1.25rem, 1.875rem, media.$media-425));
+            }
+        }  
+
+    }
+
+    @media (min-width: 36rem) {
+        max-height: func.GetUpdatedMediaValue(50vmax, 55vmax, media.$media-576);
+        row-gap: func.GetUpdatedMediaValue(1.875rem, 2.25rem, media.$media-576);
+        
+        &__gallery {
+            grid-auto-rows: func.GetUpdatedMediaValue(6.625rem, 11.25rem, media.$media-576);
+            gap: 0.8125rem func.GetUpdatedMediaValue(0.625rem, 0.8125rem, media.$media-576);
+        }
+        
+        .no-recent-pizzle-warning {
+            padding: func.GetUpdatedMediaValue(5.125rem, 6rem, media.$media-576)
+                    0 func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-576);
+
+            &__message {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-576);
+            }
+        }
+
+        &__load-more {    
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(1.25rem, 1.875rem, media.$media-576),
+                        func.GetUpdatedMediaValue(1.25rem, 1.875rem, media.$media-576));
+            }
+        }  
+    }
+
+    @media (min-width: 46.5rem) {
+        max-height: 55vmax;
+        row-gap: 2.25rem;
+        
+        &__gallery {
+            grid-auto-rows: 11.25rem;
+            gap: 0.8125rem;
+        }
+
+        .no-recent-pizzle-warning {
+            padding: 6rem 0 4.1875rem;
+    
+            &__message {
+                font-size: 1.3125rem;
+            }
+        }
+    
+        &__load-more {    
+            svg {
+                @include mix.SetMinSize(1.875rem, 1.875rem);
+            }
+        }   
+    }
+
+    @media (min-width: 61.9375rem) {
+        max-height: func.GetUpdatedMediaValue(55vmax, 30vmax, media.$media-991);
+        row-gap: func.GetUpdatedMediaValue(2.25rem, 3.125rem, media.$media-991);
+        
+        &__gallery {
+            grid-auto-rows: func.GetUpdatedMediaValue(11.25rem, 9.4375rem, media.$media-991);
+            gap: func.GetUpdatedMediaValue(0.8125rem, 0.9375rem, media.$media-991);
+        }
+    
+        .no-recent-pizzle-warning {
+            padding: func.GetUpdatedMediaValue(6rem, 7.92rem, media.$media-991)
+                    0 func.GetUpdatedMediaValue(4.1875rem, 5.5275rem, media.$media-991);
+            
+            &__message {
+                font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-991);
+            }
+        }
+        
+        &__load-more {    
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(1.875rem, 2.875rem, media.$media-991),
+                        func.GetUpdatedMediaValue(1.875rem, 2.875rem, media.$media-991));
+            }
+        }   
+    }
+
+    @media (min-width: 90rem) {
+        max-height: 30vmax;
+        row-gap: 3.125rem;
+        
+        &__gallery {
+            grid-auto-rows: 9.4375rem;
+            gap: 0.9375rem;
+        }
+
+        .no-recent-pizzle-warning {
+            padding: 7.92rem 0 5.5275rem;
+            
+            &__message {
+                font-size: 1.625rem;
+            }
+        }
+
+        &__load-more {    
+            svg {
+                @include mix.SetMinSize(2.875rem,2.875rem);
+            }
+        }   
+    }
+}

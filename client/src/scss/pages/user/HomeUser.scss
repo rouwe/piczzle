@@ -1,0 +1,285 @@
+@use '../../util/mixin' as mix;
+@use '../../util/functions' as func;
+@use '../../globals/media' as media;
+
+.user {
+    display: grid;
+    grid-template: "heading" min-content "playground" min-content "settings" min-content / 100%;
+    padding: 3.4375rem 1.875rem 3.125rem;
+    
+    &__heading,
+    &__playground {
+        display: flex;
+    }
+    
+    &__heading {
+        align-items: center;
+        grid-area: heading;
+        justify-content: space-between;
+        margin-bottom: 2.875rem;
+
+        &__settings-toggler {
+            border: none;
+            display: flex;
+            
+            svg {
+                @include mix.SetMinSize(1.5rem, 1.5rem);
+            }
+        }
+    }
+    
+    &__playground {
+        @include mix.SetMinSize(16.25rem, auto);
+        align-items: center;
+        flex-direction: column;
+        grid-area: playground;
+        margin: 0 auto;
+        padding: 0 0.3125rem 0.375rem;
+        row-gap: 1.875rem;
+
+        &__wrapper {
+            box-shadow: 0 0 0.25rem var(--dark-25);
+            padding: 0.625rem;
+            width: 100%;
+            
+            &__puzzle-body {
+                display: flex;
+            }
+            
+            .select-image-warning {
+                align-items: center;
+                display: flex;   
+                flex-direction: column;
+                padding: 5.125rem 2.1875rem 3rem;
+                row-gap: 0.9375rem;
+
+                &__message {
+                    color: var(--dark-50);
+                    font-size: 1.125rem;
+                    text-align: center;
+                }
+            }
+        }
+
+        &__start.cta-start {
+            @include mix.SetMinSize(fit-content, auto);
+            font-size: 1rem;
+        }
+    }
+    
+    &__settings {
+        display: none;
+        grid-area: settings;
+    }
+
+    @media (min-width: 26.5625rem) {
+        padding: func.GetUpdatedMediaValue(3.4375rem, 4.0625rem, media.$media-425)
+                func.GetUpdatedMediaValue(1.875rem, 4.6875rem, media.$media-425)
+                func.GetUpdatedMediaValue(3.125rem, 4.0625rem, media.$media-425);
+
+        &__heading {    
+            &__settings-toggler {                
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-425),
+                                            func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-425));
+                }
+            }
+        }
+        
+        &__playground {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(16.25rem, 30rem, media.$media-425), auto);
+            padding: 0 func.GetUpdatedMediaValue(0.3125rem, 0.1875rem, media.$media-425)
+                    func.GetUpdatedMediaValue(0.375rem, 0.5rem, media.$media-425);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(0.625rem, 1.25rem, media.$media-425);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-425);
+                    padding: func.GetUpdatedMediaValue(5.125rem, 6rem, media.$media-425)
+                            func.GetUpdatedMediaValue(2.1875rem, 8.75rem, media.$media-425)
+                            func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-425);
+
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-425),
+                                                func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-425));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-425);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-425);
+            }
+        }
+    }
+
+    @media (min-width: 36rem) {
+        padding: func.GetUpdatedMediaValue(3.4375rem, 4.0625rem, media.$media-576)
+                func.GetUpdatedMediaValue(1.875rem, 4.6875rem, media.$media-576)
+                func.GetUpdatedMediaValue(3.125rem, 4.0625rem, media.$media-576);
+
+        &__heading {
+            &__settings-toggler {                
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-576),
+                                            func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-576));
+                }
+            }
+        }
+        
+        &__playground {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(16.25rem, 30rem, media.$media-576), auto);
+            padding: 0 func.GetUpdatedMediaValue(0.3125rem, 0.1875rem, media.$media-576)
+                    func.GetUpdatedMediaValue(0.375rem, 0.5rem, media.$media-576);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(0.625rem, 1.25rem, media.$media-576);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-576);
+                    padding: func.GetUpdatedMediaValue(5.125rem, 6rem, media.$media-576)
+                            func.GetUpdatedMediaValue(2.1875rem, 8.75rem, media.$media-576)
+                            func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-576);
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-576),
+                                                func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-576));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-576);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-576);
+            }
+        }
+    }
+
+    @media (min-width: 46.5rem) {
+        padding: 4.0625rem 4.6875rem;
+
+        &__heading {    
+            &__settings-toggler {                
+                svg {
+                    @include mix.SetMinSize(1.9375rem, 1.9375rem);
+                }
+            }
+        }
+        
+        &__playground {
+            @include mix.SetMinSize(30rem, auto);
+            padding: 0 0.1875rem 0.5rem;
+    
+            &__wrapper {
+                padding: 1.25rem;
+            
+                .select-image-warning {
+                    row-gap: 1.125rem;
+                    padding: 6rem 8.75rem 4.1875rem;
+
+                    svg {
+                        @include mix.SetMinSize(7.1875rem, 7.1875rem);
+                    }
+                    
+                    &__message {
+                        font-size: 1.3125rem;
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: 1.125rem;
+            }
+        }
+    }
+
+    @media (min-width: 61.9375rem) {
+        grid-template: "heading heading heading" min-content 
+                        "playground . settings" min-content / 
+                        minmax(30rem, 47.5rem) minmax(0rem, 5.4375rem) minmax(15rem, 23.8125rem);
+
+        padding: func.GetUpdatedMediaValue(4.0625rem, 4.875rem, media.$media-991)
+                func.GetUpdatedMediaValue(4.6875rem, 6.25rem, media.$media-991);
+
+        &__heading {
+            &__settings-toggler {
+                display: none;
+            }
+        }
+                
+        &__playground {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(30rem, 46.5rem, media.$media-991), auto);
+            padding: 0 func.GetUpdatedMediaValue(0.1875rem, 0.5rem, media.$media-991)
+                    func.GetUpdatedMediaValue(0.5rem, 0.3125rem, media.$media-991);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(1.25rem, 1.3125rem, media.$media-991)
+                        func.GetUpdatedMediaValue(1.25rem, 0.9375rem, media.$media-991);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-991);
+                    padding: func.GetUpdatedMediaValue(6rem, 7.92rem, media.$media-991)
+                            func.GetUpdatedMediaValue(8.75rem, 16.25rem, media.$media-991)
+                            func.GetUpdatedMediaValue(4.1875rem, 5.5275rem, media.$media-991);
+                    
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-991),
+                                                func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-991));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-991);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-991);
+            }
+        }
+    
+        &__settings {
+            display: flex;
+        }
+    }
+
+    @media (min-width: 90rem) {
+        grid-template: "heading heading heading" min-content
+                        "playground . settings" min-content / 
+                        minmax(47.5rem, auto) minmax(5.4375rem, 10rem) minmax(23.8125rem, auto);
+
+        padding: 4.875rem 6.25rem;
+
+        &__playground {
+            @include mix.SetMinSize(46.5rem, auto);
+            padding: 0 0.5rem 0.3125rem;
+    
+            &__wrapper {
+                padding: 1.3125rem 0.9375rem;
+            
+                .select-image-warning {
+                    row-gap: 1.4375rem;
+                    padding: 7.92rem 16.25rem 5.5275rem;
+
+                    svg {
+                        @include mix.SetMinSize(9.1875rem, 9.1875rem);
+                    }
+                    
+                    &__message {
+                        font-size: 1.625rem;
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: 1.4375rem;
+            }
+        }
+    }
+}

@@ -93,18 +93,24 @@ h3,
 h4,
 .auth-form__option-divider__text,
 .home__hero__heading__text,
-.footer__nav__section__header {
+.footer__nav__section__header,
+.no-recent-pizzle-warning__message,
+.settings__difficulty__heading__text,
+.select-image-warning__message,
+.settings__upload__add-image__text,
+.user__settings__tab__item {
     font-family: utl.$font-genos;
 }
 
-body{
+body {
     font-family: utl.$font-roboto-slab;
 }
 
 a,
 button,
 .cta,
-.footer__copyright__text  {
+.footer__copyright__text,
+.settings__difficulty__description  {
     font-family: utl.$font-inter;
 }
 
@@ -120,7 +126,10 @@ textarea,
 .footer__nav__section__header,
 .guest__howto__steps__section__text,
 .header__action__nav-wrapper__item__link,
-.pages-heading {
+.pages-heading,
+.settings__difficulty__description,
+.settings__difficulty__range__label__datalist__item,
+.user__settings__tab__item__text {
     font-weight: 400;
 }
 
@@ -128,7 +137,10 @@ h1,
 h2,
 h3,
 h4,
-label {
+label,
+.no-recent-pizzle-warning__message,
+.select-image-warning__message,
+.settings__upload__add-image__text {
     font-weight: 500;
 }
 

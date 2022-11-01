@@ -50,6 +50,10 @@ ul {
     padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, 0)
             func.GetUpdatedMediaValue(0.9375rem, 1.125rem, 0);
 }
+.cta-disabled {
+    background-color:  #ffffffb3;
+    opacity: 0.5;
+}
 
 input::placeholder,
 textarea::placeholder {
