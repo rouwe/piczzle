@@ -1,0 +1,312 @@
+@use '../../util/functions' as func;
+@use '../../globals/media' as media;
+@use '../../util/animation' as anim;
+
+.user__settings__difficulty {
+    padding: 0.375rem 0.75rem;
+    width: 100%;
+    
+    .settings__difficulty__heading {
+        margin-bottom: 1.3125rem;
+        
+        &__text {
+            font-size: 1.125rem;
+        }
+    }
+
+    .settings__difficulty__range {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        padding: 0 0.75rem;
+        row-gap: 0.75rem;
+
+        &__selector,
+        &__label {
+            width: 100%;
+        }
+
+        &__selector {
+            appearance: none;
+            background-color: var(--first-bg-gradient);
+            border: 0.0625rem solid #E0E0E0;
+            box-shadow: 0 0.125rem 0.25rem var(--dark-10);
+            border-radius: 1rem;
+            height: 0.625rem;
+            outline: none;
+            z-index: 1;
+
+            &::-webkit-slider-thumb {
+                appearance: none;
+                background-color: var(--accent);
+                border-radius: 1rem;
+                cursor: pointer;
+                height: 1.25rem;
+                transition: anim.$default-transition;
+                width: 1.25rem;
+            }
+
+            &:focus::-webkit-slider-thumb {
+                box-shadow: 0 0.125rem 0.25rem var(--dark-15);
+                transform: scale(1.05);
+                outline: 0.125rem solid var(--dark-15);
+            }
+
+            &::-moz-range-thumb {
+                appearance: none;
+                background-color: var(--accent);
+                border: none;
+                border-radius: 1rem;
+                cursor: pointer;
+                height: 1.25rem;
+                transition: anim.$default-transition;
+                outline: 0.125rem solid var(--dark-15);
+                width: 1.25rem;
+            }
+
+            &:focus::-moz-range-thumb {
+                box-shadow: 0 0.125rem 0.25rem var(--dark-15);
+                transform: scale(1.05);
+            }
+        }
+
+        &__label {
+            &__datalist {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 0.34375rem;
+
+                &__item {
+                    color: var(--dark-80);
+                    display: flex;
+                    font-size: 0.625rem;
+                    justify-self: center;
+
+                    &::before {
+                        background-color: var(--dark);
+                        content: "";
+                        height: 0.5rem;
+                        left: 50%;
+                        position: relative;
+                        top: -0.625rem;
+                        width: 0.0625rem;
+                        z-index: -1;
+                    }
+                }
+            }
+        }
+    }
+
+    .settings__difficulty__description {
+        font-size: 0.75rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    @media (min-width: 26.5625rem) {
+        padding: func.GetUpdatedMediaValue(0.375rem, 0.75rem, media.$media-425)
+                func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-425);
+        
+        .settings__difficulty__heading {
+            margin-bottom: func.GetUpdatedMediaValue(1.3125rem, 2.125rem, media.$media-425);
+            row-gap: func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-425);
+            
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-425);
+            }
+        }
+    
+        .settings__difficulty__range {
+            padding: 0 func.GetUpdatedMediaValue(0.75rem, 1.25rem, media.$media-425);
+    
+            &__selector {
+                height: 0.75rem func.GetUpdatedMediaValue(0.625rem, 0.75rem, media.$media-425);
+    
+                &::-webkit-slider-thumb {
+                    height: 1.5rem func.GetUpdatedMediaValue(1.25rem, 1.5rem, media.$media-425);
+                    width: 1.5rem func.GetUpdatedMediaValue(1.25rem, 1.5rem, media.$media-425);
+                }
+    
+                &::-moz-range-thumb {
+                    height: func.GetUpdatedMediaValue(1.25rem, 1.5rem, media.$media-425);
+                    width: func.GetUpdatedMediaValue(1.25rem, 1.5rem, media.$media-425);
+                }
+            }
+    
+            &__label {
+                &__datalist {
+                    padding: 0 func.GetUpdatedMediaValue(0.34375rem, 0.46875rem, media.$media-425);
+    
+                    &__item {
+                        font-size: 0.75rem func.GetUpdatedMediaValue(0.625rem, 0.75rem, media.$media-425);
+    
+                        &::before {
+                            height: func.GetUpdatedMediaValue(0.5rem, 0.625rem, media.$media-425);
+                            top: func.GetUpdatedMediaValue(-0.625rem, -0.75rem, media.$media-425);
+                        }
+                    }
+                }
+            }
+        }
+
+        .settings__difficulty__description {
+            font-size: func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-425);
+        }
+    }
+
+    @media (min-width: 36rem) {
+        padding: func.GetUpdatedMediaValue(0.375rem, 0.75rem, media.$media-576)
+                func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-576);
+        
+        .settings__difficulty__heading {
+            margin-bottom: func.GetUpdatedMediaValue(1.3125rem, 2.125rem, media.$media-576);
+            
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-576);
+            }
+        }
+    
+        .settings__difficulty__range {
+            padding: 0 func.GetUpdatedMediaValue(0.75rem, 1.25rem, media.$media-576);
+            row-gap: func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-576);
+    
+            &__selector {
+                height: 0.75rem func.GetUpdatedMediaValue(0.625rem, 0.75rem, media.$media-576);
+    
+                &::-webkit-slider-thumb {
+                    height: 1.5rem func.GetUpdatedMediaValue(1.25rem, 1.5rem, media.$media-576);
+                    width: 1.5rem func.GetUpdatedMediaValue(1.25rem, 1.5rem, media.$media-576);
+                }
+    
+                &::-moz-range-thumb {
+                    height: func.GetUpdatedMediaValue(1.25rem, 1.5rem, media.$media-576);
+                    width: func.GetUpdatedMediaValue(1.25rem, 1.5rem, media.$media-576);
+                }
+            }
+    
+            &__label {
+                &__datalist {
+                    padding: 0 func.GetUpdatedMediaValue(0.34375rem, 0.46875rem, media.$media-576);
+    
+                    &__item {
+                        font-size: 0.75rem func.GetUpdatedMediaValue(0.625rem, 0.75rem, media.$media-576);
+    
+                        &::before {
+                            height: func.GetUpdatedMediaValue(0.5rem, 0.625rem, media.$media-576);
+                            top: func.GetUpdatedMediaValue(-0.625rem, -0.75rem, media.$media-576);
+                        }
+                    }
+                }
+            }
+        }
+
+        .settings__difficulty__description {
+            font-size: func.GetUpdatedMediaValue(0.75rem, 0.875rem, media.$media-576);
+        }
+    }
+
+    @media (min-width: 46.5rem) {    
+        padding: 0.75rem 0.875rem;
+        
+        .settings__difficulty__heading {
+            margin-bottom: 2.125rem;
+            
+            &__text {
+                font-size: 1.3125rem;
+            }
+        }
+    
+        .settings__difficulty__range {
+            padding: 0 1.25rem;
+            row-gap: 0.875rem;
+    
+            &__selector {
+                height: 0.75rem;
+    
+                &::-webkit-slider-thumb {
+                    height: 1.5rem;
+                    width: 1.5rem;
+                }
+    
+                &::-moz-range-thumb {
+                    height: 1.5rem;
+                    width: 1.5rem;
+                }
+            }
+    
+            &__label {
+                &__datalist {
+                    padding: 0 0.46875rem;
+    
+                    &__item {
+                        font-size: 0.75rem;
+    
+                        &::before {
+                            height: 0.625rem;
+                            top: -0.75rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .settings__difficulty__description {
+            font-size: 0.875rem;
+        }
+    }
+
+    @media (min-width: 61.9375rem) {
+        padding: func.GetUpdatedMediaValue(0.75rem, 0.9375rem, media.$media-991)
+                func.GetUpdatedMediaValue(0.875rem, 1.0625rem, media.$media-991);
+        
+        .settings__difficulty__heading {
+            margin-bottom: func.GetUpdatedMediaValue(2.125rem, 2.875rem, media.$media-991);
+            
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-991);
+            }
+        }
+    
+        .settings__difficulty__range {
+            padding: 0 func.GetUpdatedMediaValue(1.25rem, 1.0625rem, media.$media-991);
+            row-gap: func.GetUpdatedMediaValue(0.875rem, 1rem, media.$media-991);
+
+            &__label {
+                &__datalist {
+                    padding: 0 func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-991);
+                }
+            }
+        }
+
+        .settings__difficulty__description {
+            font-size: func.GetUpdatedMediaValue(0.875rem, 1.0625rem, media.$media-991);
+        }
+    }
+
+    @media (min-width: 90rem) {
+        padding: 0.9375rem 1.0625rem;
+        
+        .settings__difficulty__heading {
+            margin-bottom: 2.875rem;
+            
+            &__text {
+                font-size: 1.625rem;
+            }
+        }
+    
+        .settings__difficulty__range {
+            padding: 0 1.0625rem;
+            row-gap: 1rem;
+
+            &__label {
+                &__datalist {
+                    padding: 0 0.5625rem;
+                }
+            }
+        }
+
+        .settings__difficulty__description {
+            font-size: 1.0625rem;
+        }
+    }
+}

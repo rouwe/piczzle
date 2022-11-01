@@ -1,0 +1,150 @@
+@use '../../util/mixin' as mix;
+@use '../../util/functions' as func;
+@use '../../globals/media' as media;
+
+.settings__upload {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.75rem;
+    
+    &__add-image {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.9375rem;
+
+        svg {
+            @include mix.SetMinSize(6rem, auto);
+        }
+
+        &__text {
+            color: var(--dark-50);
+            font-size: 1.125rem;
+        }
+    }
+
+    &__add-cta {
+        @include mix.SetMinSize(100%, auto);
+        display: flex;
+        justify-content: center;
+        
+        .cta-add-image {
+            font-size: 1rem;
+        }
+    }
+
+    &__file-input {
+        display: none;
+    }
+
+    @media (min-width: 26.5625rem) {
+        row-gap: func.GetUpdatedMediaValue(3.75rem, 4.125rem, media.$media-425);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-425);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-425), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-425);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-425);
+            }
+        }
+    }
+
+    @media (min-width: 36rem) {
+        row-gap: func.GetUpdatedMediaValue(3.75rem, 4.125rem, media.$media-576);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-576);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-576), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-576);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-576);
+            }
+        }
+    }
+
+    @media (min-width: 46.5rem) {
+        row-gap: 4.125rem;
+
+        &__add-image {
+            row-gap: 1.125rem;
+
+            svg {
+                @include mix.SetMinSize(7.1875rem, auto);
+            }
+
+            &__text {
+                font-size: 1.3125rem;
+            }
+        }
+        
+        &__add-cta {
+            .cta-add-image {
+                font-size: 1.125rem;
+            }
+        }
+    }
+
+    @media (min-width: 61.9375rem) {
+        row-gap: func.GetUpdatedMediaValue(4.125rem, 5.5rem, media.$media-991);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-991);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-991), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-991);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-991);
+            }
+        }
+    }
+
+    @media (min-width: 90rem) {
+        row-gap: 5.5rem;
+
+        &__add-image {
+            row-gap: 1.4375rem;
+
+            svg {
+                @include mix.SetMinSize(9.1875rem, auto);
+            }
+
+            &__text {
+                font-size:  1.625rem;
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: 1.4375rem;
+            }
+        }
+    }
+}
