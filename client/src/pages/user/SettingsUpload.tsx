@@ -29,7 +29,7 @@ function SettingsUpload() {
   return (
     <form
       className="settings__upload"
-      action="/"
+      action="http://localhost:5000/"
       method="POST"
       encType="multipart/form-data"
     >

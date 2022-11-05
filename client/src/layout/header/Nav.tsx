@@ -26,13 +26,13 @@ function Nav() {
           className="cta cta-route"
           type="route"
           innerText="Log In"
-          linkTo="/login"
+          linkTo="auth/login"
         />
         <CTA
           className="cta cta-route"
           type="route"
           innerText="Sign Up"
-          linkTo="/signup"
+          linkTo="auth/signup"
         />
       </div>
 

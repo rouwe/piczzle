@@ -14,8 +14,8 @@ function AppRoutes() {
         <Route index element={<Home />} />
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
-        <Route path="login" element={<LogIn />} />
-        <Route path="signup" element={<SignUp />} />
+        <Route path="auth/login" element={<LogIn />} />
+        <Route path="auth/signup" element={<SignUp />} />
       </Route>
     </Routes>
   );
