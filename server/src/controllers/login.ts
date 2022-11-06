@@ -3,12 +3,15 @@ import ConnectDb from '../db/connect';
 import configs from '../configs/configs';
 import { InvalidPayloadValueError, UnknownUserError } from '../utils/errors';
 import { validateLoginCredentials } from '../controllers/validate';
-import { getHashedValue, checkHashedPassword } from '../utils/authUtil';
+import {
+    getHashedValue, checkHashedPassword, 
+    cookieSessionId, cookieUserId
+} from '../utils/authUtil';
 
 const db = new ConnectDb(configs.db).connect().db("piczzle");
 const usersDb = db.collection("users");
 
-async function loginPostHandler(req: Request, res: Response) {
+async function loginUserPostHandler(req: Request, res: Response) {
     /**
      * Handler for login route post request.
      * @req - express request object.
@@ -31,8 +34,8 @@ async function loginPostHandler(req: Request, res: Response) {
                     // Hash user id to be used as cookie
                     const hashedUserId = getHashedValue(payloadUserId);
                     // Set cookie
-                    res.cookie("sessionID", req.sessionID)
-                        .cookie("u_Id", hashedUserId);
+                    res.cookie(cookieSessionId, req.sessionID)
+                        .cookie(cookieUserId, hashedUserId);
                     res.json({
                         Response: {
                             status: "SUCCESS",
@@ -56,4 +59,4 @@ async function loginPostHandler(req: Request, res: Response) {
 }
 
 
-export default loginPostHandler;
+export default loginUserPostHandler;

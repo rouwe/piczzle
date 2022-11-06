@@ -1,6 +1,7 @@
 import express from 'express';
-import signupPostHandler from '../controllers/signup';
-import loginPostHandler from '../controllers/login';
+import signupUserPostHandler from '../controllers/signup';
+import loginUserPostHandler from '../controllers/login';
+import logoutUserPostHandler from '../controllers/logout';
 
 const authRouter = express.Router();
 const viewURI = 'http://localhost:3000';
@@ -10,11 +11,11 @@ const viewSignUp = `${viewURI}/auth/signup`;
 authRouter
     .route('/login')
     .get((req, res) => {
-        res.json({"GET - Login": "Success"});
+        res.json({"GET Notice": "Error: permission not granted!"});
     })
     .post((req, res) => {
         // Login user
-        loginPostHandler(req, res);
+        loginUserPostHandler(req, res);
     });
 
 authRouter
@@ -27,7 +28,17 @@ authRouter
         const userPassword: string = req.body.userPassword;
         const repeatUserPassword: string = req.body.repeatUserPassword;
         // New user registration
-        signupPostHandler(req, res);
+        signupUserPostHandler(req, res);
     });
+
+authRouter
+    .route('/logout')
+    .get((req, res) => {
+        res.json({"GET Notice": "Error: permission not granted!"});
+    })
+    .post((req, res) => {
+        // Logout user
+        logoutUserPostHandler(req, res);
+    })
 
 export default authRouter;

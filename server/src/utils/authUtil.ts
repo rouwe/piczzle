@@ -23,3 +23,7 @@ export function checkHashedPassword(rawPassword: string, hashedPassword: string)
 
     return true;
 }
+// Cookie key for sessionId
+export const cookieSessionId = "sessionID";
+// Cookie key for user id
+export const cookieUserId = "u_Id";

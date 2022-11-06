@@ -8,7 +8,7 @@ import { getHashedValue } from '../utils/authUtil';
 const db = new ConnectDb(configs.db).connect().db("piczzle");
 const usersDb = db.collection("users");
 
-async function signupPostHandler(req: Request, res: Response) {
+async function signupUserPostHandler(req: Request, res: Response) {
     /**
      * Handler for signup route post request.
      * @res - express response object.
@@ -59,4 +59,4 @@ async function signupPostHandler(req: Request, res: Response) {
     }
 }
 
-export default signupPostHandler;
+export default signupUserPostHandler;
