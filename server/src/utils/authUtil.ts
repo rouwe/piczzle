@@ -1,12 +1,25 @@
 import bcrypt from 'bcryptjs';
+import { InvalidPasswordError } from '../utils/errors';
 
-export function getHashedPassword(password: string): string {
+export function getHashedValue(value: string): string {
     /**
      * Returns the hash password.
-     * @param password - the raw password.
+     * @param value - the raw value to encrypt.
      */
     const saltRounds = 10;
-    const hash = bcrypt.hashSync(password, saltRounds);
+    const hashedValue = bcrypt.hashSync(value, saltRounds);
     
-    return hash;
+    return hashedValue;
+}
+
+export function checkHashedPassword(rawPassword: string, hashedPassword: string): boolean {
+    /**
+     * Returns the result of password check between user input and the decrypted one.
+     */
+    const comparisonResult = bcrypt.compareSync(rawPassword, hashedPassword);
+    if (!comparisonResult) {
+        throw new InvalidPasswordError("Wrong password.");
+    }
+
+    return true;
 }

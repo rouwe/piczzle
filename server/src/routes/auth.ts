@@ -1,5 +1,6 @@
 import express from 'express';
 import signupPostHandler from '../controllers/signup';
+import loginPostHandler from '../controllers/login';
 
 const authRouter = express.Router();
 const viewURI = 'http://localhost:3000';
@@ -12,10 +13,8 @@ authRouter
         res.json({"GET - Login": "Success"});
     })
     .post((req, res) => {
-        console.log(req.body);
-        res.cookie("sessionID", req.sessionID)
-            .cookie("u_Id", req.body.userId);
-        res.json({"Logged": "success"});
+        // Login user
+        loginPostHandler(req, res);
     });
 
 authRouter
@@ -28,7 +27,7 @@ authRouter
         const userPassword: string = req.body.userPassword;
         const repeatUserPassword: string = req.body.repeatUserPassword;
         // New user registration
-        signupPostHandler(res, { userId, userPassword, repeatUserPassword });
+        signupPostHandler(req, res);
     });
 
 export default authRouter;
