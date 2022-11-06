@@ -1,12 +1,29 @@
 import express from 'express';
+import helmet from 'helmet';
+import logger from 'morgan';
+import cors from 'cors';
+import configs from './configs/configs';
+import session from 'express-session';
+import { errorHandler, catchError } from './middlewares/error';
+import router from './routes/router';
 
 const app = express();
-
 const PORT = 5000;
 
-app.get('/', (req, res) => {
-    res.json({"greet": ["Hello, Welcomem to Piczzle"]});
-})
+app.use(logger(configs.logger));
+app.use(cors(configs.cors))
+app.use(helmet(configs.helmet));
+app.use(session(configs.session));
+app.use(express.json(configs.expressJson));
+app.use(express.urlencoded(configs.urlEncoded));
+
+app.use('/', router.index);
+app.use('/auth', router.auth);
+
+// Catch 404 and forward to error handler
+app.use(catchError);
+// Error handler
+app.use(errorHandler);
 
 // Server setup
 app.listen(PORT,() => {
