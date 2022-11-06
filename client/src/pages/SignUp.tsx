@@ -7,6 +7,8 @@ function SignUp() {
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [repeatUserPassword, setRepeatUserPassword] = useState("");
+  const MIN_LENGTH = 8;
+  const MAX_LENGTH = 64;
 
   function authSignup(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
@@ -69,6 +71,8 @@ function SignUp() {
             id="signupUsernameEmail"
             type="text"
             name="userId"
+            minLength={MIN_LENGTH}
+            maxLength={MAX_LENGTH}
             placeholder="Your username or email"
             required
           />
@@ -86,6 +90,8 @@ function SignUp() {
             id="signupPassword"
             type="password"
             name="userPassword"
+            minLength={MIN_LENGTH}
+            maxLength={MAX_LENGTH}
             placeholder="Enter your password"
             required
           />
@@ -103,6 +109,8 @@ function SignUp() {
             id="repeatSignupPassword"
             type="password"
             name="repeatUserPassword"
+            minLength={MIN_LENGTH}
+            maxLength={MAX_LENGTH}
             placeholder="Repeat your password"
             required
           />

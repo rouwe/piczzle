@@ -6,6 +6,8 @@ function LogIn() {
   const [authLoginResponse, setAuthLoginResponse] = useState("");
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const MIN_LENGTH = 8;
+  const MAX_LENGTH = 64;
 
   function authLogin(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
@@ -63,6 +65,8 @@ function LogIn() {
             id="loginUsernameEmail"
             type="text"
             name="userId"
+            minLength={MIN_LENGTH}
+            maxLength={MAX_LENGTH}
             placeholder="Your username or email"
             required
           />
@@ -80,6 +84,8 @@ function LogIn() {
             id="loginPassword"
             type="password"
             name="userPassword"
+            minLength={MIN_LENGTH}
+            maxLength={MAX_LENGTH}
             placeholder="Enter your password"
             required
           />

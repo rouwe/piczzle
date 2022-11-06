@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
+import { ConnectDbConstructorType } from '../db/connect';
 
 dotenv.config();
-console.log(process.env.SERVER_URL)
 // Helmet
 const helmetConfig = {};
 // Cors
@@ -27,11 +27,22 @@ const sessionConfig = {
 // Express URL Encoded
 const urlEncodedConfig = { extended: true };
 
+const dbConfig = ((): ConnectDbConstructorType => {
+    if (!process.env.DB_HOST || !process.env.DB_PORT) {
+        throw new Error("Invalid database connection configuration.");
+    } 
+    return {
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT
+    }
+})()
+
 export default {
     helmet: helmetConfig,
     logger: loggerConfig,
     session: sessionConfig,
     urlEncoded: urlEncodedConfig,
     expressJson: expressJsonConfig,
-    cors: corsConfig
+    cors: corsConfig,
+    db: dbConfig
 }

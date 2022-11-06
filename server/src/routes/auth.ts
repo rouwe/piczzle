@@ -1,4 +1,5 @@
 import express from 'express';
+import signupPostHandler from '../controllers/signup';
 
 const authRouter = express.Router();
 const viewURI = 'http://localhost:3000';
@@ -12,10 +13,8 @@ authRouter
     })
     .post((req, res) => {
         console.log(req.body);
-        console.log("Prev Cookies", req.headers.cookie);
         res.cookie("sessionID", req.sessionID)
             .cookie("u_Id", req.body.userId);
-
         res.json({"Logged": "success"});
     });
 
@@ -25,12 +24,11 @@ authRouter
         res.json({"GET Notice": "Error: permission not granted!"});
     })
     .post((req, res) => {
-        console.log(req.body);
-        console.log("Prev Cookies", req.headers.cookie);
-        res.cookie("sessionID", req.sessionID)
-            .cookie("u_Id", req.body.userId);
-
-        res.json({"Registered": "success"});
+        const userId: string = req.body.userId;
+        const userPassword: string = req.body.userPassword;
+        const repeatUserPassword: string = req.body.repeatUserPassword;
+        // New user registration
+        signupPostHandler(res, { userId, userPassword, repeatUserPassword });
     });
 
 export default authRouter;
