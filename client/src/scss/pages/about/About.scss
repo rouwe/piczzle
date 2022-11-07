@@ -14,6 +14,7 @@
             font-size: 1rem;
             line-height: 130%;
             margin-bottom: 1.25rem;
+            text-align: center;
         }
     }
 
@@ -114,6 +115,8 @@
         row-gap: 2.3125rem;
     
         &__text-content {
+            max-width: 70%;
+
             &__text {
                 font-size: 1.4375rem;
                 line-height: 150%;
