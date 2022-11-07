@@ -24,9 +24,6 @@ authRouter
         res.json({"GET Notice": "Error: permission not granted!"});
     })
     .post((req, res) => {
-        const userId: string = req.body.userId;
-        const userPassword: string = req.body.userPassword;
-        const repeatUserPassword: string = req.body.repeatUserPassword;
         // New user registration
         signupUserPostHandler(req, res);
     });

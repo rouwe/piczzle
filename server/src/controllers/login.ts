@@ -1,15 +1,12 @@
 import { Request, Response } from 'express';
-import ConnectDb from '../db/connect';
-import configs from '../configs/configs';
-import { InvalidPayloadValueError, UnknownUserError } from '../utils/errors';
+import { UnknownUserError } from '../utils/errors';
+import { usersCollection } from '../db/connect';
 import { validateLoginCredentials } from '../controllers/validate';
 import {
     getHashedValue, checkHashedPassword, 
     cookieSessionId, cookieUserId
 } from '../utils/authUtil';
 
-const db = new ConnectDb(configs.db).connect().db("piczzle");
-const usersDb = db.collection("users");
 
 async function loginUserPostHandler(req: Request, res: Response) {
     /**
@@ -25,7 +22,7 @@ async function loginUserPostHandler(req: Request, res: Response) {
         if (payloadIsValid) {
             // Lookup username
             const query = {username: payloadUserId};
-            const lookupResult = await usersDb.findOne(query);
+            const lookupResult = await usersCollection.findOne(query);
             if (lookupResult) {
                 const hashedPassword = lookupResult.password;
                 // Compare payload raw password and decrypted password

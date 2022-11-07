@@ -3,6 +3,19 @@ import { displayNone, displayFlex } from "../../utils/stylesSnippet";
 import { UserAuthenticationType } from "../../shared/types/types";
 
 function Menu({ loggedIn }: UserAuthenticationType) {
+  const authLogout = (e: React.MouseEvent<HTMLDivElement>): void => {
+    // Logout user
+    e.preventDefault();
+    fetch("http://localhost:5000/auth/logout", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  };
   const MenuOpen = () => (
     <svg
       width="33"
@@ -89,7 +102,11 @@ function Menu({ loggedIn }: UserAuthenticationType) {
       <div className="header__menu__close">
         <MenuClose />
       </div>
-      <div style={loggedIn ? displayFlex : {}} className="header__menu__user">
+      <div
+        onClick={authLogout}
+        style={loggedIn ? displayFlex : {}}
+        className="header__menu__user"
+      >
         <Logout />
       </div>
     </>
