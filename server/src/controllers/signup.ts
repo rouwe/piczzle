@@ -1,12 +1,7 @@
 import { Request , Response } from 'express';
-import ConnectDb from '../db/connect';
-import configs from '../configs/configs';
-import { InvalidPayloadValueError } from '../utils/errors';
+import { usersCollection } from '../db/connect';
 import { validateSignupCredentials } from '../controllers/validate';
 import { getHashedValue } from '../utils/authUtil';
-
-const db = new ConnectDb(configs.db).connect().db("piczzle");
-const usersDb = db.collection("users");
 
 async function signupUserPostHandler(req: Request, res: Response) {
     /**
@@ -25,7 +20,7 @@ async function signupUserPostHandler(req: Request, res: Response) {
         if (payloadIsValid) {
             // Lookup if user exist
             const query = {username: payloadUserId};
-            const lookupResult = await usersDb.findOne(query);
+            const lookupResult = await usersCollection.findOne(query);
             if (lookupResult) {
                 // User already exist
                 res.json({
@@ -36,7 +31,7 @@ async function signupUserPostHandler(req: Request, res: Response) {
             } else {
                 // Register new user
                 const hashPassword = getHashedValue(payloadUserPassword);
-                usersDb.insertOne({
+                usersCollection.insertOne({
                     username: payloadUserId,
                     password: hashPassword,
                     saved: []

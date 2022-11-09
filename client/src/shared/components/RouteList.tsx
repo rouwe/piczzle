@@ -17,14 +17,16 @@ type RouteListStructureClassNamesType = {
 type RouteListType = {
   routesArr: RouteListRouteType[];
   structureClassNames: RouteListStructureClassNamesType;
+  styleSnippet?: React.CSSProperties;
 };
 
 function RouteList({
   routesArr,
   structureClassNames: { ulClassName, liClassName, linkClassName },
+  styleSnippet,
 }: RouteListType) {
   return (
-    <ul className={ulClassName}>
+    <ul style={styleSnippet ? styleSnippet : {}} className={ulClassName}>
       {routesArr.map(({ id, page, path }, idx) => {
         return (
           <li className={liClassName} key={id + idx}>

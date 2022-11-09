@@ -3,12 +3,15 @@
 
 .header {
     align-items: center;
+    background-color: white;
     box-shadow: 0 0.0625rem 0.375rem var(--header-box-shadow-y);
     display: grid;
     flex-wrap: wrap;
     grid-template: "brand menu" min-content / auto;
     padding: 0.625rem 1.875rem;
     position: relative;
+    width: 100%;
+    z-index: 10;
 
     &__brand,
     &__menu,
@@ -106,6 +109,12 @@
         &__close,
         &__user {
             display: none;
+        }
+
+        &__options {
+            .menu-logout {
+                display: none;
+            }
         }
 
         svg {
@@ -213,6 +222,10 @@
                     }
                 }
             }
+
+            .action-logout {
+                display: none;
+            }
             
             &__cta {
                 display: flex;
@@ -224,10 +237,25 @@
             }
         }
 
-        &__menu__open,
         &__action__nav-divider,        
         &__action__social-links {
             display: none;
+        }
+
+        &__menu {
+            position: relative;
+            
+            &__open {
+                display: none;
+            }
+
+            &__options {
+                .menu-logout {
+                    left: 0%;
+                    position: absolute;
+                    top: 0%;
+                }
+            }
         }
     
     }

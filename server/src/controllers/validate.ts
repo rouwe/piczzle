@@ -1,6 +1,7 @@
+import bcrypt from 'bcryptjs';
 import { 
     PasswordMatchValidationError, CharacterLengthValidationError,
-    InvalidPayloadValueError
+    InvalidPayloadValueError, InvalidPasswordError
  } from '../utils/errors';
 
 export function validateSignupCredentials(uId: string, pass: string, repass: string): boolean {
@@ -36,6 +37,18 @@ export function validateLoginCredentials(uId: string, pass: string): boolean {
     return true;
 }
 
+export function checkHashedPassword(rawPassword: string, hashedPassword: string): boolean {
+    /**
+     * Returns the result of password check between user input and the decrypted one.
+     */
+    const comparisonResult = bcrypt.compareSync(rawPassword, hashedPassword);
+    if (!comparisonResult) {
+        throw new InvalidPasswordError("Wrong password.");
+    }
+
+    return true;
+}
+
 const validatePayloadValues = (payloadArr: Array<string>): void => {
     // Prevent undefined payload values
     for (const payload of payloadArr) {
@@ -61,9 +74,8 @@ const checkCharacterLength = (value: string, minLength=8, maxLength=64): void =>
      * Make sure that the characters length of the value is withing the required range.
      * @value - a string value.
      */
-
     const valueLength = value.length;
-    if (valueLength < minLength && valueLength > maxLength) {
+    if (valueLength < minLength || valueLength > maxLength) {
         throw new CharacterLengthValidationError("Value does not meet the required length.");
     }
 }

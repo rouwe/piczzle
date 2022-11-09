@@ -1,4 +1,5 @@
 import { MongoClient } from 'mongodb';
+import configs from '../configs/configs';
 
 export type ConnectDbConstructorType = {
     host: string; 
@@ -38,5 +39,12 @@ class ConnectDb {
         return client;
     }
 }
+
+// MongoDb client connection
+export const client = new ConnectDb(configs.db).connect();
+// MondoDb piczzle database
+export const piczzleDb = client.db("piczzle");
+// MongoDb piczzle users collection 
+export const usersCollection = piczzleDb.collection("users");
 
 export default ConnectDb;

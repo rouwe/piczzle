@@ -3,10 +3,12 @@ import Copyright from "../shared/components/Copyright";
 import FooterBrand from "./footer/FooterBrand";
 import FooterNav from "./footer/FooterNav";
 import "../scss/layout/Footer.scss";
+import { loggedIn } from "../Routes";
+import { displayNone } from "../utils/stylesSnippet";
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer style={loggedIn ? displayNone : {}} className="footer">
       <div className="footer__brand">
         <FooterBrand />
       </div>

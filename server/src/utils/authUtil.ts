@@ -1,5 +1,4 @@
 import bcrypt from 'bcryptjs';
-import { InvalidPasswordError } from '../utils/errors';
 
 export function getHashedValue(value: string): string {
     /**
@@ -12,17 +11,6 @@ export function getHashedValue(value: string): string {
     return hashedValue;
 }
 
-export function checkHashedPassword(rawPassword: string, hashedPassword: string): boolean {
-    /**
-     * Returns the result of password check between user input and the decrypted one.
-     */
-    const comparisonResult = bcrypt.compareSync(rawPassword, hashedPassword);
-    if (!comparisonResult) {
-        throw new InvalidPasswordError("Wrong password.");
-    }
-
-    return true;
-}
 // Cookie key for sessionId
 export const cookieSessionId = "sessionID";
 // Cookie key for user id

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { cookieSessionId, cookieUserId } from '../utils/authUtil';
 
 function logoutUserPostHandler(req: Request, res: Response) {
-    console.log(req.cookies);
+    // Clear cookies
     res.clearCookie(cookieSessionId);
     res.clearCookie(cookieUserId);
     res.json({
