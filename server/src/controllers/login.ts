@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
 import { UnknownUserError } from '../utils/errors';
 import { usersCollection } from '../db/connect';
-import { validateLoginCredentials } from '../controllers/validate';
+import { validateLoginCredentials, checkHashedPassword } from '../controllers/validate';
 import {
-    getHashedValue, checkHashedPassword, 
-    cookieSessionId, cookieUserId
+    getHashedValue, cookieSessionId, cookieUserId
 } from '../utils/authUtil';
 
 

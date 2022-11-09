@@ -1,32 +1,18 @@
 import React, { useState } from "react";
 import CTA from "../shared/components/CTA";
 import AuthIcons from "../shared/components/AuthIcons";
+import { authSignup } from "../ts/authController";
 
 function SignUp() {
-  const [authSignupResponse, setAuthSignupResponse] = useState("");
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [repeatUserPassword, setRepeatUserPassword] = useState("");
   const MIN_LENGTH = 8;
   const MAX_LENGTH = 64;
+  const signupHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    authSignup(e, userId, userPassword, repeatUserPassword);
+  };
 
-  function authSignup(e: React.FormEvent<HTMLFormElement>): void {
-    e.preventDefault();
-    fetch("http://localhost:5000/auth/signup", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: userId,
-        userPassword: userPassword,
-        repeatUserPassword: repeatUserPassword,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  }
   return (
     <main className="login form-layout auth-form">
       <div className="pages-header">
@@ -53,7 +39,7 @@ function SignUp() {
         <hr className="auth-form__option-divider__rule" />
       </div>
       <form
-        onSubmit={authSignup}
+        onSubmit={signupHandler}
         className="form-layout__form"
         action="/"
         method="POST"

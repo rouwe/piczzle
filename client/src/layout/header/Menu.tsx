@@ -1,21 +1,9 @@
 import React from "react";
 import { displayNone, displayFlex } from "../../utils/stylesSnippet";
 import { UserAuthenticationType } from "../../shared/types/types";
+import { authLogout } from "../../ts/authController";
 
 function Menu({ loggedIn }: UserAuthenticationType) {
-  const authLogout = (e: React.MouseEvent<HTMLDivElement>): void => {
-    // Logout user
-    e.preventDefault();
-    fetch("http://localhost:5000/auth/logout", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  };
   const MenuOpen = () => (
     <svg
       width="33"

@@ -5,6 +5,10 @@
 html {
     color: var(--dark);
 
+    #root {
+        position: relative;
+    }
+
     .pages-header {
         display: flex;
         flex-direction: column;
@@ -23,6 +27,43 @@ html {
         margin: 0;
     }
 
+    .notification {
+        align-items: center;
+        background-color: var(--light);
+        border: 0.2rem solid var(--second-bg-gradient);
+        border-radius: 25rem;
+        box-shadow: 0 0.125rem 0.5rem var(--dark-50);
+        bottom: 1.5rem;
+        color: var(--dark);
+        display: none;
+        grid-template: "notify-icon message" min-content/ max-content 1fr;
+        overflow: hidden;
+        padding: 0.25rem 0.15rem;
+        position: fixed;
+        right: 1rem;
+        width: fit-content;
+        z-index: 5;
+
+        &__icon,
+        &__message {
+            padding: 0 0.5rem;
+        }
+        &__icon {
+            border-right: 0.125rem solid var(--dark-75);
+            display: flex;
+            grid-area: notify-icon;
+
+            svg {
+                @include mix.SetMinSize(1.5rem, 1.5rem);
+            }
+        }
+
+        &__message {
+            font-size: 0.875rem;
+            grid-area: message;
+        }
+    }
+    
     @media (min-width: 26.5625rem) {
         .pages-header {
             row-gap: func.GetUpdatedMediaValue(0.3125rem, 0.375rem, media.$media-425);
@@ -34,6 +75,28 @@ html {
         
         .pages-heading {
             font-size: func.GetUpdatedMediaValue(2rem, 2.625rem, media.$media-425);
+        }
+
+        .notification {
+            bottom: func.GetUpdatedMediaValue(1.5rem, 2rem, media.$media-425);
+            padding: func.GetUpdatedMediaValue(0.25rem, 0.35rem, media.$media-425)
+                    func.GetUpdatedMediaValue(0.15rem, 0.25rem, media.$media-425);
+            right: func.GetUpdatedMediaValue(1rem, 1.5rem, media.$media-425);
+
+            &__icon,
+            &__message {
+                padding: 0 func.GetUpdatedMediaValue(0.5rem, 0.6rem, media.$media-425);
+            }
+            &__icon {    
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.75rem, media.$media-425),
+                                            func.GetUpdatedMediaValue(1.5rem, 1.75rem, media.$media-425));
+                }
+            }
+    
+            &__message {
+                font-size: func.GetUpdatedMediaValue(0.875rem, 0.9375rem, media.$media-425);
+            }
         }
     }
 
@@ -49,6 +112,28 @@ html {
         .pages-heading {
             font-size: func.GetUpdatedMediaValue(2rem, 2.625rem, media.$media-576);
         }
+
+        .notification {
+            bottom: func.GetUpdatedMediaValue(1.5rem, 2rem, media.$media-576);
+            padding: func.GetUpdatedMediaValue(0.25rem, 0.35rem, media.$media-576)
+                    func.GetUpdatedMediaValue(0.15rem, 0.25rem, media.$media-576);
+            right: func.GetUpdatedMediaValue(1rem, 1.5rem, media.$media-576);
+
+            &__icon,
+            &__message {
+                padding: 0 func.GetUpdatedMediaValue(0.5rem, 0.6rem, media.$media-576);
+            }
+            &__icon {    
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.75rem, media.$media-576),
+                                            func.GetUpdatedMediaValue(1.5rem, 1.75rem, media.$media-576));
+                }
+            }
+    
+            &__message {
+                font-size: func.GetUpdatedMediaValue(0.875rem, 0.9375rem, media.$media-576);
+            }
+        }
     }
 
     @media (min-width: 46.5rem) {
@@ -62,6 +147,26 @@ html {
         
         .pages-heading {
             font-size: 2.625rem;
+        }
+
+        .notification {
+            bottom: 2rem;
+            padding: 0.35rem 0.25rem;
+            right: 1.5rem;
+
+            &__icon,
+            &__message {
+                padding: 0 0.6rem;
+            }
+            &__icon {
+                svg {
+                    @include mix.SetMinSize(1.75rem, 1.75rem);
+                }
+            }
+    
+            &__message {
+                font-size: 0.9375rem;
+            }
         }
     }
 
@@ -78,6 +183,27 @@ html {
         .pages-heading {
             font-size: func.GetUpdatedMediaValue(2.625rem, 3.1875rem, media.$media-991);
         }
+        .notification {
+            bottom: func.GetUpdatedMediaValue(2rem, 2.5rem, media.$media-425);
+            padding: func.GetUpdatedMediaValue(0.35rem, 0.4rem, media.$media-425)
+                    func.GetUpdatedMediaValue(0.25rem, 0.4rem, media.$media-425);
+            right: func.GetUpdatedMediaValue(1.5rem, 2.25rem, media.$media-425);
+
+            &__icon,
+            &__message {
+                padding: 0 func.GetUpdatedMediaValue(0.6rem, 0.7rem, media.$media-425);
+            }
+            &__icon {    
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.75rem, 2.25rem, media.$media-425),
+                                            func.GetUpdatedMediaValue(1.75rem, 2.25rem, media.$media-425));
+                }
+            }
+    
+            &__message {
+                font-size: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-425);
+            }
+        }
     }
 
     @media (min-width: 90rem) {
@@ -92,6 +218,26 @@ html {
         
         .pages-heading {
             font-size: 3.1875rem;
+        }
+
+        .notification {
+            bottom: 2.5rem;
+            padding: 0.4rem;
+            right: 2.25rem;
+
+            &__icon,
+            &__message {
+                padding: 0 0.7rem;
+            }
+            &__icon {
+                svg {
+                    @include mix.SetMinSize(2.25rem, 2.25rem);
+                }
+            }
+    
+            &__message {
+                font-size: 1.125rem;
+            }
         }
     }
 }

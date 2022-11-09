@@ -1,30 +1,16 @@
 import React, { useState } from "react";
 import CTA from "../shared/components/CTA";
 import AuthIcons from "../shared/components/AuthIcons";
+import { authLogin } from "../ts/authController";
 
 function LogIn() {
-  const [authLoginResponse, setAuthLoginResponse] = useState("");
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const MIN_LENGTH = 8;
   const MAX_LENGTH = 64;
-
-  function authLogin(e: React.FormEvent<HTMLFormElement>): void {
-    e.preventDefault();
-    fetch("http://localhost:5000/auth/login", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: userId,
-        userPassword: userPassword,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  }
+  const loginHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    authLogin(e, userId, userPassword);
+  };
 
   return (
     <main className="login form-layout auth-form">
@@ -47,7 +33,7 @@ function LogIn() {
         <hr className="auth-form__option-divider__rule" />
       </div>
       <form
-        onSubmit={authLogin}
+        onSubmit={loginHandler}
         className="form-layout__form"
         action="/"
         method="POST"
