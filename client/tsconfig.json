@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/*.tsx", "declaration.d.ts", "src/context/NotificationContext.tsx", "src/ts/notificationHandler.ts", "src/ts/authController.ts"],
+  "include": ["./src/**/*.tsx", "declaration.d.ts", "src/context/NotificationContext.tsx", "src/ts/notificationHandler.ts", "src/ts/authController.ts", "src/pages/user/Piczzle.ts", "src/ts/Piczzle.ts", "src/utils/piczzleUtil.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */

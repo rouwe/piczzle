@@ -1,8 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CTA from "../../shared/components/CTA";
 import HomeSettings from "./HomeSettings";
 import "../../scss/pages/user/HomeUser.scss";
+import createPiczzle from "../../ts/Piczzle";
 
 const SettingsToggler = () => (
   <svg
@@ -45,12 +46,23 @@ const WarningIcon = () => (
 );
 
 function HomeUser() {
-  const [heading, setHeading] = useState("Playground");
+  useEffect(() => {
+    const piczzleConfig = {
+      wrapperId: "#wrapper",
+      puzzleBodyId: "#puzzle-body",
+      gridRows: 3,
+      gridColumns: 3,
+      gaps: 0.25,
+      imageSource: undefined,
+    };
+    createPiczzle(piczzleConfig);
+    console.log(document.getElementById("wrapper"));
+  }, []);
 
   return (
     <div className="user">
       <div className="user__heading">
-        <h1 className="user__heading__text pages-heading">{heading}</h1>
+        <h1 className="user__heading__text pages-heading">Playground</h1>
         <span className="user__heading__settings-toggler">
           <SettingsToggler />
         </span>
@@ -61,7 +73,7 @@ function HomeUser() {
             id="puzzle-body"
             className="user__playground__wrapper__puzzle-body"
           ></div>
-          <div className="select-image-warning">
+          <div style={{ display: "none" }} className="select-image-warning">
             <WarningIcon />
             <span className="select-image-warning__message">
               Please select an image first.
