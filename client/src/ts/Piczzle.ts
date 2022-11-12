@@ -32,6 +32,7 @@ function createPiczzle({
    * @gaps - gaps of each puzzle piece in float value relative to root font size.
    * @imageSource - path to the image source.
    */
+  if (imageSource === "") return;
   // Step 1: Get computed font size
   const rootFontSize = util.getComputedRootFontSize();
   // Step 2: Calculate total gaps of each axis in px

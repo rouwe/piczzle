@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import {
+  fetchUserSavedRecord,
+  fetchSavedPiczzles,
+} from "../../ts/settingsUtil";
 import "../../scss/pages/user/SettingsSaved.scss";
 
 const LoadMoreIcon = () => (
@@ -18,25 +22,45 @@ const LoadMoreIcon = () => (
 );
 
 function SettingsSaved() {
+  // User saved piczzles url
+  const [savedPiczzlesUrlArr, setSavedPiczzlesUrlArr] = useState<string[]>([]);
+  const [savedPiczzles, setSavedPicczles] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    // Fetch the user saved records
+    const fetchSavedDataPromise = fetchUserSavedRecord() as Promise<string[]>;
+    fetchSavedPiczzles(fetchSavedDataPromise, setSavedPiczzlesUrlArr);
+  }, []);
+
+  useEffect(() => {
+    // const gallery = document.querySelector(".settings__saved__gallery");
+    const galleryItemArr = savedPiczzlesUrlArr.map((url, idx) => {
+      return (
+        <img
+          key={`gItem${idx}`}
+          className="settings__saved__gallery__item"
+          src={url}
+          alt="Piczzle"
+        />
+      );
+    });
+    setSavedPicczles(galleryItemArr);
+  }, [savedPiczzlesUrlArr]);
+
+  const PiczzlesList = (): JSX.Element => <>{savedPiczzles}</>;
+
   return (
     <div className="settings__saved">
       <div className="settings__saved__gallery">
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
+        <PiczzlesList />
       </div>
-      <div className="no-recent-pizzle-warning">
-        <span className="no-recent-pizzle-warning__message">
-          Saved piczzles not found.
-        </span>
-      </div>
+      {savedPiczzlesUrlArr.length === 0 && (
+        <div className="no-recent-pizzle-warning">
+          <span className="no-recent-pizzle-warning__message">
+            Saved piczzles not found.
+          </span>
+        </div>
+      )}
       <div className="settings__saved__load-more">
         <LoadMoreIcon />
       </div>

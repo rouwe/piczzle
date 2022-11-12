@@ -28,6 +28,7 @@
         overflow: hidden;
 
         &__item {
+            cursor: pointer;
             position: relative;
             overflow: hidden;
             z-index: 2;

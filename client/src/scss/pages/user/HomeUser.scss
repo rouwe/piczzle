@@ -47,7 +47,8 @@
                 display: grid;
                 flex-wrap: wrap;
                 height: max-content;
-                width: 100%;
+                margin: 0 auto;
+                width: max-content;
 
                 .dragTarget {
                     border-radius: 2px;

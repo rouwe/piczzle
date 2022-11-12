@@ -46,24 +46,60 @@ const WarningIcon = () => (
 );
 
 function HomeUser() {
+  const [contentOpen, setContentOpen] = useState("playground");
+  const [wrapperId, setWrapperId] = useState("#wrapper");
+  const [puzzleBodyId, setPuzzleBodyId] = useState("#puzzle-body");
+  const [gridInfo, setGridInfo] = useState({
+    gridColumns: 4,
+    gridRows: 4,
+    gaps: 0.25,
+  });
+  const [piczzleSource, setPiczzleSource] = useState("");
+
   useEffect(() => {
     const piczzleConfig = {
-      wrapperId: "#wrapper",
-      puzzleBodyId: "#puzzle-body",
-      gridRows: 3,
-      gridColumns: 3,
-      gaps: 0.25,
-      imageSource: undefined,
+      wrapperId: wrapperId,
+      puzzleBodyId: puzzleBodyId,
+      gridRows: gridInfo.gridRows,
+      gridColumns: gridInfo.gridColumns,
+      gaps: gridInfo.gaps,
+      imageSource: piczzleSource,
     };
     createPiczzle(piczzleConfig);
-    console.log(document.getElementById("wrapper"));
-  }, []);
+  }, [wrapperId, puzzleBodyId, gridInfo, piczzleSource]);
+
+  const toggleSettings = (e: React.MouseEvent) => {
+    const userContainer = document.querySelector(".user") as HTMLDivElement;
+    const playground = document.querySelector(
+      ".user__playground"
+    ) as HTMLDivElement;
+    const settings = document.querySelector(
+      ".user__settings"
+    ) as HTMLDivElement;
+    // Toggle display
+    if (contentOpen === "playground") {
+      setContentOpen("settings");
+      playground.style.display = "none";
+      settings.style.display = "flex";
+      userContainer.style.gridTemplate =
+        '"heading" min-content "playground" min-content "settings" min-content / 100%';
+    } else {
+      setContentOpen("playground");
+      playground.style.display = "flex";
+      settings.style.display = "none";
+      userContainer.style.gridTemplate =
+        '"heading" min-content "playground" 100vh "settings" min-content / 100%';
+    }
+  };
 
   return (
     <div className="user">
       <div className="user__heading">
         <h1 className="user__heading__text pages-heading">Playground</h1>
-        <span className="user__heading__settings-toggler">
+        <span
+          onClick={toggleSettings}
+          className="user__heading__settings-toggler"
+        >
           <SettingsToggler />
         </span>
       </div>
@@ -73,12 +109,14 @@ function HomeUser() {
             id="puzzle-body"
             className="user__playground__wrapper__puzzle-body"
           ></div>
-          <div style={{ display: "none" }} className="select-image-warning">
-            <WarningIcon />
-            <span className="select-image-warning__message">
-              Please select an image first.
-            </span>
-          </div>
+          {!piczzleSource && (
+            <div className="select-image-warning">
+              <WarningIcon />
+              <span className="select-image-warning__message">
+                Please select an image first.
+              </span>
+            </div>
+          )}
         </div>
         <CTA
           className="user__playground__start cta-start cta-disabled"
