@@ -4,6 +4,7 @@ import CTA from "../../shared/components/CTA";
 import HomeSettings from "./HomeSettings";
 import "../../scss/pages/user/HomeUser.scss";
 import createPiczzle from "../../ts/Piczzle";
+import { SettingsContext } from "../../context/SettingsContext";
 
 const SettingsToggler = () => (
   <svg
@@ -47,8 +48,8 @@ const WarningIcon = () => (
 
 function HomeUser() {
   const [contentOpen, setContentOpen] = useState("playground");
-  const [wrapperId, setWrapperId] = useState("#wrapper");
-  const [puzzleBodyId, setPuzzleBodyId] = useState("#puzzle-body");
+  const [wrapperId] = useState("#wrapper");
+  const [puzzleBodyId] = useState("#puzzle-body");
   const [gridInfo, setGridInfo] = useState({
     gridColumns: 4,
     gridRows: 4,
@@ -65,6 +66,13 @@ function HomeUser() {
       gaps: gridInfo.gaps,
       imageSource: piczzleSource,
     };
+    // Remove previous piczzle
+    const dropTargetClass = "dropTarget";
+    const dropTargetArr = document.querySelectorAll(`.${dropTargetClass}`);
+    for (const dropTarget of dropTargetArr) {
+      dropTarget.remove();
+    }
+    // Generate new piczzle
     createPiczzle(piczzleConfig);
   }, [wrapperId, puzzleBodyId, gridInfo, piczzleSource]);
 
@@ -93,41 +101,48 @@ function HomeUser() {
   };
 
   return (
-    <div className="user">
-      <div className="user__heading">
-        <h1 className="user__heading__text pages-heading">Playground</h1>
-        <span
-          onClick={toggleSettings}
-          className="user__heading__settings-toggler"
-        >
-          <SettingsToggler />
-        </span>
-      </div>
-      <div className="user__playground">
-        <div id="wrapper" className="user__playground__wrapper">
-          <div
-            id="puzzle-body"
-            className="user__playground__wrapper__puzzle-body"
-          ></div>
-          {!piczzleSource && (
-            <div className="select-image-warning">
-              <WarningIcon />
-              <span className="select-image-warning__message">
-                Please select an image first.
-              </span>
-            </div>
-          )}
+    <SettingsContext.Provider
+      value={{
+        updatePiczzleSource: setPiczzleSource,
+        updateGridInfo: setGridInfo,
+      }}
+    >
+      <div className="user">
+        <div className="user__heading">
+          <h1 className="user__heading__text pages-heading">Playground</h1>
+          <span
+            onClick={toggleSettings}
+            className="user__heading__settings-toggler"
+          >
+            <SettingsToggler />
+          </span>
         </div>
-        <CTA
-          className="user__playground__start cta-start cta-disabled"
-          type="button"
-          innerText="Start Game"
-        />
+        <div className="user__playground">
+          <div id="wrapper" className="user__playground__wrapper">
+            <div
+              id="puzzle-body"
+              className="user__playground__wrapper__puzzle-body"
+            ></div>
+            {!piczzleSource && (
+              <div className="select-image-warning">
+                <WarningIcon />
+                <span className="select-image-warning__message">
+                  Please select an image first.
+                </span>
+              </div>
+            )}
+          </div>
+          <CTA
+            className="user__playground__start cta-start cta-disabled"
+            type="button"
+            innerText="Start Game"
+          />
+        </div>
+        <div className="user__settings">
+          <HomeSettings />
+        </div>
       </div>
-      <div className="user__settings">
-        <HomeSettings />
-      </div>
-    </div>
+    </SettingsContext.Provider>
   );
 }
 

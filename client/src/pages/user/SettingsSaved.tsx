@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   fetchUserSavedRecord,
   fetchSavedPiczzles,
 } from "../../ts/settingsUtil";
+import { SettingsContext } from "../../context/SettingsContext";
 import "../../scss/pages/user/SettingsSaved.scss";
 
 const LoadMoreIcon = () => (
@@ -20,8 +21,8 @@ const LoadMoreIcon = () => (
     />
   </svg>
 );
-
 function SettingsSaved() {
+  const { updatePiczzleSource } = useContext(SettingsContext);
   // User saved piczzles url
   const [savedPiczzlesUrlArr, setSavedPiczzlesUrlArr] = useState<string[]>([]);
   const [savedPiczzles, setSavedPicczles] = useState<JSX.Element[]>([]);
@@ -37,6 +38,7 @@ function SettingsSaved() {
     const galleryItemArr = savedPiczzlesUrlArr.map((url, idx) => {
       return (
         <img
+          onClick={changePiczzleSourceHandler}
           key={`gItem${idx}`}
           className="settings__saved__gallery__item"
           src={url}
@@ -48,6 +50,14 @@ function SettingsSaved() {
   }, [savedPiczzlesUrlArr]);
 
   const PiczzlesList = (): JSX.Element => <>{savedPiczzles}</>;
+
+  function changePiczzleSourceHandler(e: React.MouseEvent<HTMLImageElement>) {
+    // Handler that changes piczzle source state
+    if (e) {
+      const targetSource = e.currentTarget.src;
+      if (updatePiczzleSource) updatePiczzleSource(targetSource);
+    }
+  }
 
   return (
     <div className="settings__saved">
