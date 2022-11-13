@@ -5,7 +5,6 @@ import HomeSettings from "./HomeSettings";
 import "../../scss/pages/user/HomeUser.scss";
 import createPiczzle from "../../ts/Piczzle";
 import { SettingsContext } from "../../context/SettingsContext";
-import { start } from "repl";
 
 const SettingsToggler = () => (
   <svg
