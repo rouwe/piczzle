@@ -56,6 +56,7 @@ function HomeUser() {
     gaps: 0.25,
   });
   const [piczzleSource, setPiczzleSource] = useState("");
+  const [galleryItemCount, setGalleryItemCount] = useState(6);
 
   useEffect(() => {
     const piczzleConfig = {
@@ -105,6 +106,10 @@ function HomeUser() {
       value={{
         updatePiczzleSource: setPiczzleSource,
         updateGridInfo: setGridInfo,
+        gallery: {
+          galleryItemCount: galleryItemCount,
+          updateGalleryItemCount: setGalleryItemCount,
+        },
       }}
     >
       <div className="user">
@@ -132,6 +137,7 @@ function HomeUser() {
               </div>
             )}
           </div>
+
           <CTA
             className="user__playground__start cta-start cta-disabled"
             type="button"

@@ -1,6 +1,6 @@
 import React from 'react';
 // import 
-import * as serverErrors from '../utils/errors';
+import * as serverErrors from './errors';
 
 export async function fetchUserSavedRecord() {
     /**
@@ -40,6 +40,8 @@ export async function fetchSavedPiczzles(fetchedSavedDataPromise: Promise<string
     fetchedSavedDataPromise.then(async (res) => {
         // Access previous async fetch result
         const savedDataArr = res as string[];
+        // Save to session the value of user saved data
+        sessionStorage.setItem("uGICount", `${savedDataArr.length}`);
         // Iterate over result array and create a promise using fetch for each item
         const fetchPiczzlePromiseArr = savedDataArr.map(async (imageSource) => {
           return await fetch(

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import {
   fetchUserSavedRecord,
   fetchSavedPiczzles,
-} from "../../ts/settingsUtil";
+} from "../../utils/settingsUtil";
 import { SettingsContext } from "../../context/SettingsContext";
 import "../../scss/pages/user/SettingsSaved.scss";
 
@@ -22,10 +22,14 @@ const LoadMoreIcon = () => (
   </svg>
 );
 function SettingsSaved() {
-  const { updatePiczzleSource } = useContext(SettingsContext);
+  const {
+    updatePiczzleSource,
+    gallery: { galleryItemCount, updateGalleryItemCount },
+  } = useContext(SettingsContext);
   // User saved piczzles url
   const [savedPiczzlesUrlArr, setSavedPiczzlesUrlArr] = useState<string[]>([]);
   const [savedPiczzles, setSavedPicczles] = useState<JSX.Element[]>([]);
+  const prevGalleryItemCount = useRef<number | null>(null);
 
   useEffect(() => {
     // Fetch the user saved records
@@ -34,7 +38,14 @@ function SettingsSaved() {
   }, []);
 
   useEffect(() => {
-    // const gallery = document.querySelector(".settings__saved__gallery");
+    function changePiczzleSourceHandler(e: React.MouseEvent<HTMLImageElement>) {
+      // Handler that changes piczzle source state
+      if (e) {
+        const targetSource = e.currentTarget.src;
+        if (updatePiczzleSource) updatePiczzleSource(targetSource);
+      }
+    }
+
     const galleryItemArr = savedPiczzlesUrlArr.map((url, idx) => {
       return (
         <img
@@ -46,19 +57,51 @@ function SettingsSaved() {
         />
       );
     });
+    // Set gallery item count back to default
+    if (updateGalleryItemCount) updateGalleryItemCount(6);
     setSavedPicczles(galleryItemArr);
-  }, [savedPiczzlesUrlArr]);
+  }, [savedPiczzlesUrlArr, updatePiczzleSource, updateGalleryItemCount]);
 
-  const PiczzlesList = (): JSX.Element => <>{savedPiczzles}</>;
+  useEffect(() => {
+    prevGalleryItemCount.current = galleryItemCount;
+  });
 
-  function changePiczzleSourceHandler(e: React.MouseEvent<HTMLImageElement>) {
-    // Handler that changes piczzle source state
-    if (e) {
-      const targetSource = e.currentTarget.src;
-      if (updatePiczzleSource) updatePiczzleSource(targetSource);
+  const PiczzlesList = (): JSX.Element => (
+    <>{savedPiczzles.slice(0, galleryItemCount)}</>
+  );
+
+  const loadMoreHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Load more piczzles in saved tab
+    if (prevGalleryItemCount.current) {
+      const defaultIncrementValue = 6;
+      const userTotalSavedItem = Number(sessionStorage.getItem("uGICount"));
+      // Default increment prev value or use user data count if its less than the default incremented value
+      const incrementedGalleryCount =
+        prevGalleryItemCount.current + defaultIncrementValue;
+      const newGalleryCount =
+        userTotalSavedItem < incrementedGalleryCount
+          ? userTotalSavedItem
+          : userTotalSavedItem;
+      if (userTotalSavedItem === newGalleryCount) {
+        // Disable load more button
+        const loadMoreToggler = document.querySelector(
+          ".settings__saved__load-more"
+        ) as HTMLDivElement;
+        if (loadMoreToggler) {
+          e.preventDefault();
+          const loadMoreTogglerIcon =
+            loadMoreToggler.firstChild as SVGSVGElement;
+          const loadMoreTogglerIconPath = loadMoreTogglerIcon.querySelector(
+            "path"
+          ) as SVGPathElement;
+          loadMoreTogglerIconPath.style.fill = "var(--dark-25)";
+        }
+      }
+      if (updateGalleryItemCount) {
+        updateGalleryItemCount(newGalleryCount);
+      }
     }
-  }
-
+  };
   return (
     <div className="settings__saved">
       <div className="settings__saved__gallery">
@@ -71,7 +114,7 @@ function SettingsSaved() {
           </span>
         </div>
       )}
-      <div className="settings__saved__load-more">
+      <div onClick={loadMoreHandler} className="settings__saved__load-more">
         <LoadMoreIcon />
       </div>
     </div>
