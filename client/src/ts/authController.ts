@@ -112,6 +112,7 @@ export function authLogout(e: React.MouseEvent<HTMLDivElement>): void {
    * @e - mouse event instance.
    */
   e.preventDefault();
+  localStorage.clear();
   fetch("http://localhost:5000/auth/logout", {
     method: "POST",
     credentials: "include",
