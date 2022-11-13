@@ -17,13 +17,6 @@ function Nav({ loggedIn }: UserAuthenticationType) {
     linkClassName: "header__action__nav-wrapper__item__link",
   };
 
-  const closeHeaderAction = () => {
-    const headerAction = document.querySelector(
-      ".header__action"
-    ) as HTMLDivElement;
-    headerAction.style.display = "none";
-  };
-
   return (
     <>
       <RouteList
@@ -35,7 +28,7 @@ function Nav({ loggedIn }: UserAuthenticationType) {
       {!loggedIn && (
         <>
           <hr className="header__action__nav-divider" />
-          <div onClick={closeHeaderAction} className="header__action__cta">
+          <div className="header__action__cta">
             <CTA
               className="cta cta-route"
               type="route"
