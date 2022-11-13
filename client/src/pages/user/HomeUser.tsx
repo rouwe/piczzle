@@ -5,6 +5,7 @@ import HomeSettings from "./HomeSettings";
 import "../../scss/pages/user/HomeUser.scss";
 import createPiczzle from "../../ts/Piczzle";
 import { SettingsContext } from "../../context/SettingsContext";
+import { start } from "repl";
 
 const SettingsToggler = () => (
   <svg
@@ -75,7 +76,31 @@ function HomeUser() {
     }
     // Generate new piczzle
     createPiczzle(piczzleConfig);
+
+    // Prevent user from dragging piczzles until clicking start button
+    const startBtn = document.querySelector(
+      ".user__playground__start"
+    ) as HTMLButtonElement;
+    startBtn.classList.remove("cta-disabled");
+    // Add disabled style if piczzle source is not specified
+    if (!piczzleSource) {
+      startBtn.classList.add("cta-disabled");
+    }
+
+    const wrapper = document.querySelector("#wrapper") as HTMLDivElement;
+    wrapper.style.setProperty("--after-display", "flex");
   }, [wrapperId, puzzleBodyId, gridInfo, piczzleSource]);
+
+  const allowDraggingHandler = () => {
+    // Allow user to start playing
+    const startBtn = document.querySelector(
+      ".user__playground__start"
+    ) as HTMLButtonElement;
+    startBtn.classList.add("cta-disabled");
+
+    const wrapper = document.querySelector("#wrapper") as HTMLDivElement;
+    wrapper.style.setProperty("--after-display", "none");
+  };
 
   const toggleSettings = (e: React.MouseEvent) => {
     const userContainer = document.querySelector(".user") as HTMLDivElement;
@@ -137,12 +162,13 @@ function HomeUser() {
               </div>
             )}
           </div>
-
-          <CTA
-            className="user__playground__start cta-start cta-disabled"
-            type="button"
-            innerText="Start Game"
-          />
+          <div onClick={allowDraggingHandler}>
+            <CTA
+              className="user__playground__start cta-start cta-disabled"
+              type="button"
+              innerText="Start Game"
+            />
+          </div>
         </div>
         <div className="user__settings">
           <HomeSettings />
