@@ -107,7 +107,8 @@ uploadRouter
                     // Ensures that the client can use the resource
                     res.setHeader('Cross-Origin-Resource-Policy', "cross-origin");
                     res.set({
-                        'Content-Type': `image/${fileExtension}`
+                        'Content-Type': `image/${fileExtension}`,
+                        "Cache-Control": "private, max-age=604800"
                     });
                     res.type(fileExtension);
                     res.sendFile(`${tempPath}`, {
