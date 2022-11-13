@@ -21,7 +21,7 @@ function createPiczzle({
   gridRows = 3,
   gridColumns = 3,
   gaps = 0.25,
-  imageSource = "https://images2.minutemediacdn.com/image/fetch/w_2000,h_2000,c_fit/https%3A%2F%2Fhiddenremote.com%2Ffiles%2Fimage-exchange%2F2022%2F01%2Fie_78870.jpeg",
+  imageSource = undefined,
 }: PiczzleType) {
   /**
    * Create an instance of a puzzle component

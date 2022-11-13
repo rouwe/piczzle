@@ -15,11 +15,16 @@ async function logoutUserPostHandler(req: Request, res: Response) {
             const userSavedDataArr: string[] = userData.saved;
             userSavedDataArr.map((filename) => {
                 const filePath = `./upload/saved/${filename}`;
-                fs.unlink(filePath, (err) => {
-                    console.log("Deleting")
-                    if (err) throw new Error(`Failed to delete file: ${filename}`);
-                    console.log(`Deleted file: ${filePath}`);
-                });
+                const fileExistenceCheck = fs.existsSync(filePath);
+                console.log(`File Exist: ${filePath}`, fileExistenceCheck);
+                if (fileExistenceCheck) {
+                    // Delete file if exist
+                    fs.unlink(filePath, (err) => {
+                        console.log("Deleting")
+                        if (err) throw new Error(`Failed to delete file: ${filename}`);
+                        console.log(`Deleted File: ${filePath}`);
+                    });
+                }
             })
             // Clear cookies
             res.clearCookie(cookieSessionId);
