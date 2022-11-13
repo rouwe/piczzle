@@ -8,6 +8,7 @@
     display: grid;
     flex-wrap: wrap;
     grid-template: "brand menu" min-content / auto;
+    justify-content: space-between;
     padding: 0.625rem 1.875rem;
     position: relative;
     width: 100%;
@@ -105,6 +106,7 @@
     &__menu {
         grid-area: menu;
         justify-content: flex-end;
+        width: min-content;
 
         &__close,
         &__user {

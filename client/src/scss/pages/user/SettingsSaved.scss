@@ -22,11 +22,13 @@
         &__item {
             background-color: var(--dark-15);
             border-radius: 0.125rem;
+            height: 100%;
+            width: 100%;
         }
     }
 
     .no-recent-pizzle-warning {
-        display: none;
+        display: flex;
         justify-content: center;
         padding: 5.125rem 0 3rem;
 

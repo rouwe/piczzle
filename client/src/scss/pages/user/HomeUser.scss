@@ -4,7 +4,7 @@
 
 .user {
     display: grid;
-    grid-template: "heading" min-content "playground" min-content "settings" min-content / 100%;
+    grid-template: "heading" min-content "playground" 100vh "settings" min-content / 100%;
     padding: 3.4375rem 1.875rem 3.125rem;
     
     &__heading,
@@ -36,20 +36,67 @@
         margin: 0 auto;
         padding: 0 0.3125rem 0.375rem;
         row-gap: 1.875rem;
-
+    
         &__wrapper {
             box-shadow: 0 0 0.25rem var(--dark-25);
+            margin: 0 auto;
             padding: 0.625rem;
+            position: relative;
             width: 100%;
+
+            --after-display: "flex";
+            &::after {
+                display: var(--after-display);
+                content: "";
+                left: 0;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                z-index: 10;
+            }
             
             &__puzzle-body {
-                display: flex;
+                display: grid;
+                flex-wrap: wrap;
+                height: max-content;
+                margin: 0 auto;
+                width: max-content;
+
+                .dragTarget {
+                    border-radius: 2px;
+                    transition: all 150ms ease-out 0s;
+                }
+        
+                .dragTarget:hover {
+                    cursor: grab;
+                }
+        
+                .dragTarget:active {
+                    box-shadow: 0px 0px 5px 5px  hsla(0, 100%, 10%, 0.35);
+                    transform: scale(1.1);
+                }
+        
+                .dropTarget {
+                    display: flex;
+                }
+                
+                .match-found {
+                    opacity: 0.75;
+                    filter: grayscale(40%);
+                }
+                
+                .drop-over-style {
+                    transform: scale(0.9);
+                    opacity: 0.75;
+                }
             }
             
             .select-image-warning {
                 align-items: center;
                 display: flex;   
                 flex-direction: column;
+                margin: 0 auto;
                 padding: 5.125rem 2.1875rem 3rem;
                 row-gap: 0.9375rem;
 

@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import {
+  fetchUserSavedRecord,
+  fetchSavedPiczzles,
+} from "../../utils/settingsUtil";
+import { SettingsContext } from "../../context/SettingsContext";
 import "../../scss/pages/user/SettingsSaved.scss";
 
 const LoadMoreIcon = () => (
@@ -16,28 +21,100 @@ const LoadMoreIcon = () => (
     />
   </svg>
 );
-
 function SettingsSaved() {
+  const {
+    updatePiczzleSource,
+    gallery: { galleryItemCount, updateGalleryItemCount },
+  } = useContext(SettingsContext);
+  // User saved piczzles url
+  const [savedPiczzlesUrlArr, setSavedPiczzlesUrlArr] = useState<string[]>([]);
+  const [savedPiczzles, setSavedPicczles] = useState<JSX.Element[]>([]);
+  const prevGalleryItemCount = useRef<number | null>(null);
+
+  useEffect(() => {
+    // Fetch the user saved records
+    const fetchSavedDataPromise = fetchUserSavedRecord() as Promise<string[]>;
+    fetchSavedPiczzles(fetchSavedDataPromise, setSavedPiczzlesUrlArr);
+  }, []);
+
+  useEffect(() => {
+    function changePiczzleSourceHandler(e: React.MouseEvent<HTMLImageElement>) {
+      // Handler that changes piczzle source state
+      if (e) {
+        const targetSource = e.currentTarget.src;
+        if (updatePiczzleSource) updatePiczzleSource(targetSource);
+      }
+    }
+
+    const galleryItemArr = savedPiczzlesUrlArr.map((url, idx) => {
+      return (
+        <img
+          onClick={changePiczzleSourceHandler}
+          key={`gItem${idx}`}
+          className="settings__saved__gallery__item"
+          src={url}
+          alt="Piczzle"
+        />
+      );
+    });
+    // Set gallery item count back to default
+    if (updateGalleryItemCount) updateGalleryItemCount(6);
+    setSavedPicczles(galleryItemArr);
+  }, [savedPiczzlesUrlArr, updatePiczzleSource, updateGalleryItemCount]);
+
+  useEffect(() => {
+    prevGalleryItemCount.current = galleryItemCount;
+  });
+
+  const PiczzlesList = (): JSX.Element => (
+    <>{savedPiczzles.slice(0, galleryItemCount)}</>
+  );
+
+  const loadMoreHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Load more piczzles in saved tab
+    if (prevGalleryItemCount.current) {
+      const defaultIncrementValue = 6;
+      const userTotalSavedItem = Number(sessionStorage.getItem("uGICount"));
+      // Default increment prev value or use user data count if its less than the default incremented value
+      const incrementedGalleryCount =
+        prevGalleryItemCount.current + defaultIncrementValue;
+      const newGalleryCount =
+        userTotalSavedItem < incrementedGalleryCount
+          ? userTotalSavedItem
+          : userTotalSavedItem;
+      if (userTotalSavedItem === newGalleryCount) {
+        // Disable load more button
+        const loadMoreToggler = document.querySelector(
+          ".settings__saved__load-more"
+        ) as HTMLDivElement;
+        if (loadMoreToggler) {
+          e.preventDefault();
+          const loadMoreTogglerIcon =
+            loadMoreToggler.firstChild as SVGSVGElement;
+          const loadMoreTogglerIconPath = loadMoreTogglerIcon.querySelector(
+            "path"
+          ) as SVGPathElement;
+          loadMoreTogglerIconPath.style.fill = "var(--dark-25)";
+        }
+      }
+      if (updateGalleryItemCount) {
+        updateGalleryItemCount(newGalleryCount);
+      }
+    }
+  };
   return (
     <div className="settings__saved">
       <div className="settings__saved__gallery">
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
-        <div className="settings__saved__gallery__item"></div>
+        <PiczzlesList />
       </div>
-      <div className="no-recent-pizzle-warning">
-        <span className="no-recent-pizzle-warning__message">
-          Saved piczzles not found.
-        </span>
-      </div>
-      <div className="settings__saved__load-more">
+      {savedPiczzlesUrlArr.length === 0 && (
+        <div className="no-recent-pizzle-warning">
+          <span className="no-recent-pizzle-warning__message">
+            Saved piczzles not found.
+          </span>
+        </div>
+      )}
+      <div onClick={loadMoreHandler} className="settings__saved__load-more">
         <LoadMoreIcon />
       </div>
     </div>

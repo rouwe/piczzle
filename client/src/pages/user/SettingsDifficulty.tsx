@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../scss/pages/user/SettingsDifficulty.scss";
+import { SettingsContext } from "../../context/SettingsContext";
 
 function SettingsDifficulty() {
-  function difficultyHandler() {
+  const { updateGridInfo } = useContext(SettingsContext);
+
+  const difficultyHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    /**
+     * Updates grid info property of piczzle configuration
+     * @e - on change event
+     */
+    const rangeTarget = e.currentTarget;
+    const rangeTargetValue = Number(rangeTarget.value);
+    const newGridInfo = {
+      gridColumns: rangeTargetValue,
+      gridRows: rangeTargetValue,
+      gaps: 0.25,
+    };
+    // Set delay of execution if user where to spam range input
+    setTimeout(() => {
+      if (updateGridInfo) updateGridInfo(newGridInfo);
+    }, 50);
     return;
-  }
+  };
 
   return (
     <>
@@ -13,11 +31,12 @@ function SettingsDifficulty() {
       </div>
       <div className="settings__difficulty__range">
         <input
+          onChange={difficultyHandler}
           className="settings__difficulty__range__selector"
           type="range"
+          defaultValue={4}
           min="2"
           max="9"
-          onChange={difficultyHandler}
         />
         <div className="settings__difficulty__range__label">
           <datalist className="settings__difficulty__range__label__datalist">

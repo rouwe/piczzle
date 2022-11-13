@@ -1,5 +1,10 @@
 import React from "react";
 import "../../scss/pages/user/SettingsUpload.scss";
+import {
+  addNotification,
+  addNotificationStyle,
+} from "../../ts/notificationHandler";
+import * as serverErrors from "../../utils/errors";
 
 const AddImageIcon = () => (
   <svg
@@ -18,18 +23,54 @@ const AddImageIcon = () => (
 );
 
 function SettingsUpload() {
-  function OpenFileBrowser(e: React.MouseEvent<HTMLButtonElement>) {
-    const uploadInput: HTMLInputElement | null =
-      document.querySelector(`#upload-image-input`);
-    if (uploadInput) {
-      uploadInput.click();
-    }
-  }
+  const OpenFileBrowser = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Display file browser
+    const uploadInput = document.querySelector(
+      `#upload-image-input`
+    ) as HTMLInputElement;
+    if (uploadInput) uploadInput.click();
+  };
+
+  const uploadFile = (e: React.ChangeEvent) => {
+    // Submit form
+    const form = document.querySelector(".settings__upload") as HTMLFormElement;
+    const formData = new FormData(form) as FormData;
+    const options: RequestInit = {
+      method: "POST",
+      credentials: "include",
+      body: formData,
+    };
+    fetch("http://localhost:5000/upload", options)
+      .then((res) => res.json())
+      .then((res) => {
+        const resStatus: string = res.Response.status;
+        let resError: string = res.Response?.error?.name;
+        // Check if server responded
+        resError =
+          typeof resError === "string" ? resError : "ServerIsDownError";
+        let resMessage;
+        switch (resStatus) {
+          case "SUCCESS":
+            resMessage = "Image has been uploaded";
+            addNotificationStyle({ resStatus });
+            addNotification({ resMessage });
+            window.location.href = "/";
+            break;
+          case "FAILED":
+            resMessage = serverErrors.clientErrorMap[resError];
+            addNotificationStyle({ resStatus });
+            addNotification({ resMessage });
+            window.location.href = "/";
+            break;
+        }
+      });
+  };
 
   return (
     <form
+      onSubmit={(e) => e.preventDefault()}
       className="settings__upload"
-      action="http://localhost:5000/"
+      action="http://localhost:5000/upload"
       method="POST"
       encType="multipart/form-data"
     >
@@ -47,10 +88,13 @@ function SettingsUpload() {
         </button>
       </div>
       <input
+        onChange={uploadFile}
         className="settings__upload__file-input"
         type="file"
         id="upload-image-input"
+        name="piczzleSource"
       />
+      <input id="uploadButton" style={{ display: "none" }} type="submit" />
     </form>
   );
 }

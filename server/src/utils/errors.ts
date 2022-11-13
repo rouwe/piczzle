@@ -20,15 +20,22 @@ export class InvalidPasswordError extends Error {
 }
 
 export class PasswordMatchValidationError extends Error {
-    constructor (message: string) {
+    constructor(message: string) {
         super(message);
         this.name = "PasswordMatchValidationError";
     }
 }
 
 export class CharacterLengthValidationError extends Error {
-    constructor (message: string) {
+    constructor(message: string) {
         super(message);
         this.name = "CharacterLengthValidationError";
+    }
+}
+
+export class UploadFailedError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = "UploadFailedError";
     }
 }

@@ -1,8 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CTA from "../../shared/components/CTA";
 import HomeSettings from "./HomeSettings";
 import "../../scss/pages/user/HomeUser.scss";
+import createPiczzle from "../../ts/Piczzle";
+import { SettingsContext } from "../../context/SettingsContext";
 
 const SettingsToggler = () => (
   <svg
@@ -45,39 +47,133 @@ const WarningIcon = () => (
 );
 
 function HomeUser() {
-  const [heading, setHeading] = useState("Playground");
+  const [contentOpen, setContentOpen] = useState("playground");
+  const [wrapperId] = useState("#wrapper");
+  const [puzzleBodyId] = useState("#puzzle-body");
+  const [gridInfo, setGridInfo] = useState({
+    gridColumns: 4,
+    gridRows: 4,
+    gaps: 0.25,
+  });
+  const [piczzleSource, setPiczzleSource] = useState("");
+  const [galleryItemCount, setGalleryItemCount] = useState(6);
+
+  useEffect(() => {
+    const piczzleConfig = {
+      wrapperId: wrapperId,
+      puzzleBodyId: puzzleBodyId,
+      gridRows: gridInfo.gridRows,
+      gridColumns: gridInfo.gridColumns,
+      gaps: gridInfo.gaps,
+      imageSource: piczzleSource,
+    };
+    // Remove previous piczzle
+    const dropTargetClass = "dropTarget";
+    const dropTargetArr = document.querySelectorAll(`.${dropTargetClass}`);
+    for (const dropTarget of dropTargetArr) {
+      dropTarget.remove();
+    }
+    // Generate new piczzle
+    createPiczzle(piczzleConfig);
+
+    // Prevent user from dragging piczzles until clicking start button
+    const startBtn = document.querySelector(
+      ".user__playground__start"
+    ) as HTMLButtonElement;
+    startBtn.classList.remove("cta-disabled");
+    // Add disabled style if piczzle source is not specified
+    if (!piczzleSource) {
+      startBtn.classList.add("cta-disabled");
+    }
+
+    const wrapper = document.querySelector("#wrapper") as HTMLDivElement;
+    wrapper.style.setProperty("--after-display", "flex");
+  }, [wrapperId, puzzleBodyId, gridInfo, piczzleSource]);
+
+  const allowDraggingHandler = () => {
+    // Allow user to start playing
+    const startBtn = document.querySelector(
+      ".user__playground__start"
+    ) as HTMLButtonElement;
+    startBtn.classList.add("cta-disabled");
+
+    const wrapper = document.querySelector("#wrapper") as HTMLDivElement;
+    wrapper.style.setProperty("--after-display", "none");
+  };
+
+  const toggleSettings = (e: React.MouseEvent) => {
+    const userContainer = document.querySelector(".user") as HTMLDivElement;
+    const playground = document.querySelector(
+      ".user__playground"
+    ) as HTMLDivElement;
+    const settings = document.querySelector(
+      ".user__settings"
+    ) as HTMLDivElement;
+    // Toggle display
+    if (contentOpen === "playground") {
+      setContentOpen("settings");
+      playground.style.display = "none";
+      settings.style.display = "flex";
+      userContainer.style.gridTemplate =
+        '"heading" min-content "playground" min-content "settings" min-content / 100%';
+    } else {
+      setContentOpen("playground");
+      playground.style.display = "flex";
+      settings.style.display = "none";
+      userContainer.style.gridTemplate =
+        '"heading" min-content "playground" 100vh "settings" min-content / 100%';
+    }
+  };
 
   return (
-    <div className="user">
-      <div className="user__heading">
-        <h1 className="user__heading__text pages-heading">{heading}</h1>
-        <span className="user__heading__settings-toggler">
-          <SettingsToggler />
-        </span>
-      </div>
-      <div className="user__playground">
-        <div id="wrapper" className="user__playground__wrapper">
-          <div
-            id="puzzle-body"
-            className="user__playground__wrapper__puzzle-body"
-          ></div>
-          <div className="select-image-warning">
-            <WarningIcon />
-            <span className="select-image-warning__message">
-              Please select an image first.
-            </span>
+    <SettingsContext.Provider
+      value={{
+        updatePiczzleSource: setPiczzleSource,
+        updateGridInfo: setGridInfo,
+        gallery: {
+          galleryItemCount: galleryItemCount,
+          updateGalleryItemCount: setGalleryItemCount,
+        },
+      }}
+    >
+      <div className="user">
+        <div className="user__heading">
+          <h1 className="user__heading__text pages-heading">Playground</h1>
+          <span
+            onClick={toggleSettings}
+            className="user__heading__settings-toggler"
+          >
+            <SettingsToggler />
+          </span>
+        </div>
+        <div className="user__playground">
+          <div id="wrapper" className="user__playground__wrapper">
+            <div
+              id="puzzle-body"
+              className="user__playground__wrapper__puzzle-body"
+            ></div>
+            {!piczzleSource && (
+              <div className="select-image-warning">
+                <WarningIcon />
+                <span className="select-image-warning__message">
+                  Please select an image first.
+                </span>
+              </div>
+            )}
+          </div>
+          <div onClick={allowDraggingHandler}>
+            <CTA
+              className="user__playground__start cta-start cta-disabled"
+              type="button"
+              innerText="Start Game"
+            />
           </div>
         </div>
-        <CTA
-          className="user__playground__start cta-start cta-disabled"
-          type="button"
-          innerText="Start Game"
-        />
+        <div className="user__settings">
+          <HomeSettings />
+        </div>
       </div>
-      <div className="user__settings">
-        <HomeSettings />
-      </div>
-    </div>
+    </SettingsContext.Provider>
   );
 }
 

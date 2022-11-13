@@ -22,6 +22,7 @@ app.use(express.urlencoded(configs.urlEncoded));
 
 app.use('/', router.index);
 app.use('/auth', router.auth);
+app.use('/upload', router.upload);
 
 // Catch 404 and forward to error handler
 app.use(catchError);

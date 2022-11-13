@@ -8,8 +8,8 @@ const rootElement: HTMLElement | null = document.getElementById("root");
 if (rootElement && typeof rootElement == "object") {
   const root: ReactDOM.Root = ReactDOM.createRoot(rootElement);
   root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    // <React.StrictMode>
+    <App />
+    // </React.StrictMode>
   );
 }

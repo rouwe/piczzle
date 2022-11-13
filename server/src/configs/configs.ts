@@ -1,4 +1,6 @@
 import dotenv from 'dotenv'
+import { Request } from 'express';
+import { FileFilterCallback } from 'multer';
 import { ConnectDbConstructorType } from '../db/connect';
 
 dotenv.config();
@@ -37,6 +39,20 @@ const dbConfig = ((): ConnectDbConstructorType => {
     }
 })()
 
+const multerConfig = {
+    dest: "/server/upload/temp/",
+    fileFilter: function (req: Request, file: Express.Multer.File, cb: FileFilterCallback) {
+        const typeArr = file.mimetype.split('/');
+        const fileType = typeArr[1];
+        const allowedTypesArr = ["jpeg", "jpg", "png", "jfif", "webp"];
+        if (allowedTypesArr.includes(fileType)) {
+            cb(null, true);
+        } else {
+            cb(null, false);
+        }
+    }
+};
+
 export default {
     helmet: helmetConfig,
     logger: loggerConfig,
@@ -44,5 +60,6 @@ export default {
     urlEncoded: urlEncodedConfig,
     expressJson: expressJsonConfig,
     cors: corsConfig,
-    db: dbConfig
+    db: dbConfig,
+    multer: multerConfig
 }

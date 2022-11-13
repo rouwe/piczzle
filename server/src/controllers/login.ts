@@ -3,7 +3,7 @@ import { UnknownUserError } from '../utils/errors';
 import { usersCollection } from '../db/connect';
 import { validateLoginCredentials, checkHashedPassword } from '../controllers/validate';
 import {
-    getHashedValue, cookieSessionId, cookieUserId
+    cookieSessionId, cookieUserId
 } from '../utils/authUtil';
 
 
@@ -23,15 +23,13 @@ async function loginUserPostHandler(req: Request, res: Response) {
             const query = {username: payloadUserId};
             const lookupResult = await usersCollection.findOne(query);
             if (lookupResult) {
-                const hashedPassword = lookupResult.password;
+                const hashedPassword: string = lookupResult.password;
                 // Compare payload raw password and decrypted password
                 const passwordCheck = checkHashedPassword(payloadUserPassword, hashedPassword);
                 if (passwordCheck) {
-                    // Hash user id to be used as cookie
-                    const hashedUserId = getHashedValue(payloadUserId);
                     // Set cookie
                     res.cookie(cookieSessionId, req.sessionID)
-                        .cookie(cookieUserId, hashedUserId);
+                        .cookie(cookieUserId, payloadUserId);
                     res.json({
                         Response: {
                             status: "SUCCESS",

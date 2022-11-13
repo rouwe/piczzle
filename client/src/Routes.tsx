@@ -11,6 +11,8 @@ import { checkUserExist } from "./utils/authUtil";
 
 // User authentication state
 export const loggedIn = checkUserExist();
+// Set username in local storage
+if (loggedIn) localStorage.setItem("user", "true");
 
 function AppRoutes() {
   return (
