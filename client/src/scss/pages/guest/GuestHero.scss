@@ -79,6 +79,48 @@
             }
         }
     }
+
+    @media (min-width: 23.4375rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(9.0625rem, 15.75rem, media.$media-375)
+                    0 func.GetUpdatedMediaValue(9.625rem, 16rem, media.$media-375);
+            row-gap: func.GetUpdatedMediaValue(3.75rem, 4.375rem, media.$media-375);
+
+            $containerLengthX: func.GetUpdatedMediaValue(320, 744, media.$media-375);
+            $containerLengthY: func.GetUpdatedMediaValue(499, 752, media.$media-375);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(289, 512, media.$media-375);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(35, 62, media.$media-375);
+                $bgImageLengthX: func.GetUpdatedMediaValue(244, 425, media.$media-375);
+                $bgImageLengthY: func.GetUpdatedMediaValue(437, 609, media.$media-375);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(34, 70, media.$media-375);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(15, 130, media.$media-375);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(105, 154, media.$media-375);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, 
+                                    $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(17rem, 20.75rem, media.$media-375), auto);
+                
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(3.5rem, 4.375rem, media.$media-375);
+                }
+            }
+
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1rem, 1.1875rem, media.$media-375);
+                }
+            }
+        }
+    }
     
     
     @media (min-width: 26.5625rem) {
@@ -118,6 +160,90 @@
             &__cta {
                 .cta-hero {
                     font-size: func.GetUpdatedMediaValue(1rem, 1.1875rem, media.$media-425);
+                }
+            }
+        }
+    }
+
+    @media (min-width: 28.125rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(9.0625rem, 15.75rem, media.$media-450)
+                    0 func.GetUpdatedMediaValue(9.625rem, 16rem, media.$media-450);
+            row-gap: func.GetUpdatedMediaValue(3.75rem, 4.375rem, media.$media-450);
+
+            $containerLengthX: func.GetUpdatedMediaValue(320, 744, media.$media-450);
+            $containerLengthY: func.GetUpdatedMediaValue(499, 752, media.$media-450);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(289, 512, media.$media-450);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(35, 62, media.$media-450);
+                $bgImageLengthX: func.GetUpdatedMediaValue(244, 425, media.$media-450);
+                $bgImageLengthY: func.GetUpdatedMediaValue(437, 609, media.$media-450);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(34, 70, media.$media-450);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(15, 130, media.$media-450);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(105, 154, media.$media-450);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, 
+                                    $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(17rem, 20.75rem, media.$media-450), auto);
+                
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(3.5rem, 4.375rem, media.$media-450);
+                }
+            }
+
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1rem, 1.1875rem, media.$media-450);
+                }
+            }
+        }
+    }
+
+    @media (min-width: 30.375rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(9.0625rem, 15.75rem, media.$media-486)
+                    0 func.GetUpdatedMediaValue(9.625rem, 16rem, media.$media-486);
+            row-gap: func.GetUpdatedMediaValue(3.75rem, 4.375rem, media.$media-486);
+
+            $containerLengthX: func.GetUpdatedMediaValue(320, 744, media.$media-486);
+            $containerLengthY: func.GetUpdatedMediaValue(499, 752, media.$media-486);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(289, 512, media.$media-486);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(35, 62, media.$media-486);
+                $bgImageLengthX: func.GetUpdatedMediaValue(244, 425, media.$media-486);
+                $bgImageLengthY: func.GetUpdatedMediaValue(437, 609, media.$media-486);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(34, 70, media.$media-486);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(15, 130, media.$media-486);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(105, 154, media.$media-486);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, 
+                                    $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(17rem, 20.75rem, media.$media-486), auto);
+                
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(3.5rem, 4.375rem, media.$media-486);
+                }
+            }
+
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1rem, 1.1875rem, media.$media-486);
                 }
             }
         }
@@ -165,6 +291,90 @@
         }
     }
 
+    @media (min-width: 37.5rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(9.0625rem, 15.75rem, media.$media-600)
+                    0 func.GetUpdatedMediaValue(9.625rem, 16rem, media.$media-600);
+            row-gap: func.GetUpdatedMediaValue(3.75rem, 4.375rem, media.$media-600);
+    
+            $containerLengthX: func.GetUpdatedMediaValue(320, 744, media.$media-600);
+            $containerLengthY: func.GetUpdatedMediaValue(499, 752, media.$media-600);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(289, 512, media.$media-600);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(35, 62, media.$media-600);
+                $bgImageLengthX: func.GetUpdatedMediaValue(244, 425, media.$media-600);
+                $bgImageLengthY: func.GetUpdatedMediaValue(437, 609, media.$media-600);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(34, 70, media.$media-600);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(15, 130, media.$media-600);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(105, 154, media.$media-600);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, 
+                                    $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+    
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(17rem, 20.75rem, media.$media-600), auto);
+                
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(3.5rem, 4.375rem, media.$media-600);
+                }
+            }
+    
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1rem, 1.1875rem, media.$media-600);
+                }
+            }
+        }
+    }
+
+    @media (min-width: 41.5625rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(9.0625rem, 15.75rem, media.$media-665)
+                    0 func.GetUpdatedMediaValue(9.625rem, 16rem, media.$media-665);
+            row-gap: func.GetUpdatedMediaValue(3.75rem, 4.375rem, media.$media-665);
+    
+            $containerLengthX: func.GetUpdatedMediaValue(320, 744, media.$media-665);
+            $containerLengthY: func.GetUpdatedMediaValue(499, 752, media.$media-665);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(289, 512, media.$media-665);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(35, 62, media.$media-665);
+                $bgImageLengthX: func.GetUpdatedMediaValue(244, 425, media.$media-665);
+                $bgImageLengthY: func.GetUpdatedMediaValue(437, 609, media.$media-665);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(34, 70, media.$media-665);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(15, 130, media.$media-665);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(105, 154, media.$media-665);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, 
+                                    $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+    
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(17rem, 20.75rem, media.$media-665), auto);
+                
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(3.5rem, 4.375rem, media.$media-665);
+                }
+            }
+    
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1rem, 1.1875rem, media.$media-665);
+                }
+            }
+        }
+    }
+
     @media (min-width: 46.5rem) {
         &__hero {
             padding: func.GetUpdatedMediaValue(15.75rem, 16.875rem, 0) 
@@ -202,6 +412,98 @@
             &__cta {
                 .cta-hero {
                     font-size: func.GetUpdatedMediaValue(1.1875rem, 1.75rem, 0);
+                } 
+            }
+        }
+    }
+
+    @media (min-width: 51.375rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(15.75rem, 16.875rem, media.$media-822) 
+                    0 func.GetUpdatedMediaValue(16rem, 16.875rem, media.$media-822);
+            row-gap: func.GetUpdatedMediaValue(4.375rem, 8.4375rem, media.$media-822);
+    
+            $containerLengthX: func.GetUpdatedMediaValue(744, 1440, media.$media-822);
+            $containerLengthY: func.GetUpdatedMediaValue(752, 920, media.$media-822);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(512, 768, media.$media-822);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(62, 93, media.$media-822);
+                $bgDesktopImageLengthX: func.GetUpdatedMediaValue(425, 496, media.$media-822);
+                $bgImageLengthX: func.GetUpdatedMediaValue($bgDesktopImageLengthX, 496, media.$media-822);
+                $bgDesktopImageLengthY: func.GetUpdatedMediaValue(609, 784, media.$media-822);
+                $bgImageLengthY: func.GetUpdatedMediaValue($bgDesktopImageLengthY, 784, media.$media-822);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(70, 100, media.$media-822);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(130, 472, media.$media-822);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(154, 241, media.$media-822);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+    
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(20.75rem, 29.5625rem, media.$media-822), auto);
+    
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(4.375rem, 6rem, media.$media-822);
+                }
+            }
+    
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1.1875rem, 1.75rem, media.$media-822);
+                    padding: func.GetUpdatedMediaValue(0.5625rem, 0.875rem, media.$media-822)
+                            func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-822);
+                } 
+            }
+        }
+    }
+
+    @media (min-width: 58.75rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(15.75rem, 16.875rem, media.$media-940) 
+                    0 func.GetUpdatedMediaValue(16rem, 16.875rem, media.$media-940);
+            row-gap: func.GetUpdatedMediaValue(4.375rem, 8.4375rem, media.$media-940);
+    
+            $containerLengthX: func.GetUpdatedMediaValue(744, 1440, media.$media-940);
+            $containerLengthY: func.GetUpdatedMediaValue(752, 920, media.$media-940);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(512, 768, media.$media-940);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(62, 93, media.$media-940);
+                $bgDesktopImageLengthX: func.GetUpdatedMediaValue(425, 496, media.$media-940);
+                $bgImageLengthX: func.GetUpdatedMediaValue($bgDesktopImageLengthX, 496, media.$media-940);
+                $bgDesktopImageLengthY: func.GetUpdatedMediaValue(609, 784, media.$media-940);
+                $bgImageLengthY: func.GetUpdatedMediaValue($bgDesktopImageLengthY, 784, media.$media-940);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(70, 100, media.$media-940);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(130, 472, media.$media-940);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(154, 241, media.$media-940);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+    
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(20.75rem, 29.5625rem, media.$media-940), auto);
+    
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(4.375rem, 6rem, media.$media-940);
+                }
+            }
+    
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1.1875rem, 1.75rem, media.$media-940);
+                    padding: func.GetUpdatedMediaValue(0.5625rem, 0.875rem, media.$media-940)
+                            func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-940);
                 } 
             }
         }
@@ -248,6 +550,191 @@
                     font-size: func.GetUpdatedMediaValue(1.1875rem, 1.75rem, media.$media-991);
                     padding: func.GetUpdatedMediaValue(0.5625rem, 0.875rem, media.$media-991)
                             func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-991);
+                } 
+            }
+        }
+    }
+
+    
+    @media (min-width: 64.0625rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(15.75rem, 16.875rem, media.$media-1025) 
+                    0 func.GetUpdatedMediaValue(16rem, 16.875rem, media.$media-1025);
+            row-gap: func.GetUpdatedMediaValue(4.375rem, 8.4375rem, media.$media-1025);
+    
+            $containerLengthX: func.GetUpdatedMediaValue(744, 1440, media.$media-1025);
+            $containerLengthY: func.GetUpdatedMediaValue(752, 920, media.$media-1025);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(512, 768, media.$media-1025);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(62, 93, media.$media-1025);
+                $bgDesktopImageLengthX: func.GetUpdatedMediaValue(425, 496, media.$media-1025);
+                $bgImageLengthX: func.GetUpdatedMediaValue($bgDesktopImageLengthX, 496, media.$media-1025);
+                $bgDesktopImageLengthY: func.GetUpdatedMediaValue(609, 784, media.$media-1025);
+                $bgImageLengthY: func.GetUpdatedMediaValue($bgDesktopImageLengthY, 784, media.$media-1025);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(70, 100, media.$media-1025);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(130, 472, media.$media-1025);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(154, 241, media.$media-1025);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+    
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(20.75rem, 29.5625rem, media.$media-1025), auto);
+    
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(4.375rem, 6rem, media.$media-1025);
+                }
+            }
+    
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1.1875rem, 1.75rem, media.$media-1025);
+                    padding: func.GetUpdatedMediaValue(0.5625rem, 0.875rem, media.$media-1025)
+                            func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1025);
+                } 
+            }
+        }
+    }
+
+    @media (min-width: 72.5rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(15.75rem, 16.875rem, media.$media-1160) 
+                    0 func.GetUpdatedMediaValue(16rem, 16.875rem, media.$media-1160);
+            row-gap: func.GetUpdatedMediaValue(4.375rem, 8.4375rem, media.$media-1160);
+    
+            $containerLengthX: func.GetUpdatedMediaValue(744, 1440, media.$media-1160);
+            $containerLengthY: func.GetUpdatedMediaValue(752, 920, media.$media-1160);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(512, 768, media.$media-1160);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(62, 93, media.$media-1160);
+                $bgDesktopImageLengthX: func.GetUpdatedMediaValue(425, 496, media.$media-1160);
+                $bgImageLengthX: func.GetUpdatedMediaValue($bgDesktopImageLengthX, 496, media.$media-1160);
+                $bgDesktopImageLengthY: func.GetUpdatedMediaValue(609, 784, media.$media-1160);
+                $bgImageLengthY: func.GetUpdatedMediaValue($bgDesktopImageLengthY, 784, media.$media-1160);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(70, 100, media.$media-1160);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(130, 472, media.$media-1160);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(154, 241, media.$media-1160);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+    
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(20.75rem, 29.5625rem, media.$media-1160), auto);
+    
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(4.375rem, 6rem, media.$media-1160);
+                }
+            }
+    
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1.1875rem, 1.75rem, media.$media-1160);
+                    padding: func.GetUpdatedMediaValue(0.5625rem, 0.875rem, media.$media-1160)
+                            func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1160);
+                } 
+            }
+        }
+    }
+
+    @media (min-width: 79rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(15.75rem, 16.875rem, media.$media-1264) 
+                    0 func.GetUpdatedMediaValue(16rem, 16.875rem, media.$media-1264);
+            row-gap: func.GetUpdatedMediaValue(4.375rem, 8.4375rem, media.$media-1264);
+    
+            $containerLengthX: func.GetUpdatedMediaValue(744, 1440, media.$media-1264);
+            $containerLengthY: func.GetUpdatedMediaValue(752, 920, media.$media-1264);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(512, 768, media.$media-1264);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(62, 93, media.$media-1264);
+                $bgDesktopImageLengthX: func.GetUpdatedMediaValue(425, 496, media.$media-1264);
+                $bgImageLengthX: func.GetUpdatedMediaValue($bgDesktopImageLengthX, 496, media.$media-1264);
+                $bgDesktopImageLengthY: func.GetUpdatedMediaValue(609, 784, media.$media-1264);
+                $bgImageLengthY: func.GetUpdatedMediaValue($bgDesktopImageLengthY, 784, media.$media-1264);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(70, 100, media.$media-1264);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(130, 472, media.$media-1264);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(154, 241, media.$media-1264);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+    
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(20.75rem, 29.5625rem, media.$media-1264), auto);
+    
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(4.375rem, 6rem, media.$media-1264);
+                }
+            }
+    
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1.1875rem, 1.75rem, media.$media-1264);
+                    padding: func.GetUpdatedMediaValue(0.5625rem, 0.875rem, media.$media-1264)
+                            func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1264);
+                } 
+            }
+        }
+    }
+
+    @media (min-width: 84.375rem) {
+        &__hero {
+            padding: func.GetUpdatedMediaValue(15.75rem, 16.875rem, media.$media-1350) 
+                    0 func.GetUpdatedMediaValue(16rem, 16.875rem, media.$media-1350);
+            row-gap: func.GetUpdatedMediaValue(4.375rem, 8.4375rem, media.$media-1350);
+    
+            $containerLengthX: func.GetUpdatedMediaValue(744, 1440, media.$media-1350);
+            $containerLengthY: func.GetUpdatedMediaValue(752, 920, media.$media-1350);
+            &::before {
+                $shutterImageLengthX: func.GetUpdatedMediaValue(512, 768, media.$media-1350);
+                $shutterImageLengthY: func.GetUpdatedMediaValue(62, 93, media.$media-1350);
+                $bgDesktopImageLengthX: func.GetUpdatedMediaValue(425, 496, media.$media-1350);
+                $bgImageLengthX: func.GetUpdatedMediaValue($bgDesktopImageLengthX, 496, media.$media-1350);
+                $bgDesktopImageLengthY: func.GetUpdatedMediaValue(609, 784, media.$media-1350);
+                $bgImageLengthY: func.GetUpdatedMediaValue($bgDesktopImageLengthY, 784, media.$media-1350);
+                $shutterToOffSetInPxY: func.GetUpdatedMediaValue(70, 100, media.$media-1350);
+                $bgToOffSetInPxX: func.GetUpdatedMediaValue(130, 472, media.$media-1350);
+                $bgToOffSetInPxY: func.GetUpdatedMediaValue(154, 241, media.$media-1350);
+                $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, $containerLengthY, $shutterToOffSetInPxY);
+                $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
+                $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
+    
+                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
+                background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
+                background-size: func.PxToRem($shutterImageLengthX),
+                                func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
+            }
+    
+            &__heading {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(20.75rem, 29.5625rem, media.$media-1350), auto);
+    
+                &__text {
+                    font-size: func.GetUpdatedMediaValue(4.375rem, 6rem, media.$media-1350);
+                }
+            }
+    
+            &__cta {
+                .cta-hero {
+                    font-size: func.GetUpdatedMediaValue(1.1875rem, 1.75rem, media.$media-1350);
+                    padding: func.GetUpdatedMediaValue(0.5625rem, 0.875rem, media.$media-1350)
+                            func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1350);
                 } 
             }
         }
