@@ -111,8 +111,12 @@ function HomeUser() {
     ) as HTMLDivElement;
     // Toggle display
     if (contentOpen === "playground") {
+      // Set playground height explicitly using computed style to
+      // prevent having undefined height value passed into piczzle utility
       setContentOpen("settings");
+      const playgroundHeight = window.getComputedStyle(playground).height;
       playground.style.display = "none";
+      playground.style.height = playgroundHeight;
       settings.style.display = "flex";
       userContainer.style.gridTemplate =
         '"heading" min-content "playground" min-content "settings" min-content / 100%';

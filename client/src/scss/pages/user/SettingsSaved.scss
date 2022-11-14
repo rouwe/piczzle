@@ -30,7 +30,6 @@
 
             &:hover {
                 filter: grayscale(0%) brightness(100%) drop-shadow(0 0.125rem 0.125rem var(--dark-25));
-                transform: scale(anim.$d-scale);
             }
 
             &:active {
