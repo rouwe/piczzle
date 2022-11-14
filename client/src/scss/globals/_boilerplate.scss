@@ -1,5 +1,6 @@
 @use '../util/functions' as func;
 @use '../globals/media' as media;
+@use '../util/animation' as anim;
 
 html {
     box-sizing: border-box;
@@ -10,6 +11,7 @@ html {
 *::before,
 *::after {
     box-sizing: inherit;
+    transition: all 250ms ease-in-out 50ms;
 }
 
 h1,
@@ -45,6 +47,7 @@ ul {
     border: 0.03125rem solid var(--border-color);
     border-radius: 0.1rem;
     color: var(--dark);
+    cursor: pointer;
     font-size: 1.25rem;
     letter-spacing: func.PercentToRem(0.5);
     padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, 0)
@@ -105,6 +108,43 @@ textarea::placeholder {
                 func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-991);
     }
 
+    .cta-route,
+    .cta-hero,
+    .cta-add-image,
+    .cta-start,
+    .form-layout__form__submit {
+        &:hover {
+            background-color: var(--light);
+            border-radius: 0 0.1rem;
+            position: relative;
+            transform: scale(anim.$d-scale);
+
+            &::before {
+                background-color: var(--accent);
+                box-shadow: 0 0.125rem 0.125rem var(--dark-15);
+                border: 0.0625rem solid var(--dark-20);
+                border-radius: 0 0 10rem 10rem;
+                bottom: -10%;
+                content: "";
+                height: 10%;
+                left: 0%;
+                position: absolute;
+                width: 100%; 
+            }
+        }
+
+        &:active {
+            box-shadow: none;
+            transform: scale(anim.$d-active-scale);
+        }
+
+        &:focus {
+            &::before {
+                display: none;
+            }
+        }
+    }
+    
     .cta-route {
         padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-991)
                 func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-991);

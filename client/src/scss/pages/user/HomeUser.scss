@@ -1,6 +1,7 @@
 @use '../../util/mixin' as mix;
 @use '../../util/functions' as func;
 @use '../../globals/media' as media;
+@use '../../util/animation' as anim;
 
 .user {
     display: grid;
@@ -20,10 +21,19 @@
 
         &__settings-toggler {
             border: none;
+            cursor: pointer;
             display: flex;
             
             svg {
                 @include mix.SetMinSize(1.5rem, 1.5rem);
+
+                &:hover {
+                    transform: scale(anim.$d-scale);
+                }
+
+                &:active {
+                    transform: scale(anim.$d-active-scale);
+                }
             }
         }
     }
@@ -43,6 +53,10 @@
             padding: 0.625rem;
             position: relative;
             width: 100%;
+
+            &:hover {
+                box-shadow: 0 0 0.25rem var(--dark-50);
+            }
 
             --after-display: "flex";
             &::after {
@@ -64,29 +78,36 @@
                 width: max-content;
 
                 .dragTarget {
-                    border-radius: 2px;
+                    border-radius: 0.125rem;
+                    filter: drop-shadow( 0 0.25rem 0.25rem var(--dark-75));
                     transition: all 150ms ease-out 0s;
+
+                    &:hover {
+                        cursor: grab;
+                    }
+            
+                    &:active {
+                        box-shadow: 0px 0px 0.3125rem 0.3125rem hsla(54, 100%, 2%, 0.25);
+                        cursor: grabbing;
+                        transform: scale(1.1);
+                    }
+                    
+                    &:focus {
+                        cursor: grabbing;
+                    }
                 }
-        
-                .dragTarget:hover {
-                    cursor: grab;
-                }
-        
-                .dragTarget:active {
-                    box-shadow: 0px 0px 5px 5px  hsla(0, 100%, 10%, 0.35);
-                    transform: scale(1.1);
-                }
-        
+                
                 .dropTarget {
                     display: flex;
                 }
                 
                 .match-found {
-                    opacity: 0.75;
-                    filter: grayscale(40%);
+                    opacity: anim.$d-opacity;
+                    filter: grayscale(0%) brightness(33%) drop-shadow(0 0 0 transparent);
                 }
                 
                 .drop-over-style {
+                    filter: opacity(0.3);
                     transform: scale(0.9);
                     opacity: 0.75;
                 }

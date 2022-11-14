@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Brand from "../shared/components/Brand";
 import Nav from "./header/Nav";
 import Menu from "./header/Menu";
 import "../scss/layout/Header.scss";
 import { loggedIn } from "../Routes";
+import { setHeaderActiveLink } from "../ts/interaction";
 
 function Header() {
   const loggedUserHeaderStyle: React.CSSProperties = {
@@ -45,9 +46,14 @@ function Header() {
     }
   };
 
+  useEffect(() => {
+    // Set active header link on initial render
+    setHeaderActiveLink();
+  });
+
   return (
     <header style={loggedIn ? loggedUserHeaderStyle : {}} className="header">
-      <div className="header__brand">
+      <div onClick={setHeaderActiveLink} className="header__brand">
         <Link to="/" children={<Brand brandType="text" />} />
       </div>
       <nav className="header__action">

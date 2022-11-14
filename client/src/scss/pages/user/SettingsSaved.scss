@@ -1,6 +1,7 @@
 @use '../../util/mixin' as mix;
 @use '../../util/functions' as func;
 @use '../../globals/media' as media;
+@use '../../util/animation' as anim;
 
 .settings__saved {
     display: flex;
@@ -22,8 +23,24 @@
         &__item {
             background-color: var(--dark-15);
             border-radius: 0.125rem;
+            cursor: pointer;
+            filter: grayscale(60%) brightness(75%);
             height: 100%;
             width: 100%;
+
+            &:hover {
+                filter: grayscale(0%) brightness(100%) drop-shadow(0 0.125rem 0.125rem var(--dark-25));
+                transform: scale(anim.$d-scale);
+            }
+
+            &:active {
+                filter: none;
+                transform: scale(anim.$d-active-scale);
+            }
+
+            &:focus {
+                filter: none;
+            } 
         }
     }
 
@@ -41,10 +58,21 @@
 
     &__load-more {
         align-self: center;
+        cursor: pointer;
         display: flex;
 
         svg {
             @include mix.SetMinSize(1.25rem, 1.25rem);
+            filter: drop-shadow(0 0.125rem 0.125rem var(--dark-25)); 
+
+            &:hover {
+                filter: none;
+                transform: scale(anim.$d-scale);
+            }
+
+            &:active {
+                transform: scale(anim.$d-active-scale);
+            }
 
             path {
                 fill: var(--accent);

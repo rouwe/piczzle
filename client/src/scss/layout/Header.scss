@@ -1,5 +1,6 @@
 @use '../util/mixin' as mix;
 @use '../globals/colors' as c;
+@use '../util//animation' as anim;
 
 .header {
     align-items: center;
@@ -113,12 +114,6 @@
             display: none;
         }
 
-        &__options {
-            .menu-logout {
-                display: none;
-            }
-        }
-
         svg {
             @include mix.SetMinSize(2.0625rem, 2.0625rem);
         }
@@ -195,6 +190,17 @@
 
             svg {
                 @include mix.SetMinSize(9.1875rem, 3.8125rem);
+
+                
+            &:hover {
+                filter: drop-shadow(0 0.125rem 0.125rem var(--dark-10));
+                opacity: anim.$d-opacity;
+                transform: scaleY(1.1) scaleX(0.95);
+            }
+
+            &:active {
+                filter: drop-shadow(0 0.125rem 0 var(--dark-50));
+            }
             }
         }
 
@@ -216,23 +222,44 @@
                 column-gap: 1.75rem;
                 display: flex;
                 width: auto;
+                
+            .active-header-link {
+                color: var(--dark);
+                filter: blur(0);
+                opacity: 1;
+                transform: scale(anim.$d-scale);
+                text-shadow: 0 0.0625rem 0 var(--dark-15);
+            }
 
                 &__item {
                     &__link {
                         color: var(--header-nav-link-text); 
+                        filter: blur(0.0625rem);
                         font-size: 1.25rem;
+                        opacity: anim.$d-opacity;
+                        
+                        &:hover {
+                            filter: blur(0);
+                            opacity: anim.$d-opacity;
+                        }
+
+                        &:active {
+                            transform: scale(anim.$d-active-scale);
+                        }
                     }
                 }
-            }
-
-            .action-logout {
-                display: none;
             }
             
             &__cta {
                 display: flex;
                 column-gap: 2.125rem;
-
+                
+                .cta.active-cta-route {
+                    background-color: transparent;
+                    box-shadow: none;
+                    border: none;
+                }
+                
                 .cta {
                     box-shadow: 0 0.25rem 0.625rem var(--header-cta-box-shadow);
                 }
@@ -251,11 +278,15 @@
                 display: none;
             }
 
-            &__options {
-                .menu-logout {
-                    left: 0%;
-                    position: absolute;
-                    top: 0%;
+            svg {
+                cursor: pointer;
+                
+                &:hover {
+                    transform: scale(anim.$d-scale);
+                }
+
+                &:active {
+                    transform: scale(anim.$d-active-scale);
                 }
             }
         }

@@ -1,5 +1,6 @@
 @use '../util/mixin' as mix;
 @use '../util/functions' as func;
+@use '../util/animation' as anim;
 
 .footer {
     background-image: linear-gradient(var(--first-bg-gradient) 0%, var(--second-bg-gradient) 100%);
@@ -198,6 +199,17 @@
                     &__item {
                         &__link {
                             font-size: 1.0875rem;
+
+                            &:hover {
+                                color: var(--light);
+                                text-decoration: underline;
+                                transform: scale(anim.$d-scale);
+                            }
+
+                            &:active {
+                                text-decoration: none;
+                                transform: scale(anim.$d-active-scale);
+                            }
                         }
                     }
                 }
@@ -207,6 +219,18 @@
                     
                     svg {
                         @include mix.SetMinSize(2.05rem, 2.05rem);
+
+                        &:hover {
+                            transform: scale(anim.$d-scale);
+
+                            path {
+                                fill: var(--light);
+                            }
+                        }
+
+                        &:active {
+                            transform: scale(anim.$d-active-scale);
+                        }
                     }
                 }
             }

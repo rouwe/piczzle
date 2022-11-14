@@ -1,6 +1,7 @@
 @use '../../util/mixin' as mix;
 @use '../../util/functions' as func;
 @use '../../globals/media' as media;
+@use '../../util/animation' as anim;
 
 .user__settings {
     align-items: center;
@@ -174,10 +175,17 @@
             @include mix.SetMinSize(100%, auto);
         }
 
+        &__body,
+        &__difficulty {
+            &:hover {
+                box-shadow: 0 0 0.25rem var(--dark-50);
+            }
+        }
+
         &__tab {
             margin: 0 0 func.GetUpdatedMediaValue(0.25rem, 0.3125rem, media.$media-991);
             
-            &__item {                
+            &__item {                                
                 .active-tab {
                     padding: func.GetUpdatedMediaValue(0.46875rem, 0.625rem, media.$media-991)
                             func.GetUpdatedMediaValue(calc(2.4375rem + 0.875rem), calc(3.0625rem + 1.3125rem), media.$media-991)
@@ -186,9 +194,19 @@
                 }
                 
                 &__text {
+                    cursor: pointer;
                     font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-991);
                     padding: func.GetUpdatedMediaValue(0.46875rem, 0.625rem, media.$media-991) 
                             func.GetUpdatedMediaValue(0.875rem, 1.3125rem, media.$media-991); 
+
+                                    
+                    &:hover {
+                        opacity: anim.$d-opacity;
+                    }
+
+                    &:active {
+                        transform: scale(anim.$d-active-scale);
+                    }
                 }
             }
         }

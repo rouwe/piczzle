@@ -1,1 +1,7 @@
-$default-transition: transform 250ms ease-out 25ms;
+// Default
+$d-duration: 250ms;
+$d-timing: ease-in-out;
+$d-delay: 50ms;
+$d-opacity: 0.75;
+$d-scale: 1.01;
+$d-active-scale: 0.95;

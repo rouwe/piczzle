@@ -42,14 +42,14 @@
                 border-radius: 1rem;
                 cursor: pointer;
                 height: 1.25rem;
-                transition: anim.$default-transition;
+                transition: all anim.$d-duration anim.$d-timing anim.$d-delay;
                 width: 1.25rem;
             }
 
             &:focus::-webkit-slider-thumb {
                 box-shadow: 0 0.125rem 0.25rem var(--dark-15);
                 transform: scale(1.05);
-                outline: 0.125rem solid var(--dark-15);
+                outline: 0.125rem solid white;
             }
 
             &::-moz-range-thumb {
@@ -59,7 +59,7 @@
                 border-radius: 1rem;
                 cursor: pointer;
                 height: 1.25rem;
-                transition: anim.$default-transition;
+                transition: all anim.$d-duration anim.$d-timing anim.$d-delay;
                 outline: 0.125rem solid var(--dark-15);
                 width: 1.25rem;
             }

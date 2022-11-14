@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { To } from "react-router-dom";
 import CTA from "./CTA";
+import { setHeaderActiveLink } from "../../ts/interaction";
 
 type RouteListRouteType = {
   id: string;
@@ -25,8 +26,17 @@ function RouteList({
   structureClassNames: { ulClassName, liClassName, linkClassName },
   styleSnippet,
 }: RouteListType) {
+  useEffect(() => {
+    // Set active header link on initial render
+    setHeaderActiveLink();
+  });
+
   return (
-    <ul style={styleSnippet ? styleSnippet : {}} className={ulClassName}>
+    <ul
+      onClick={setHeaderActiveLink}
+      style={styleSnippet ? styleSnippet : {}}
+      className={ulClassName}
+    >
       {routesArr.map(({ id, page, path }, idx) => {
         return (
           <li className={liClassName} key={id + idx}>
