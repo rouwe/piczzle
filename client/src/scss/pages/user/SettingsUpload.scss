@@ -38,8 +38,30 @@
         display: none;
     }
 
+    @media (min-width: 23.4375rem) {
+        row-gap: func.GetUpdatedMediaValue(3.75rem, 4.125rem, media.$media-375);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-375);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-375), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-375);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-375);
+            }
+        }
+    }
+
     @media (min-width: 26.5625rem) {
-        row-gap: func.GetUpdatedMediaValue(3.75rem, 4.125rem, media.$media-425);
+        row-gap: func.GetUpdatedMediaValue(3.75rem, 4.125rem, media.$media-375);
 
         &__add-image {
             row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-425);
@@ -56,6 +78,50 @@
         &__add-cta {
             .cta-add-image {
                 font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-425);
+            }
+        }
+    }
+
+    @media (min-width: 28.125rem) {
+        row-gap: func.GetUpdatedMediaValue(3.75rem, 4.125rem, media.$media-450);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-450);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-450), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-450);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-450);
+            }
+        }
+    }
+
+    @media (min-width: 30.375rem) {
+        row-gap: func.GetUpdatedMediaValue(3.75rem, 4.125rem, media.$media-486);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-486);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-486), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-486);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-486);
             }
         }
     }
@@ -82,6 +148,50 @@
         }
     }
 
+    @media (min-width: 37.5rem) {
+        row-gap: func.GetUpdatedMediaValue(3.75rem, 4.125rem, media.$media-600);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-600);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-600), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-600);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-600);
+            }
+        }
+    }
+
+    @media (min-width: 41.5625rem) {
+        row-gap: func.GetUpdatedMediaValue(3.75rem, 4.125rem, media.$media-665);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-665);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-665), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-665);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-665);
+            }
+        }
+    }
+
     @media (min-width: 46.5rem) {
         row-gap: 4.125rem;
 
@@ -104,6 +214,50 @@
         }
     }
 
+    @media (min-width: 51.375rem) {
+        row-gap: func.GetUpdatedMediaValue(4.125rem, 5.5rem, media.$media-822);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-822);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-822), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-822);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-822);
+            }
+        }
+    }
+
+    @media (min-width: 58.75rem) {
+        row-gap: func.GetUpdatedMediaValue(4.125rem, 5.5rem, media.$media-940);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-940);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-940), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-940);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-940);
+            }
+        }
+    }
+
     @media (min-width: 61.9375rem) {
         row-gap: func.GetUpdatedMediaValue(4.125rem, 5.5rem, media.$media-991);
 
@@ -122,6 +276,94 @@
         &__add-cta {
             .cta-add-image {
                 font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-991);
+            }
+        }
+    }
+
+    @media (min-width: 64.0625rem) {
+        row-gap: func.GetUpdatedMediaValue(4.125rem, 5.5rem, media.$media-1025);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1025);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1025), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-1025);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1025);
+            }
+        }
+    }
+
+    @media (min-width: 72.5rem) {
+        row-gap: func.GetUpdatedMediaValue(4.125rem, 5.5rem, media.$media-1160);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1160);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1160), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-1160);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1160);
+            }
+        }
+    }
+
+    @media (min-width: 79rem) {
+        row-gap: func.GetUpdatedMediaValue(4.125rem, 5.5rem, media.$media-1264);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1264);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1264), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-1264);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1264);
+            }
+        }
+    }
+
+    @media (min-width: 84.375rem) {
+        row-gap: func.GetUpdatedMediaValue(4.125rem, 5.5rem, media.$media-1350);
+
+        &__add-image {
+            row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1350);
+
+            svg {
+                @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1350), auto);
+            }
+
+            &__text {
+                font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-1350);
+            }
+        }
+
+        &__add-cta {
+            .cta-add-image {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1350);
             }
         }
     }
