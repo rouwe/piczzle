@@ -439,7 +439,6 @@
                 $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
                 $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
     
-                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
                 background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
                 background-size: func.PxToRem($shutterImageLengthX),
                                 func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
@@ -485,7 +484,6 @@
                 $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
                 $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
     
-                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
                 background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
                 background-size: func.PxToRem($shutterImageLengthX),
                                 func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
@@ -577,8 +575,7 @@
                 $shutterPositionY: func.GetBgOffSetPositionInPercent($shutterImageLengthY, $containerLengthY, $shutterToOffSetInPxY);
                 $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
                 $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
-    
-                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
+                
                 background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
                 background-size: func.PxToRem($shutterImageLengthX),
                                 func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
@@ -624,7 +621,6 @@
                 $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
                 $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
     
-                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
                 background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
                 background-size: func.PxToRem($shutterImageLengthX),
                                 func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
@@ -670,7 +666,6 @@
                 $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
                 $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
     
-                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
                 background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
                 background-size: func.PxToRem($shutterImageLengthX),
                                 func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
@@ -716,7 +711,6 @@
                 $bgPositionX: func.GetBgOffSetPositionInPercent($bgImageLengthX, $containerLengthX, $bgToOffSetInPxX);
                 $bgPositionY: func.GetBgOffSetPositionInPercent($bgImageLengthY, $containerLengthY, $bgToOffSetInPxY);
     
-                background-image: url('../../../assets/images/pages/home-shutter.svg'), url('../../../assets/images/pages/home-desktop-hero-bg.svg');
                 background-position: 50% $shutterPositionY, $bgPositionX $bgPositionY;
                 background-size: func.PxToRem($shutterImageLengthX),
                                 func.PxToRem($bgImageLengthX) func.PxToRem($bgImageLengthY);
