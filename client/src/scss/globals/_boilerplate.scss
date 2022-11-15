@@ -1,5 +1,6 @@
 @use '../util/functions' as func;
 @use '../globals/media' as media;
+@use '../util/animation' as anim;
 
 html {
     box-sizing: border-box;
@@ -10,6 +11,7 @@ html {
 *::before,
 *::after {
     box-sizing: inherit;
+    transition: all 250ms ease-in-out 50ms;
 }
 
 h1,
@@ -45,6 +47,7 @@ ul {
     border: 0.03125rem solid var(--border-color);
     border-radius: 0.1rem;
     color: var(--dark);
+    cursor: pointer;
     font-size: 1.25rem;
     letter-spacing: func.PercentToRem(0.5);
     padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, 0)
@@ -61,6 +64,16 @@ textarea::placeholder {
     opacity: 1;
 }
 
+@media (min-width: 23.4375rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-375)
+                func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-375);
+    }
+}
+
 @media (min-width: 26.5625rem) {
     [type="button"],
     [type="submit"],
@@ -71,6 +84,26 @@ textarea::placeholder {
     }
 }
 
+@media (min-width: 28.125rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-450)
+                func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-450);
+    }
+}
+
+@media (min-width: 30.375rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-486)
+                func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-486);
+    }
+}
+
 @media (min-width: 36rem) {
     [type="button"],
     [type="submit"],
@@ -78,6 +111,26 @@ textarea::placeholder {
     .form-layout__form__submit {
         padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-576)
                 func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-576);
+    }
+}
+
+@media (min-width: 37.5rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-600)
+                func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-600);
+    }
+}
+
+@media (min-width: 41.5625rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.46875rem, 0.5625rem, media.$media-665)
+                func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-665);
     }
 }
 
@@ -96,6 +149,37 @@ textarea::placeholder {
     }
 }
 
+
+@media (min-width: 51.375rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-822)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-822);
+    }
+    
+    .cta-route {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-822)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-822);
+    }
+}
+
+@media (min-width: 58.75rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-940)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-940);
+    }
+    
+    .cta-route {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-940)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-940);
+    }
+}
+
 @media (min-width: 61.9375rem) {
     [type="button"],
     [type="submit"],
@@ -105,24 +189,118 @@ textarea::placeholder {
                 func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-991);
     }
 
+    .cta-route,
+    .cta-hero,
+    .cta-add-image,
+    .cta-start,
+    .form-layout__form__submit {
+        &:hover {
+            background-color: var(--light);
+            border-radius: 0 0.1rem;
+            position: relative;
+            transform: scale(anim.$d-scale);
+
+            &::before {
+                background-color: var(--accent);
+                box-shadow: 0 0.125rem 0.125rem var(--dark-15);
+                border: 0.0625rem solid var(--dark-20);
+                border-radius: 0 0 10rem 10rem;
+                bottom: -10%;
+                content: "";
+                height: 10%;
+                left: 0%;
+                position: absolute;
+                width: 100%; 
+            }
+        }
+
+        &:active {
+            box-shadow: none;
+            transform: scale(anim.$d-active-scale);
+        }
+
+        &:focus {
+            &::before {
+                display: none;
+            }
+        }
+    }
+    
     .cta-route {
         padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-991)
                 func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-991);
     }
 }
 
+@media (min-width: 64.0625rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-1025)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1025);
+    }
+    
+    .cta-route {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-1025)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1025);
+    }
+}
+
+@media (min-width: 72.5rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-1160)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1160);
+    }
+    
+    .cta-route {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-1160)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1160);
+    }
+}
+
+@media (min-width: 79rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-1264)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1264);
+    }
+    
+    .cta-route {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-1264)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1264);
+    }
+}
+
+@media (min-width: 84.375rem) {
+    [type="button"],
+    [type="submit"],
+    .cta,
+    .form-layout__form__submit {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-1350)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1350);
+    }
+    
+    .cta-route {
+        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-1350)
+                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1350);
+    }
+}
 
 @media (min-width: 90rem) {
     [type="button"],
     [type="submit"],
     .cta,
     .form-layout__form__submit {
-        padding: func.GetUpdatedMediaValue(0.5625rem, 0.5625rem, media.$media-1440)
-                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1440);
+        padding: 0.5625rem 1.6875rem;
     }
 
     .cta-route {
-        padding: func.GetUpdatedMediaValue(0.5625rem, 0.6875rem, media.$media-1440)
-                func.GetUpdatedMediaValue(1.125rem, 1.6875rem, media.$media-1440);
+        padding: 0.6875rem 1.6875rem;
     }
 }

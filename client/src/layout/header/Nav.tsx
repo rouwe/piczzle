@@ -4,6 +4,7 @@ import RouteList from "../../shared/components/RouteList";
 import SocialLinks from "../../shared/components/SocialLinks";
 import { displayNone } from "../../utils/stylesSnippet";
 import { UserAuthenticationType } from "../../shared/types/types";
+import { setHeaderActiveLink } from "../../ts/interaction";
 
 function Nav({ loggedIn }: UserAuthenticationType) {
   const routes = [
@@ -28,7 +29,7 @@ function Nav({ loggedIn }: UserAuthenticationType) {
       {!loggedIn && (
         <>
           <hr className="header__action__nav-divider" />
-          <div className="header__action__cta">
+          <div onClick={setHeaderActiveLink} className="header__action__cta">
             <CTA
               className="cta cta-route"
               type="route"

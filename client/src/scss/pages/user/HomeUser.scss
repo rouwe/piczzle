@@ -1,6 +1,7 @@
 @use '../../util/mixin' as mix;
 @use '../../util/functions' as func;
 @use '../../globals/media' as media;
+@use '../../util/animation' as anim;
 
 .user {
     display: grid;
@@ -20,10 +21,19 @@
 
         &__settings-toggler {
             border: none;
+            cursor: pointer;
             display: flex;
             
             svg {
                 @include mix.SetMinSize(1.5rem, 1.5rem);
+
+                &:hover {
+                    transform: scale(anim.$d-scale);
+                }
+
+                &:active {
+                    transform: scale(anim.$d-active-scale);
+                }
             }
         }
     }
@@ -43,6 +53,10 @@
             padding: 0.625rem;
             position: relative;
             width: 100%;
+
+            &:hover {
+                box-shadow: 0 0 0.25rem var(--dark-50);
+            }
 
             --after-display: "flex";
             &::after {
@@ -64,29 +78,36 @@
                 width: max-content;
 
                 .dragTarget {
-                    border-radius: 2px;
+                    border-radius: 0.125rem;
+                    filter: drop-shadow( 0 0.25rem 0.25rem var(--dark-75));
                     transition: all 150ms ease-out 0s;
+
+                    &:hover {
+                        cursor: grab;
+                    }
+            
+                    &:active {
+                        box-shadow: 0px 0px 0.3125rem 0.3125rem hsla(54, 100%, 2%, 0.25);
+                        cursor: grabbing;
+                        transform: scale(1.1);
+                    }
+                    
+                    &:focus {
+                        cursor: grabbing;
+                    }
                 }
-        
-                .dragTarget:hover {
-                    cursor: grab;
-                }
-        
-                .dragTarget:active {
-                    box-shadow: 0px 0px 5px 5px  hsla(0, 100%, 10%, 0.35);
-                    transform: scale(1.1);
-                }
-        
+                
                 .dropTarget {
                     display: flex;
                 }
                 
                 .match-found {
-                    opacity: 0.75;
-                    filter: grayscale(40%);
+                    opacity: anim.$d-opacity;
+                    filter: grayscale(0%) brightness(33%) drop-shadow(0 0 0 transparent);
                 }
                 
                 .drop-over-style {
+                    filter: opacity(0.3);
                     transform: scale(0.9);
                     opacity: 0.75;
                 }
@@ -119,6 +140,52 @@
         grid-area: settings;
     }
 
+    @media (min-width: 23.4375rem) {
+        padding: func.GetUpdatedMediaValue(3.4375rem, 4.0625rem, media.$media-375)
+                func.GetUpdatedMediaValue(1.875rem, 4.6875rem, media.$media-375)
+                func.GetUpdatedMediaValue(3.125rem, 4.0625rem, media.$media-375);
+
+        &__heading {    
+            &__settings-toggler {                
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-375),
+                                            func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-375));
+                }
+            }
+        }
+        
+        &__playground {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(16.25rem, 30rem, media.$media-375), auto);
+            padding: 0 func.GetUpdatedMediaValue(0.3125rem, 0.1875rem, media.$media-375)
+                    func.GetUpdatedMediaValue(0.375rem, 0.5rem, media.$media-375);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(0.625rem, 1.25rem, media.$media-375);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-375);
+                    padding: func.GetUpdatedMediaValue(5.125rem, 6rem, media.$media-375)
+                            func.GetUpdatedMediaValue(2.1875rem, 8.75rem, media.$media-375)
+                            func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-375);
+
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-375),
+                                                func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-375));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-375);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-375);
+            }
+        }
+    }
+
+    
     @media (min-width: 26.5625rem) {
         padding: func.GetUpdatedMediaValue(3.4375rem, 4.0625rem, media.$media-425)
                 func.GetUpdatedMediaValue(1.875rem, 4.6875rem, media.$media-425)
@@ -160,6 +227,96 @@
     
             &__start.cta-start {
                 font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-425);
+            }
+        }
+    }
+
+    @media (min-width: 28.125rem) {
+        padding: func.GetUpdatedMediaValue(3.4375rem, 4.0625rem, media.$media-450)
+                func.GetUpdatedMediaValue(1.875rem, 4.6875rem, media.$media-450)
+                func.GetUpdatedMediaValue(3.125rem, 4.0625rem, media.$media-450);
+
+        &__heading {    
+            &__settings-toggler {                
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-450),
+                                            func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-450));
+                }
+            }
+        }
+        
+        &__playground {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(16.25rem, 30rem, media.$media-450), auto);
+            padding: 0 func.GetUpdatedMediaValue(0.3125rem, 0.1875rem, media.$media-450)
+                    func.GetUpdatedMediaValue(0.375rem, 0.5rem, media.$media-450);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(0.625rem, 1.25rem, media.$media-450);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-450);
+                    padding: func.GetUpdatedMediaValue(5.125rem, 6rem, media.$media-450)
+                            func.GetUpdatedMediaValue(2.1875rem, 8.75rem, media.$media-450)
+                            func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-450);
+
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-450),
+                                                func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-450));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-450);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-450);
+            }
+        }
+    }
+
+    @media (min-width: 30.375rem) {
+        padding: func.GetUpdatedMediaValue(3.4375rem, 4.0625rem, media.$media-486)
+                func.GetUpdatedMediaValue(1.875rem, 4.6875rem, media.$media-486)
+                func.GetUpdatedMediaValue(3.125rem, 4.0625rem, media.$media-486);
+
+        &__heading {    
+            &__settings-toggler {                
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-486),
+                                            func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-486));
+                }
+            }
+        }
+        
+        &__playground {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(16.25rem, 30rem, media.$media-486), auto);
+            padding: 0 func.GetUpdatedMediaValue(0.3125rem, 0.1875rem, media.$media-486)
+                    func.GetUpdatedMediaValue(0.375rem, 0.5rem, media.$media-486);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(0.625rem, 1.25rem, media.$media-486);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-486);
+                    padding: func.GetUpdatedMediaValue(5.125rem, 6rem, media.$media-486)
+                            func.GetUpdatedMediaValue(2.1875rem, 8.75rem, media.$media-486)
+                            func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-486);
+
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-486),
+                                                func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-486));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-486);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-486);
             }
         }
     }
@@ -208,6 +365,96 @@
         }
     }
 
+    @media (min-width: 37.5rem) {
+        padding: func.GetUpdatedMediaValue(3.4375rem, 4.0625rem, media.$media-600)
+                func.GetUpdatedMediaValue(1.875rem, 4.6875rem, media.$media-600)
+                func.GetUpdatedMediaValue(3.125rem, 4.0625rem, media.$media-600);
+
+        &__heading {    
+            &__settings-toggler {                
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-600),
+                                            func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-600));
+                }
+            }
+        }
+        
+        &__playground {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(16.25rem, 30rem, media.$media-600), auto);
+            padding: 0 func.GetUpdatedMediaValue(0.3125rem, 0.1875rem, media.$media-600)
+                    func.GetUpdatedMediaValue(0.375rem, 0.5rem, media.$media-600);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(0.625rem, 1.25rem, media.$media-600);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-600);
+                    padding: func.GetUpdatedMediaValue(5.125rem, 6rem, media.$media-600)
+                            func.GetUpdatedMediaValue(2.1875rem, 8.75rem, media.$media-600)
+                            func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-600);
+
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-600),
+                                                func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-600));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-600);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-600);
+            }
+        }
+    }
+
+    @media (min-width: 41.5625rem) {
+        padding: func.GetUpdatedMediaValue(3.4375rem, 4.0625rem, media.$media-665)
+                func.GetUpdatedMediaValue(1.875rem, 4.6875rem, media.$media-665)
+                func.GetUpdatedMediaValue(3.125rem, 4.0625rem, media.$media-665);
+
+        &__heading {    
+            &__settings-toggler {                
+                svg {
+                    @include mix.SetMinSize(func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-665),
+                                            func.GetUpdatedMediaValue(1.5rem, 1.9375rem, media.$media-665));
+                }
+            }
+        }
+        
+        &__playground {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(16.25rem, 30rem, media.$media-665), auto);
+            padding: 0 func.GetUpdatedMediaValue(0.3125rem, 0.1875rem, media.$media-665)
+                    func.GetUpdatedMediaValue(0.375rem, 0.5rem, media.$media-665);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(0.625rem, 1.25rem, media.$media-665);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(0.9375rem, 1.125rem, media.$media-665);
+                    padding: func.GetUpdatedMediaValue(5.125rem, 6rem, media.$media-665)
+                            func.GetUpdatedMediaValue(2.1875rem, 8.75rem, media.$media-665)
+                            func.GetUpdatedMediaValue(3rem, 4.1875rem, media.$media-665);
+
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-665),
+                                                func.GetUpdatedMediaValue(6rem, 7.1875rem, media.$media-665));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.125rem, 1.3125rem, media.$media-665);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1rem, 1.125rem, media.$media-665);
+            }
+        }
+    }
+
     @media (min-width: 46.5rem) {
         padding: 4.0625rem 4.6875rem;
 
@@ -246,6 +493,77 @@
         }
     }
 
+    @media (min-width: 51.375rem) {
+        padding: func.GetUpdatedMediaValue(4.0625rem, 4.875rem, media.$media-822)
+                func.GetUpdatedMediaValue(4.6875rem, 6.25rem, media.$media-822);
+                
+        &__playground {
+            @include mix.SetMinSize(func.GetUpdatedMediaValue(30rem, 46.5rem, media.$media-822), auto);
+            padding: 0 func.GetUpdatedMediaValue(0.1875rem, 0.5rem, media.$media-822)
+                    func.GetUpdatedMediaValue(0.5rem, 0.3125rem, media.$media-822);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(1.25rem, 1.3125rem, media.$media-822)
+                        func.GetUpdatedMediaValue(1.25rem, 0.9375rem, media.$media-822);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-822);
+                    padding: func.GetUpdatedMediaValue(6rem, 7.92rem, media.$media-822)
+                            func.GetUpdatedMediaValue(8.75rem, 16.25rem, media.$media-822)
+                            func.GetUpdatedMediaValue(4.1875rem, 5.5275rem, media.$media-822);
+                    
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-822),
+                                                func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-822));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-822);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-822);
+            }
+        }
+    }
+
+    @media (min-width: 58.75rem) {
+        padding: func.GetUpdatedMediaValue(4.0625rem, 4.875rem, media.$media-940)
+                func.GetUpdatedMediaValue(4.6875rem, 6.25rem, media.$media-940);
+                
+        &__playground {
+            padding: 0 func.GetUpdatedMediaValue(0.1875rem, 0.5rem, media.$media-940)
+                    func.GetUpdatedMediaValue(0.5rem, 0.3125rem, media.$media-940);
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(1.25rem, 1.3125rem, media.$media-940)
+                        func.GetUpdatedMediaValue(1.25rem, 0.9375rem, media.$media-940);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-940);
+                    padding: func.GetUpdatedMediaValue(6rem, 7.92rem, media.$media-940)
+                            func.GetUpdatedMediaValue(8.75rem, 16.25rem, media.$media-940)
+                            func.GetUpdatedMediaValue(4.1875rem, 5.5275rem, media.$media-940);
+                    
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-940),
+                                                func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-940));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-940);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-940);
+            }
+        }
+    }
+
     @media (min-width: 61.9375rem) {
         grid-template: "heading heading heading" min-content 
                         "playground . settings" min-content / 
@@ -261,9 +579,10 @@
         }
                 
         &__playground {
-            @include mix.SetMinSize(func.GetUpdatedMediaValue(30rem, 46.5rem, media.$media-991), auto);
+            min-width: auto;
             padding: 0 func.GetUpdatedMediaValue(0.1875rem, 0.5rem, media.$media-991)
                     func.GetUpdatedMediaValue(0.5rem, 0.3125rem, media.$media-991);
+            width: 100%;
     
             &__wrapper {
                 padding: func.GetUpdatedMediaValue(1.25rem, 1.3125rem, media.$media-991)
@@ -272,7 +591,6 @@
                 .select-image-warning {
                     row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-991);
                     padding: func.GetUpdatedMediaValue(6rem, 7.92rem, media.$media-991)
-                            func.GetUpdatedMediaValue(8.75rem, 16.25rem, media.$media-991)
                             func.GetUpdatedMediaValue(4.1875rem, 5.5275rem, media.$media-991);
                     
                     svg {
@@ -296,6 +614,150 @@
         }
     }
 
+    @media (min-width: 64.0625rem) {
+        padding: func.GetUpdatedMediaValue(4.0625rem, 4.875rem, media.$media-1025)
+                func.GetUpdatedMediaValue(4.6875rem, 6.25rem, media.$media-1025);
+                
+        &__playground {
+            min-width: auto;
+            padding: 0 func.GetUpdatedMediaValue(0.1875rem, 0.5rem, media.$media-1025)
+                    func.GetUpdatedMediaValue(0.5rem, 0.3125rem, media.$media-1025);
+            width: 100%;
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(1.25rem, 1.3125rem, media.$media-1025)
+                        func.GetUpdatedMediaValue(1.25rem, 0.9375rem, media.$media-1025);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1025);
+                    padding: func.GetUpdatedMediaValue(6rem, 7.92rem, media.$media-1025)
+                            func.GetUpdatedMediaValue(4.1875rem, 5.5275rem, media.$media-1025);
+                    
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1025),
+                                                func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1025));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-1025);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1025);
+            }
+        }
+    }
+
+    @media (min-width: 72.5rem) {
+        padding: func.GetUpdatedMediaValue(4.0625rem, 4.875rem, media.$media-1160)
+                func.GetUpdatedMediaValue(4.6875rem, 6.25rem, media.$media-1160);
+                
+        &__playground {
+            min-width: auto;
+            padding: 0 func.GetUpdatedMediaValue(0.1875rem, 0.5rem, media.$media-1160)
+                    func.GetUpdatedMediaValue(0.5rem, 0.3125rem, media.$media-1160);
+            width: 100%;
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(1.25rem, 1.3125rem, media.$media-1160)
+                        func.GetUpdatedMediaValue(1.25rem, 0.9375rem, media.$media-1160);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1160);
+                    padding: func.GetUpdatedMediaValue(6rem, 7.92rem, media.$media-1160)
+                            func.GetUpdatedMediaValue(4.1875rem, 5.5275rem, media.$media-1160);
+                    
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1160),
+                                                func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1160));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-1160);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1160);
+            }
+        }
+    }
+
+    @media (min-width: 79rem) {
+        padding: func.GetUpdatedMediaValue(4.0625rem, 4.875rem, media.$media-1264)
+                func.GetUpdatedMediaValue(4.6875rem, 6.25rem, media.$media-1264);
+                
+        &__playground {
+            min-width: auto;
+            padding: 0 func.GetUpdatedMediaValue(0.1875rem, 0.5rem, media.$media-1264)
+                    func.GetUpdatedMediaValue(0.5rem, 0.3125rem, media.$media-1264);
+            width: 100%;
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(1.25rem, 1.3125rem, media.$media-1264)
+                        func.GetUpdatedMediaValue(1.25rem, 0.9375rem, media.$media-1264);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1264);
+                    padding: func.GetUpdatedMediaValue(6rem, 7.92rem, media.$media-1264)
+                            func.GetUpdatedMediaValue(4.1875rem, 5.5275rem, media.$media-1264);
+                    
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1264),
+                                                func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1264));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-1264);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1264);
+            }
+        }
+    }
+
+    @media (min-width: 84.375rem) {
+        padding: func.GetUpdatedMediaValue(4.0625rem, 4.875rem, media.$media-1350)
+                func.GetUpdatedMediaValue(4.6875rem, 6.25rem, media.$media-1350);
+                
+        &__playground {
+            min-width: auto;
+            padding: 0 func.GetUpdatedMediaValue(0.1875rem, 0.5rem, media.$media-1350)
+                    func.GetUpdatedMediaValue(0.5rem, 0.3125rem, media.$media-1350);
+            width: 100%;
+    
+            &__wrapper {
+                padding: func.GetUpdatedMediaValue(1.25rem, 1.3125rem, media.$media-1350)
+                        func.GetUpdatedMediaValue(1.25rem, 0.9375rem, media.$media-1350);
+            
+                .select-image-warning {
+                    row-gap: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1350);
+                    padding: func.GetUpdatedMediaValue(6rem, 7.92rem, media.$media-1350)
+                            func.GetUpdatedMediaValue(4.1875rem, 5.5275rem, media.$media-1350);
+                    
+                    svg {
+                        @include mix.SetMinSize(func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1350),
+                                                func.GetUpdatedMediaValue(7.1875rem, 9.1875rem, media.$media-1350));
+                    }
+                    
+                    &__message {
+                        font-size: func.GetUpdatedMediaValue(1.3125rem, 1.625rem, media.$media-1350);
+                    }
+                }
+            }
+    
+            &__start.cta-start {
+                font-size: func.GetUpdatedMediaValue(1.125rem, 1.4375rem, media.$media-1350);
+            }
+        }
+    }
+
     @media (min-width: 90rem) {
         grid-template: "heading heading heading" min-content
                         "playground . settings" min-content / 
@@ -304,7 +766,6 @@
         padding: 4.875rem 6.25rem;
 
         &__playground {
-            @include mix.SetMinSize(46.5rem, auto);
             padding: 0 0.5rem 0.3125rem;
     
             &__wrapper {
@@ -312,7 +773,7 @@
             
                 .select-image-warning {
                     row-gap: 1.4375rem;
-                    padding: 7.92rem 16.25rem 5.5275rem;
+                    padding: 7.92rem 5.5275rem;
 
                     svg {
                         @include mix.SetMinSize(9.1875rem, 9.1875rem);
